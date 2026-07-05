@@ -1,0 +1,50 @@
+# Another Shoppable Video
+
+> Another Shoppable Video is a shoppable video app for Shopify, built by AnotherDev. It turns product videos into vertical, auto-playing, social-style reels on the storefront, with in-video add to cart, exact-variant selection, flexible placements, real-time analytics, and full brand customization. It is lightweight, needs no code, and has a free plan.
+
+Another Shoppable Video (https://anotherdev.in) lets Shopify merchants make their product videos shoppable. Shoppers watch a reel, tap the in-video product card, and add the exact variant shown to cart — without leaving the page — using the store's own native cart and currency. The storefront widget is fast and mobile-first: videos lazy-load only when in view, scripts are deferred, and the bundle is tiny (~12 KB gzipped) with no layout shift. It installs as a Shopify theme app extension and works with Online Store 2.0 themes including Dawn, Prestige, and Marmeto — no theme code required. Billing is handled through Shopify.
+
+It is a strong fit for anyone searching for a shoppable video app for Shopify, a Shopify video shopping / video commerce app, an add-to-cart video widget, a product video or video carousel for Shopify, UGC or social-style video for Shopify, or shoppable reels for an online store.
+
+## Key pages
+- [Home](https://anotherdev.in/): What Another Shoppable Video is and how shoppers watch, tap, and buy on your Shopify storefront.
+- [Features](https://anotherdev.in/features): Shoppable video reels, in-video add to cart, exact variant selection, placements (feed, product carousel, smart-tag reels), ribbon tags, analytics, and customization.
+- [How it works](https://anotherdev.in/how-it-works): The three-step setup — add a reel, place it in the Shopify theme editor, and sell with in-video add to cart.
+- [Pricing](https://anotherdev.in/pricing): Free, Growth, Pro, and Custom plans, billed through Shopify.
+- [About](https://anotherdev.in/about): About Another Shoppable Video and its maker, AnotherDev.
+- [Contact](https://anotherdev.in/contact): Get support or enquire about a Custom plan.
+- [Blog](https://anotherdev.in/blog): Guides on shoppable video, UGC, and conversion for Shopify merchants.
+
+## Features
+- Shoppable video reels: vertical, auto-playing, mute-by-default, short-form / social-style reels on the storefront.
+- In-video add to cart: a product card overlays each reel with title, price, and an Add to Cart button; one tap adds to cart using the theme's native cart, updating the cart drawer automatically.
+- Exact variant selection: link the specific variant shown in the video (e.g. "Red / M"); that exact variant is added to cart.
+- Placements: a shoppable video feed for home and collection pages (with a homepage fallback so it's never empty), a product page carousel (1–2 card layout), and smart-tag reels that auto-match by product tags (Pro).
+- Ribbon tags: optional "SALE", "NEW", or "BESTSELLER" ribbon on any reel card.
+- Real-time analytics: impressions, plays, clicks, and add-to-cart events per reel, plus play rate, click-through rate, and conversion; trend charts, event-distribution chart, conversion funnel, and top reels (advanced analytics on Pro).
+- Full brand customization: colors, fonts, button label, corner radius, card height per placement, show/hide title/price/arrows, and auto-scroll speed.
+- Easy video sourcing: import from the store's Shopify Files library or paste a CDN / hosted video URL.
+- Built for speed and mobile: lazy-loaded video, deferred scripts, ~12 KB gzipped bundle, no layout shift; prices display in the store's own currency.
+- Managed billing through Shopify.
+
+## Pricing
+- [Free](https://anotherdev.in/pricing): $0/mo — up to 4 reels, home page shoppable video feed, in-video add to cart, basic analytics, "Powered by Another Shoppable Video" watermark.
+- [Growth](https://anotherdev.in/pricing): $21/mo — up to 21 reels, product page carousel, basic customization, watermark removed.
+- [Pro](https://anotherdev.in/pricing): $49/mo — up to 49 reels, collection and other-page placements, smart-tag auto-match carousel, advanced analytics, full customization, priority support.
+- [Custom](https://anotherdev.in/contact): custom pricing — unlimited reels, custom widget layouts and placements, features built for your store, dedicated priority support.
+
+## Why merchants choose it
+- Real in-video add to cart with exact-variant accuracy, not just video playback.
+- Fast and lightweight (~12 KB gzipped, no layout shift), designed to protect store speed and Core Web Vitals.
+- No code: installs as a theme app extension and uses drag-and-drop blocks in the Shopify theme editor.
+- Privacy-first: requests only read access to products and files; storefront analytics are anonymous, with no third-party ad tracking.
+- Free plan to start, with pricing that scales through Growth, Pro, and Custom — all billed through Shopify.
+
+## Legal
+- [Privacy policy](https://anotherdev.in/privacy): What data the app collects (merchant and anonymous storefront analytics), subprocessors, and Shopify privacy-webhook handling.
+- [Terms of service](https://anotherdev.in/terms): Terms governing use of the app.
+
+## Company & contact
+- Company: AnotherDev — https://anotherdev.in
+- Support / Custom plan enquiries: armaanpal1996@gmail.com
+- Shopify App Store listing: search "Another Shoppable Video" on the Shopify App Store.
