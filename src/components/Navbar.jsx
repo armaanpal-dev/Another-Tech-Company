@@ -6,6 +6,7 @@ const links = [
   { to: '/features', label: 'Features' },
   { to: '/how-it-works', label: 'How it works' },
   { to: '/pricing', label: 'Pricing' },
+  { to: '/faq', label: 'FAQ' },
   { to: '/blog', label: 'Blog' },
 ];
 
@@ -25,7 +26,7 @@ export default function Navbar() {
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="container nav__inner">
         <Link to="/" className="nav__logo" aria-label="Another Shoppable Video home">
-          <span className="nav__mark" aria-hidden="true">▶</span>
+          <img className="nav__mark" src="/logo.svg" alt="" width="30" height="30" />
           Another Shoppable Video
         </Link>
 

@@ -1,4 +1,4 @@
-# Another Shoppable Video — Shoppable Video for Shopify (Marketing Website)
+# Another Shoppable Video, Shoppable Video for Shopify (Marketing Website)
 
 A complete, production-ready React marketing site for a shoppable video Shopify app,
 modeled on the structure of sites like ReelUp. Built with **Vite + React + React Router**,
@@ -25,7 +25,7 @@ with first-class **SEO** and **CRO** baked in.
 - SPA routing fallbacks for Netlify (_redirects) and Vercel (vercel.json)
 
 ## CRO features
-- Clear primary CTA ("Add to Shopify — free") repeated in nav, hero, sections, and footer
+- Clear primary CTA ("Add to Shopify for free") repeated in nav, hero, sections, and footer
 - Social proof: ratings, logo wall, stats, testimonials, case-study numbers
 - Friction-reducing copy ("no code", "2 minutes", "free plan")
 - Sticky nav, reveal-on-scroll, hover micro-interactions

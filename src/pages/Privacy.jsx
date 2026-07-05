@@ -22,8 +22,8 @@ export default function Privacy() {
 
             <h2>1. Who this policy covers</h2>
             <ul>
-              <li><strong>Merchants</strong> — Shopify store owners who install and use the App.</li>
-              <li><strong>Store visitors (end customers)</strong> — people who browse a merchant’s storefront where the App’s video widgets appear.</li>
+              <li><strong>Merchants</strong>: Shopify store owners who install and use the App.</li>
+              <li><strong>Store visitors (end customers)</strong>: people who browse a merchant’s storefront where the App’s video widgets appear.</li>
             </ul>
 
             <h2>2. Information we collect</h2>
@@ -60,10 +60,10 @@ export default function Privacy() {
             <h2>5. How information is shared (subprocessors)</h2>
             <p>We share data only with service providers that help us run the App:</p>
             <ul>
-              <li><strong>Shopify</strong> — the platform the App runs on (data flows through Shopify’s APIs and app proxy).</li>
-              <li><strong>Railway</strong> — application hosting.</li>
-              <li><strong>Supabase</strong> — database storage.</li>
-              <li><strong>Resend</strong> — sending support emails, if applicable.</li>
+              <li><strong>Shopify</strong>: the platform the App runs on (data flows through Shopify’s APIs and app proxy).</li>
+              <li><strong>Railway</strong>: application hosting.</li>
+              <li><strong>Supabase</strong>: database storage.</li>
+              <li><strong>Resend</strong>: sending support emails, if applicable.</li>
             </ul>
             <p>These providers process data on our behalf under their own security and privacy terms. We do not otherwise sell or rent data. We may disclose information if required by law.</p>
 

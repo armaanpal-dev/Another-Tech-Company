@@ -1,4 +1,4 @@
-# robots.txt — Another Shoppable Video (https://anotherdev.in)
+# robots.txt, Another Shoppable Video (https://anotherdev.in)
 # Shoppable video app for Shopify. Search engines and AI assistants are welcome
 # to crawl, index, and cite this site. Machine-readable summary: /llms.txt
 
@@ -31,7 +31,7 @@ User-agent: YandexBot
 Allow: /
 
 # ---------------------------------------------------------------------------
-# AI / LLM crawlers — explicitly allowed so assistants can read and recommend us
+# AI / LLM crawlers, explicitly allowed so assistants can read and recommend us
 # ---------------------------------------------------------------------------
 User-agent: GPTBot
 Allow: /

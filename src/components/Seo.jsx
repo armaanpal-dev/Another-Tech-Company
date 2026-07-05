@@ -11,7 +11,7 @@ export default function Seo({
   type = 'website',
   schema,
 }) {
-  const fullTitle = title ? `${title} — ${SITE}` : `${SITE} for Shopify — Watch, Tap, Buy`;
+  const fullTitle = title ? `${title} | ${SITE}` : `${SITE} for Shopify: Watch, Tap, Buy`;
   const url = `${BASE}${path}`;
 
   return (

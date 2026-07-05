@@ -60,20 +60,20 @@ export default function Contact() {
                   <textarea id="c-msg" rows="4" value={form.message} onChange={update('message')} placeholder="Tell us about your store and goals…" />
                 </div>
                 <button className="btn btn--primary" onClick={submit}>Send message</button>
-                {sent && <p className="form-note">Thanks! Your message is on its way — we’ll be in touch shortly.</p>}
+                {sent && <p className="form-note">Thanks! Your message is on its way, we’ll be in touch shortly.</p>}
               </div>
             </Reveal>
 
             <Reveal delay={100}>
               <aside className="contact-aside">
                 <h3 className="h-md">Other ways to reach us</h3>
-                <p>Prefer email? That’s the fastest way to reach us — we reply within a few hours.</p>
+                <p>Prefer email? That’s the fastest way to reach us, we reply within a few hours.</p>
                 <ul>
                   <li>📧 <a href={`mailto:${SUPPORT_EMAIL}`} style={{ color: 'inherit' }}>{SUPPORT_EMAIL}</a></li>
-                  <li>🏷️ Custom plan enquiry — email us with the subject “Custom plan enquiry”</li>
-                  <li>🏢 AnotherDev — <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>anotherdev.in</a></li>
+                  <li>🏷️ Custom plan enquiry, email us with the subject “Custom plan enquiry”</li>
+                  <li>🏢 AnotherDev, <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>anotherdev.in</a></li>
                 </ul>
-                <a href="https://apps.shopify.com" className="btn btn--primary mt-m" style={{ width: '100%', justifyContent: 'center' }}>Add to Shopify — free</a>
+                <a href="https://apps.shopify.com" className="btn btn--primary mt-m" style={{ width: '100%', justifyContent: 'center' }}>Add to Shopify for free</a>
               </aside>
             </Reveal>
           </div>

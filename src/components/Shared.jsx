@@ -1,6 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Shared.css';
+
+/* Accordion FAQ item */
+export function Faq({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`faq__item ${open ? 'open' : ''}`}>
+      <button className="faq__q" aria-expanded={open} onClick={() => setOpen(!open)}>
+        {q} <i>+</i>
+      </button>
+      <div className="faq__a"><p>{a}</p></div>
+    </div>
+  );
+}
 
 /* Reveal-on-scroll wrapper */
 export function Reveal({ children, as: Tag = 'div', delay = 0, className = '' }) {
@@ -59,7 +72,7 @@ export function CtaBand({
         <h2 className="h-lg">{title}</h2>
         <p className="lead mx-auto" style={{ textAlign: 'center' }}>{sub}</p>
         <div className="ctaband__btns">
-          <a href="https://apps.shopify.com" className="btn btn--primary btn--lg">Add to Shopify — free</a>
+          <a href="https://apps.shopify.com" className="btn btn--primary btn--lg">Add to Shopify for free</a>
           <Link to="/contact" className="btn btn--ghost-light btn--lg">Talk to us</Link>
         </div>
       </div>

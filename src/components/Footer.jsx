@@ -8,6 +8,7 @@ const cols = [
       ['Features', '/features'],
       ['How it works', '/how-it-works'],
       ['Pricing', '/pricing'],
+      ['FAQ', '/faq'],
       ['Compatibility', '/features#compatibility'],
     ],
   },
@@ -35,12 +36,12 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              <span className="footer__mark" aria-hidden="true">▶</span> Another Shoppable Video
+              <img className="footer__mark" src="/logo.svg" alt="" width="30" height="30" /> Another Shoppable Video
             </Link>
             <p className="footer__tag">
               Turn browsers into buyers with shoppable video and UGC, built for Shopify.
             </p>
-            <a href="https://apps.shopify.com" className="btn btn--primary footer__cta">Add to Shopify — free</a>
+            <a href="https://apps.shopify.com" className="btn btn--primary footer__cta">Add to Shopify for free</a>
           </div>
 
           <div className="footer__cols">

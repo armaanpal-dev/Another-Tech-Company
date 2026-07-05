@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Another Shoppable Video logo">
+  <defs>
+    <linearGradient id="asvGrad" x1="96" y1="96" x2="416" y2="416" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF3D9A"/>
+      <stop offset="1" stop-color="#8B5CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="#120B29"/>
+  <path d="M150 386 L256 150 L362 386" fill="none" stroke="url(#asvGrad)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M192 302 L320 302" fill="none" stroke="url(#asvGrad)" stroke-width="50" stroke-linecap="round"/>
+</svg>

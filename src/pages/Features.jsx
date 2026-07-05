@@ -14,7 +14,7 @@ const rows = [
   {
     eyebrow: 'Conversion',
     title: 'Add to cart, right in the video',
-    body: 'A product card overlays each reel with the title, price, compare-at price, and an Add to Cart button. One tap adds the exact variant to the cart — using your theme’s native cart, updating the drawer and count automatically.',
+    body: 'A product card overlays each reel with the title, price, compare-at price, and an Add to Cart button. One tap adds the exact variant to the cart, using your theme’s native cart, updating the drawer and count automatically.',
     points: ['In-video product card', 'One-tap add to cart', 'Uses your theme’s native cart', 'Updates the cart drawer automatically'],
     rev: true,
     mock: { label: 'Tap to shop', product: 'Suede Chelsea Boot', price: '$129' },
@@ -23,7 +23,7 @@ const rows = [
     eyebrow: 'Placement',
     title: 'Put reels anywhere on your store',
     body: 'Drop a shoppable video feed on your home or collection pages, a carousel on product pages, or let smart-tag reels auto-match by the product’s tags. The feed auto-detects the page and falls back to your homepage reels, so it’s never empty.',
-    points: ['Shoppable video feed (home / collections)', 'Product page carousel (1–2 card layout)', 'Smart tag reels — auto-match by tags (Pro)', 'Homepage fallback so it’s never empty'],
+    points: ['Shoppable video feed (home / collections)', 'Product page carousel (1-2 card layout)', 'Smart tag reels, auto-match by tags (Pro)', 'Homepage fallback so it’s never empty'],
     rev: false,
     mock: { label: 'Story 2 / 6', product: 'Ribbed Knit Set', price: '$72' },
   },
@@ -51,8 +51,8 @@ export default function Features() {
   return (
     <>
       <Seo
-        title="Features — Shoppable video, in-video add to cart, analytics"
-        description="Shoppable video reels, in-video add to cart, exact variant selection, flexible placements, real-time analytics, and full brand customization — every Another Shoppable Video feature for Shopify."
+        title="Features: Shoppable video, in-video add to cart, analytics"
+        description="Shoppable video reels, in-video add to cart, exact variant selection, flexible placements, real-time analytics, and full brand customization, every Another Shoppable Video feature for Shopify."
         path="/features"
       />
 
@@ -60,7 +60,7 @@ export default function Features() {
         <div className="container phero__inner">
           <Reveal><span className="eyebrow eyebrow--light">Features</span></Reveal>
           <Reveal as="h1" className="h-xl mt-s">The complete shoppable-video toolkit</Reveal>
-          <Reveal><p className="lead">Everything you need to add, place, customize, and measure shoppable video — in one Shopify app, with no code required.</p></Reveal>
+          <Reveal><p className="lead">Everything you need to add, place, customize, and measure shoppable video, in one Shopify app, with no code required.</p></Reveal>
         </div>
       </section>
 

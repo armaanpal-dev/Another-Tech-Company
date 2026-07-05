@@ -15,8 +15,7 @@
   letter-spacing: -0.02em;
 }
 .nav__mark {
-  display: inline-grid; place-items: center; width: 30px; height: 30px;
-  background: var(--grad-cta); color: #fff; border-radius: 9px; font-size: 12px;
+  width: 30px; height: 30px; border-radius: 9px; display: block;
   box-shadow: var(--shadow-pop);
 }
 

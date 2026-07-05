@@ -1,10 +1,10 @@
 /* ============================================================
-   Another Shoppable Video — Shoppable Video for Shopify
+   Another Shoppable Video, Shoppable Video for Shopify
    Design tokens & global styles
    ============================================================ */
 
 :root {
-  /* Palette — "Spotlight": deep ink violet stage + warm electric coral CTA */
+  /* Palette, "Spotlight": deep ink violet stage + warm electric coral CTA */
   --ink:        #120B29;   /* near-black violet, primary bg */
   --ink-2:      #1C1240;   /* raised surface */
   --ink-3:      #271A52;   /* card / border-light */

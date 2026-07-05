@@ -6,8 +6,7 @@
   font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: #fff;
 }
 .footer__mark {
-  display: inline-grid; place-items: center; width: 30px; height: 30px;
-  background: var(--grad-cta); border-radius: 9px; font-size: 12px;
+  width: 30px; height: 30px; border-radius: 9px; display: block;
 }
 .footer__tag { color: #C9C0E8; margin: 18px 0 24px; max-width: 34ch; }
 

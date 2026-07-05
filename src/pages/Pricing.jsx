@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal } from '../components/Shared';
+import { Reveal, Faq } from '../components/Shared';
 import './pages.css';
 
 const plans = [
@@ -29,25 +28,13 @@ const plans = [
 
 const faqs = [
   ['Is there really a free plan?', 'Yes. The Free plan lets you publish up to 4 reels in a home page shoppable video feed, with in-video add to cart, forever. Upgrade only when you need more reels or more placements.'],
-  ['How is it billed?', 'Through Shopify Billing — charges appear on your Shopify invoice. Free to start, upgrade anytime, cancel anytime. Taxes may apply.'],
+  ['How is it billed?', 'Through Shopify Billing, charges appear on your Shopify invoice. Free to start, upgrade anytime, cancel anytime. Taxes may apply.'],
   ['Do I need to edit my theme or write code?', 'No. Another Shoppable Video installs as a theme app extension and uses drag-and-drop blocks in the Shopify theme editor. Nothing touches your theme files.'],
   ['Will it slow down my store?', 'No. Videos lazy-load only when in view, scripts are deferred, and the storefront bundle is tiny (~12 KB gzipped) with no layout shift.'],
   ['Where can I import videos from?', 'Import videos directly from your store’s Shopify Files library, or paste a CDN / hosted video URL.'],
   ['What happens when I downgrade?', 'Placements that the lower plan doesn’t allow automatically hide from your storefront. Your reels stay in the dashboard.'],
-  ['Can I remove the “Powered by Another Shoppable Video” watermark?', 'Yes — it’s removed on the Growth plan and above.'],
+  ['Can I remove the “Powered by Another Shoppable Video” watermark?', 'Yes, it’s removed on the Growth plan and above.'],
 ];
-
-function Faq({ q, a }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className={`faq__item ${open ? 'open' : ''}`}>
-      <button className="faq__q" aria-expanded={open} onClick={() => setOpen(!open)}>
-        {q} <i>+</i>
-      </button>
-      <div className="faq__a"><p>{a}</p></div>
-    </div>
-  );
-}
 
 export default function Pricing() {
   const schema = {
