@@ -1,4 +1,4 @@
-# Reelvana — Shoppable Video for Shopify (Marketing Website)
+# Another Shoppable Video — Shoppable Video for Shopify (Marketing Website)
 
 A complete, production-ready React marketing site for a shoppable video Shopify app,
 modeled on the structure of sites like ReelUp. Built with **Vite + React + React Router**,

@@ -8,13 +8,12 @@ const cols = [
       ['Features', '/features'],
       ['How it works', '/how-it-works'],
       ['Pricing', '/pricing'],
-      ['Integrations', '/features#integrations'],
+      ['Compatibility', '/features#compatibility'],
     ],
   },
   {
     title: 'Company',
     links: [
-      ['Case studies', '/case-studies'],
       ['Blog', '/blog'],
       ['About', '/about'],
       ['Contact', '/contact'],
@@ -36,7 +35,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              <span className="footer__mark" aria-hidden="true">▶</span> Reelvana
+              <span className="footer__mark" aria-hidden="true">▶</span> Another Shoppable Video
             </Link>
             <p className="footer__tag">
               Turn browsers into buyers with shoppable video and UGC, built for Shopify.
@@ -59,7 +58,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <span>© {new Date().getFullYear()} Reelvana. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Another Shoppable Video. All rights reserved.</span>
           <span className="footer__badge">Built for Shopify</span>
         </div>
       </div>

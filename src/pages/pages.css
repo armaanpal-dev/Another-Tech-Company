@@ -30,6 +30,9 @@
 
 /* Pricing */
 .plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; }
+.plans--4 { grid-template-columns: repeat(4,1fr); gap: 20px; }
+.plans--4 .plan { padding: 30px 24px; }
+@media (max-width: 1080px) { .plans--4 { grid-template-columns: repeat(2,1fr); } }
 .plan {
   background: #fff; border: 1px solid var(--line-dark); border-radius: var(--radius);
   padding: 34px 30px; display: flex; flex-direction: column;

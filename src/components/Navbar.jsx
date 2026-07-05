@@ -6,7 +6,6 @@ const links = [
   { to: '/features', label: 'Features' },
   { to: '/how-it-works', label: 'How it works' },
   { to: '/pricing', label: 'Pricing' },
-  { to: '/case-studies', label: 'Case studies' },
   { to: '/blog', label: 'Blog' },
 ];
 
@@ -25,9 +24,9 @@ export default function Navbar() {
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="container nav__inner">
-        <Link to="/" className="nav__logo" aria-label="Reelvana home">
+        <Link to="/" className="nav__logo" aria-label="Another Shoppable Video home">
           <span className="nav__mark" aria-hidden="true">▶</span>
-          Reelvana
+          Another Shoppable Video
         </Link>
 
         <nav className="nav__links" aria-label="Primary">
@@ -39,7 +38,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__cta">
-          <Link to="/contact" className="nav__login">Talk to sales</Link>
+          <Link to="/contact" className="nav__login">Contact</Link>
           <a href="https://apps.shopify.com" className="btn btn--primary">Add to Shopify</a>
         </div>
 
@@ -53,7 +52,7 @@ export default function Navbar() {
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className="nav__mlink">{l.label}</NavLink>
           ))}
-          <Link to="/contact" className="nav__mlink">Talk to sales</Link>
+          <Link to="/contact" className="nav__mlink">Contact</Link>
           <a href="https://apps.shopify.com" className="btn btn--primary nav__mcta">Add to Shopify</a>
         </div>
       )}

@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import Features from './pages/Features';
 import HowItWorks from './pages/HowItWorks';
 import Pricing from './pages/Pricing';
-import CaseStudies from './pages/CaseStudies';
 import Blog from './pages/Blog';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -32,7 +31,6 @@ export default function App() {
           <Route path="/features" element={<Features />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

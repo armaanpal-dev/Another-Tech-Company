@@ -60,7 +60,7 @@ export function CtaBand({
         <p className="lead mx-auto" style={{ textAlign: 'center' }}>{sub}</p>
         <div className="ctaband__btns">
           <a href="https://apps.shopify.com" className="btn btn--primary btn--lg">Add to Shopify — free</a>
-          <Link to="/contact" className="btn btn--ghost-light btn--lg">Book a demo</Link>
+          <Link to="/contact" className="btn btn--ghost-light btn--lg">Talk to us</Link>
         </div>
       </div>
     </section>

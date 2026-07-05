@@ -4,38 +4,35 @@ import { Reveal, VideoMock, CtaBand, Stat } from '../components/Shared';
 import './Home.css';
 
 const features = [
-  { icon: '🎬', t: 'Shoppable video & Reels', d: 'Import TikTok, Instagram Reels, and YouTube Shorts, or upload your own. Tag products in seconds.' },
-  { icon: '🛒', t: 'In-video checkout', d: 'Shoppers add to cart and buy without ever leaving the video. Fewer clicks, more orders.' },
-  { icon: '📱', t: 'TikTok-style stories', d: 'A swipeable story bar and full-screen feed that feels native on mobile.' },
-  { icon: '⚡', t: 'Zero theme edits', d: 'Drag-and-drop placement on any page. No code, works with Online Store 2.0 and headless.' },
-  { icon: '🔁', t: 'Auto-sync UGC', d: 'Pull creator content on a schedule and keep your video walls fresh automatically.' },
-  { icon: '📊', t: 'Revenue analytics', d: 'See plays, engagement, add-to-carts, and attributed revenue per video.' },
+  { icon: '🎬', t: 'Shoppable video reels', d: 'Vertical, auto-playing, mute-by-default reels in a short-form, social style — right on your Shopify storefront.' },
+  { icon: '🛒', t: 'In-video add to cart', d: 'A product card overlays each reel with title, price, and an Add to Cart button. One tap adds to cart without leaving the page.' },
+  { icon: '🎯', t: 'Exact variant selection', d: 'Link the specific variant shown in the video — like “Red / M” — and that exact variant is what gets added to cart.' },
+  { icon: '🧩', t: 'Placements everywhere', d: 'A shoppable feed for your home and collection pages, plus a carousel and smart-tag reels on product pages.' },
+  { icon: '🏷️', t: 'Ribbon tags & branding', d: 'Add a “SALE”, “NEW”, or “BESTSELLER” ribbon, and match every card to your brand — colors, fonts, radius, and layout.' },
+  { icon: '📊', t: 'Real-time analytics', d: 'Track impressions, plays, clicks, and add-to-cart events per reel, with play rate, click-through, and conversion.' },
 ];
 
 const steps = [
-  { n: '01', t: 'Install in one click', d: 'Add Reelvana from the Shopify App Store. It connects to your catalog instantly.' },
-  { n: '02', t: 'Add your videos', d: 'Import from social or upload. Tag products with a click — pricing and stock stay in sync.' },
-  { n: '03', t: 'Publish & convert', d: 'Drop a video widget anywhere and watch engagement turn into sales.' },
+  { n: '01', t: 'Add a reel', d: 'Upload a product video, import from your Shopify Files, or paste a video URL — then link it to the exact product variant shown.' },
+  { n: '02', t: 'Place it on your store', d: 'In the Shopify theme editor, enable the app and drop a shoppable video block on your home page, product pages, or collections.' },
+  { n: '03', t: 'Sell with video', d: 'Shoppers watch, tap Add to Cart in the video, and you track views, clicks, and conversions in real time.' },
 ];
-
-const logos = ['NORDA', 'Bloom&Co', 'Maison', 'Velour', 'Kindred', 'Atlas'];
 
 export default function Home() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Reelvana — Shoppable Video for Shopify',
+    name: 'Another Shoppable Video for Shopify',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Shopify',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '1280' },
   };
 
   return (
     <>
       <Seo
-        title="Shoppable Video & UGC for Shopify"
-        description="Reelvana turns TikToks, Reels, and Shorts into shoppable videos on your Shopify store. Boost conversion and AOV with in-video checkout — no code required. Install free."
+        title="Shoppable Video for Shopify | Watch, Tap, Buy"
+        description="Add shoppable video reels to your Shopify store. Shoppers watch, tap, and add to cart without leaving the page. Real-time analytics, full customization, free to start."
         path="/"
         schema={schema}
       />
@@ -47,12 +44,13 @@ export default function Home() {
           <div className="hero__copy">
             <Reveal><span className="eyebrow eyebrow--light">Shoppable video for Shopify</span></Reveal>
             <Reveal as="h1" className="h-xl" delay={60}>
-              Turn scrolls into <span className="hero__hl">sales.</span>
+              Watch, tap, <span className="hero__hl">buy.</span>
             </Reveal>
             <Reveal delay={120}>
               <p className="lead">
-                Reelvana makes every video shoppable. Import your TikToks, Reels, and Shorts,
-                tag products, and let shoppers buy without leaving the clip — right on your storefront.
+                Another Shoppable Video turns your product videos into shoppable, social-style reels that live
+                directly on your storefront. Shoppers watch, tap, and add to cart — without ever
+                leaving the page.
               </p>
             </Reveal>
             <Reveal delay={180}>
@@ -63,34 +61,27 @@ export default function Home() {
             </Reveal>
             <Reveal delay={240}>
               <div className="hero__trust">
-                <span>★★★★★</span> 4.9/5 from 1,280+ merchants · Free plan available
+                Free plan available · No code required · Built for Shopify
               </div>
             </Reveal>
           </div>
 
           <Reveal className="hero__art" delay={140}>
             <VideoMock />
-            <div className="hero__float hero__float--1">+38% conversion</div>
-            <div className="hero__float hero__float--2">2.4× time on page</div>
+            <div className="hero__float hero__float--1">Add to cart in-video</div>
+            <div className="hero__float hero__float--2">~12 KB · no layout shift</div>
           </Reveal>
-        </div>
-
-        <div className="container hero__logos">
-          <span>Trusted by fast-growing Shopify brands</span>
-          <div className="hero__logorow">
-            {logos.map((l) => <span key={l} className="hero__logo">{l}</span>)}
-          </div>
         </div>
       </section>
 
-      {/* STATS */}
+      {/* PROOF POINTS */}
       <section className="section--tight">
         <div className="container">
           <div className="grid grid-4 home__stats">
-            <Reveal><Stat value="38%" label="Avg. lift in conversion" /></Reveal>
-            <Reveal delay={80}><Stat value="2.4×" label="Longer time on page" /></Reveal>
-            <Reveal delay={160}><Stat value="19%" label="Higher average order value" /></Reveal>
-            <Reveal delay={240}><Stat value="<2min" label="To install & launch" /></Reveal>
+            <Reveal><Stat value="1-tap" label="Add to cart, in the video" /></Reveal>
+            <Reveal delay={80}><Stat value="~12 KB" label="Gzipped storefront bundle" /></Reveal>
+            <Reveal delay={160}><Stat value="$0" label="Free plan to get started" /></Reveal>
+            <Reveal delay={240}><Stat value="Any theme" label="Dawn, Prestige, Marmeto & more" /></Reveal>
           </div>
         </div>
       </section>
@@ -100,10 +91,10 @@ export default function Home() {
         <div className="container">
           <div className="center home__head">
             <Reveal><span className="eyebrow">Everything you need</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">One app to run video commerce</Reveal>
+            <Reveal as="h2" className="h-lg mt-s">One app for shoppable video</Reveal>
             <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>
-              From a swipeable story bar to in-video checkout, Reelvana gives you the full
-              video-commerce toolkit without touching a line of code.
+              From an auto-playing reel feed to in-video add to cart, Another Shoppable Video gives you shoppable
+              video across your store — no code required.
             </p></Reveal>
           </div>
           <div className="grid grid-3 mt-l">
@@ -141,23 +132,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIAL */}
-      <section className="section">
-        <div className="container">
-          <Reveal>
-            <figure className="home__quote">
-              <blockquote>
-                “We added Reelvana to our product pages and saw a 41% jump in add-to-cart
-                within the first month. It's the highest-ROI app we've installed.”
-              </blockquote>
-              <figcaption>
-                <strong>Priya Nair</strong> · Head of Growth, Bloom&Co
-              </figcaption>
-            </figure>
-          </Reveal>
         </div>
       </section>
 

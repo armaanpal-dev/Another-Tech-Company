@@ -3,17 +3,16 @@ import { Reveal, VideoMock, CtaBand } from '../components/Shared';
 import './pages.css';
 
 const steps = [
-  { n: '01', t: 'Install Reelvana from the Shopify App Store', d: 'One click connects Reelvana to your store and imports your product catalog automatically. No developer, no theme code, no setup fee.' },
-  { n: '02', t: 'Add and tag your videos', d: 'Paste a TikTok, Reel, or Short URL — or upload your own. Tag the products that appear in each clip; prices, variants, and stock stay synced with Shopify in real time.' },
-  { n: '03', t: 'Place a widget anywhere', d: 'Choose a story bar, grid, carousel, or product spotlight and drag it onto any page in the theme editor. Style it to match your brand in a few clicks.' },
-  { n: '04', t: 'Convert and measure', d: 'Shoppers watch, tap, and buy without leaving the video. Track plays, add-to-carts, and attributed revenue per clip in your dashboard.' },
+  { n: '01', t: 'Add a reel', d: 'Upload a product video, import one from your Shopify Files library, or paste a CDN / hosted video URL. Then link the reel to the exact product variant shown in the video — like “Red / M” — and add an optional ribbon such as “SALE” or “NEW”.' },
+  { n: '02', t: 'Place it on your store', d: 'In the Shopify theme editor, enable the app and drop a shoppable video block on your home page, product pages, or collections. Style the card to match your brand — colors, fonts, radius, and layout — in a few clicks. No theme code required.' },
+  { n: '03', t: 'Sell with video', d: 'Shoppers watch the reel, tap Add to Cart on the in-video product card, and the exact variant is added using your theme’s native cart. Track impressions, plays, clicks, and conversions per reel in real time.' },
 ];
 
 export default function HowItWorks() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'How to add shoppable video to Shopify with Reelvana',
+    name: 'How to add shoppable video to Shopify with Another Shoppable Video',
     step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.t, text: s.d })),
   };
 
@@ -21,7 +20,7 @@ export default function HowItWorks() {
     <>
       <Seo
         title="How it works"
-        description="Add shoppable video to your Shopify store in four steps: install, tag products, place a widget, and convert. No code required — live in minutes with Reelvana."
+        description="Add shoppable video to your Shopify store in three steps: add a reel, place it in the theme editor, and sell with in-video add to cart. No code required."
         path="/how-it-works"
         schema={schema}
       />
@@ -29,8 +28,8 @@ export default function HowItWorks() {
       <section className="phero dark-bg">
         <div className="container phero__inner">
           <Reveal><span className="eyebrow eyebrow--light">How it works</span></Reveal>
-          <Reveal as="h1" className="h-xl mt-s">From install to first sale in minutes</Reveal>
-          <Reveal><p className="lead">No code. No theme edits. No waiting on a developer. Here's exactly what setup looks like.</p></Reveal>
+          <Reveal as="h1" className="h-xl mt-s">From video to shoppable in minutes</Reveal>
+          <Reveal><p className="lead">No code. No theme edits. No waiting on a developer. Here’s exactly what setup looks like.</p></Reveal>
         </div>
       </section>
 
@@ -53,7 +52,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <CtaBand title="Ready in two minutes" sub="Install Reelvana free and follow these steps live in your own store." />
+      <CtaBand title="Ready in minutes" sub="Install Another Shoppable Video free and follow these steps live in your own store." />
     </>
   );
 }

@@ -6,29 +6,35 @@ import './pages.css';
 
 const plans = [
   {
-    name: 'Free', price: '$0', unit: '/mo', desc: 'For new stores getting started with video.',
-    features: ['Up to 5 shoppable videos', 'Story bar & grid widgets', 'Social import (TikTok, Reels, Shorts)', 'Basic analytics', 'Reelvana branding'],
-    cta: 'Add to Shopify', featured: false,
+    name: 'Free', price: '$0', unit: '/mo', desc: 'For new stores getting started with shoppable video.',
+    features: ['Up to 4 reels', 'Home page shoppable video feed', 'In-video add to cart', 'Basic analytics', '“Powered by Another Shoppable Video” watermark'],
+    cta: 'Add to Shopify', featured: false, contact: false,
   },
   {
-    name: 'Growth', price: '$39', unit: '/mo', desc: 'For scaling brands serious about conversion.',
-    features: ['Unlimited shoppable videos', 'All widget types + spotlight', 'In-video checkout & quick buy', 'Revenue attribution analytics', 'A/B placement testing', 'Remove Reelvana branding'],
-    cta: 'Start free trial', featured: true,
+    name: 'Growth', price: '$21', unit: '/mo', desc: 'For stores adding video to product pages.',
+    features: ['Up to 21 reels', 'Everything in Free', 'Product page carousel', 'Basic customization (colors, layout)', 'Watermark removed'],
+    cta: 'Add to Shopify', featured: true, contact: false,
   },
   {
-    name: 'Plus', price: '$129', unit: '/mo', desc: 'For high-volume and headless storefronts.',
-    features: ['Everything in Growth', 'Headless / Hydrogen support', 'Auto-sync UGC feeds', 'Priority support & onboarding', 'Custom widget styling', 'Multi-store management'],
-    cta: 'Talk to sales', featured: false,
+    name: 'Pro', price: '$49', unit: '/mo', desc: 'For brands running video across the whole store.',
+    features: ['Up to 49 reels', 'Everything in Growth', 'Collection & other page placements', 'Smart tag (auto-match) carousel', 'Advanced analytics (views, clicks, conversions)', 'Full customization', 'Priority support'],
+    cta: 'Add to Shopify', featured: false, contact: false,
+  },
+  {
+    name: 'Custom', price: 'Custom', unit: '', desc: 'For agencies and brands that need a bespoke setup.',
+    features: ['Unlimited reels', 'Everything in Pro', 'Custom widget layouts & placements', 'Features built for your store', 'Dedicated priority support'],
+    cta: 'Contact us', featured: false, contact: true,
   },
 ];
 
 const faqs = [
-  ['Is there really a free plan?', 'Yes. The Free plan lets you publish up to 5 shoppable videos with story bar and grid widgets, forever. Upgrade only when you need more videos or in-video checkout.'],
-  ['Do I need to edit my theme or write code?', 'No. Reelvana installs in one click and uses drag-and-drop widgets in the Shopify theme editor. Nothing touches your theme files.'],
-  ['Will it slow down my store?', 'No. Videos are lazy-loaded and served from a global CDN, so widgets only load when they enter the viewport. We obsess over Core Web Vitals.'],
-  ['Can I import videos from TikTok and Instagram?', 'Yes. Paste a public URL from TikTok, Instagram Reels, or YouTube Shorts, or upload your own files directly.'],
-  ['What happens when I cancel?', 'Your widgets simply stop showing. You keep your videos in the dashboard and can re-publish any time by re-subscribing. No lock-in.'],
-  ['Does it work with Shopify Plus and headless?', 'Yes. The Plus plan adds Hydrogen and headless support, plus multi-store management for larger merchants.'],
+  ['Is there really a free plan?', 'Yes. The Free plan lets you publish up to 4 reels in a home page shoppable video feed, with in-video add to cart, forever. Upgrade only when you need more reels or more placements.'],
+  ['How is it billed?', 'Through Shopify Billing — charges appear on your Shopify invoice. Free to start, upgrade anytime, cancel anytime. Taxes may apply.'],
+  ['Do I need to edit my theme or write code?', 'No. Another Shoppable Video installs as a theme app extension and uses drag-and-drop blocks in the Shopify theme editor. Nothing touches your theme files.'],
+  ['Will it slow down my store?', 'No. Videos lazy-load only when in view, scripts are deferred, and the storefront bundle is tiny (~12 KB gzipped) with no layout shift.'],
+  ['Where can I import videos from?', 'Import videos directly from your store’s Shopify Files library, or paste a CDN / hosted video URL.'],
+  ['What happens when I downgrade?', 'Placements that the lower plan doesn’t allow automatically hide from your storefront. Your reels stay in the dashboard.'],
+  ['Can I remove the “Powered by Another Shoppable Video” watermark?', 'Yes — it’s removed on the Growth plan and above.'],
 ];
 
 function Faq({ q, a }) {
@@ -57,7 +63,7 @@ export default function Pricing() {
     <>
       <Seo
         title="Pricing"
-        description="Simple, transparent pricing for Reelvana shoppable video. Start free, scale to unlimited videos and in-video checkout from $39/mo. No setup fees, cancel anytime."
+        description="Simple pricing for Another Shoppable Video shoppable video on Shopify. Start free with up to 4 reels; Growth $21/mo and Pro $49/mo add more reels, placements, and analytics. Billed through Shopify, cancel anytime."
         path="/pricing"
         schema={schema}
       />
@@ -65,30 +71,30 @@ export default function Pricing() {
       <section className="phero center">
         <div className="container">
           <Reveal><span className="eyebrow">Pricing</span></Reveal>
-          <Reveal as="h1" className="h-xl mt-s">Pricing that scales with your sales</Reveal>
-          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Start free. Upgrade when video is paying for itself. No setup fees, cancel anytime.</p></Reveal>
+          <Reveal as="h1" className="h-xl mt-s">Pricing that scales with your reels</Reveal>
+          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Start free. Upgrade when you need more reels and placements. Billed through Shopify, cancel anytime.</p></Reveal>
         </div>
       </section>
 
       <section className="section--tight">
         <div className="container">
-          <div className="plans">
+          <div className="plans plans--4">
             {plans.map((p, i) => (
               <Reveal key={p.name} delay={i * 80}>
                 <div className={`plan ${p.featured ? 'plan--featured' : ''}`}>
                   {p.featured && <span className="plan__badge">Most popular</span>}
                   <span className="plan__name">{p.name}</span>
-                  <div className="plan__price">{p.price}<span>{p.unit}</span></div>
+                  <div className="plan__price">{p.price}{p.unit && <span>{p.unit}</span>}</div>
                   <p className="plan__desc">{p.desc}</p>
                   <ul>{p.features.map((f) => <li key={f}>{f}</li>)}</ul>
-                  {p.name === 'Plus'
+                  {p.contact
                     ? <Link to="/contact" className="btn btn--ghost">{p.cta}</Link>
                     : <a href="https://apps.shopify.com" className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`}>{p.cta}</a>}
                 </div>
               </Reveal>
             ))}
           </div>
-          <p className="center mt-m" style={{ color: 'var(--slate)' }}>All paid plans include a 14-day free trial. Prices in USD.</p>
+          <p className="center mt-m" style={{ color: 'var(--slate)' }}>Prices in USD, billed monthly through Shopify. Prices display in your store’s own currency on the storefront.</p>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://reelvana.app/sitemap.xml
+Sitemap: https://anotherdev.in/sitemap.xml
