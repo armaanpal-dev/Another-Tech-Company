@@ -21,6 +21,7 @@ It is a strong fit for anyone searching for a shoppable video app for Shopify, a
 - In-video add to cart: a product card overlays each reel with title, price, and an Add to Cart button; one tap adds to cart using the theme's native cart, updating the cart drawer automatically.
 - Exact variant selection: link the specific variant shown in the video (e.g. "Red / M"); that exact variant is added to cart.
 - Placements: a shoppable video feed for home and collection pages (with a homepage fallback so it's never empty), a product page carousel (1-2 card layout), and smart-tag reels that auto-match by product tags (Pro).
+- Floating Reel: a single looping video pinned to a corner of the storefront that follows shoppers across pages; tap to open full-screen with sound and a Shop now button to the product, dismissible, with per-page control by URL path (Growth and Pro plans).
 - Ribbon tags: optional "SALE", "NEW", or "BESTSELLER" ribbon on any reel card.
 - Real-time analytics: impressions, plays, clicks, and add-to-cart events per reel, plus play rate, click-through rate, and conversion; trend charts, event-distribution chart, conversion funnel, and top reels (advanced analytics on Pro).
 - Full brand customization: colors, fonts, button label, corner radius, card height per placement, show/hide title/price/arrows, and auto-scroll speed.

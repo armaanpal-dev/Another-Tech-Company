@@ -43,6 +43,14 @@ const rows = [
     rev: false,
     mock: { label: 'On sale', product: 'Everyday Tote', price: '$64' },
   },
+  {
+    eyebrow: 'Floating Reel',
+    title: 'A shoppable reel that follows shoppers',
+    body: 'Pin a single looping video to the corner of your storefront so it follows shoppers as they browse. It sits small and muted, out of the way, until someone taps it, then it opens full-screen with sound and a Shop now button that sends them straight to the product. Shoppers can dismiss it anytime. Available on the Growth and Pro plans.',
+    points: ['Pinned to any corner you choose', 'Tap to expand full-screen with sound', 'Shop now button to the product page', 'Show or hide it by URL path, with wildcards'],
+    rev: true,
+    mock: { label: 'Tap for sound', product: 'Canvas Sneaker', price: '$88' },
+  },
 ];
 
 const themes = ['Dawn', 'Online Store 2.0', 'Prestige', 'Marmeto'];

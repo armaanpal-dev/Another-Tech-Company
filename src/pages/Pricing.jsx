@@ -11,7 +11,7 @@ const plans = [
   },
   {
     name: 'Growth', price: '$21', unit: '/mo', desc: 'For stores adding video to product pages.',
-    features: ['Up to 21 reels', 'Everything in Free', 'Product page carousel', 'Basic customization (colors, layout)', 'Watermark removed'],
+    features: ['Up to 21 reels', 'Everything in Free', 'Product page carousel', 'Floating Reel widget', 'Basic customization (colors, layout)', 'Watermark removed'],
     cta: 'Add to Shopify', featured: true, contact: false,
   },
   {
