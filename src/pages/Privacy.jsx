@@ -44,6 +44,12 @@ export default function Privacy() {
             </ul>
             <p><strong>Cookies &amp; local storage:</strong> We use a single first-party <code>localStorage</code> value (the anonymous session ID described above) for analytics de-duplication. We do not use third-party advertising or cross-site tracking cookies.</p>
 
+            <p><strong>From visitors who contact us through this website:</strong></p>
+            <ul>
+              <li>When you submit the contact form on anotherdev.in, we collect the name, email address, store URL, plan interest, and message you provide.</li>
+              <li>We use these details only to respond to your enquiry and provide support. The form is delivered to us by email through EmailJS; we do not use it for advertising.</li>
+            </ul>
+
             <h2>3. How we use information</h2>
             <ul>
               <li>To provide and operate the App (show reels, add products to cart, apply your settings).</li>
@@ -64,6 +70,7 @@ export default function Privacy() {
               <li><strong>Railway</strong>: application hosting.</li>
               <li><strong>Supabase</strong>: database storage.</li>
               <li><strong>Resend</strong>: sending support emails, if applicable.</li>
+              <li><strong>EmailJS</strong>: delivering contact-form submissions from our website to us by email.</li>
             </ul>
             <p>These providers process data on our behalf under their own security and privacy terms. We do not otherwise sell or rent data. We may disclose information if required by law.</p>
 

@@ -1,18 +1,60 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Seo from '../components/Seo';
 import { Reveal } from '../components/Shared';
 import './pages.css';
 
+const SUPPORT_EMAIL = 'armaanpal1996@gmail.com';
+
+// EmailJS config. The public key and service ID are safe to expose in the browser.
+// Never put the EmailJS PRIVATE key in client code (it is for server-side use only).
+// Paste the two Template IDs from your EmailJS dashboard below.
+const EMAILJS = {
+  serviceId: 'service_xscmmfy',
+  publicKey: 'UFz_hzZ47PlJHpFP4',
+  notifyTemplateId: 'template_26vvcit',    // sends the submission details to you
+  autoReplyTemplateId: 'template_y0214pd', // sends a confirmation to the person who submitted
+};
+
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  // status: 'idle' | 'sending' | 'sent' | 'error'
+  const [status, setStatus] = useState('idle');
   const [form, setForm] = useState({ name: '', email: '', store: '', plan: 'Growth', message: '' });
-  const SUPPORT_EMAIL = 'armaanpal1996@gmail.com';
 
   const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
-  const submit = () => {
-    if (!form.name || !form.email) return;
-    // In production, POST to your backend / EmailJS / form endpoint here.
-    setSent(true);
+
+  const submit = async () => {
+    if (!form.name || !form.email || status === 'sending') return;
+    setStatus('sending');
+
+    const params = {
+      from_name: form.name,
+      from_email: form.email,
+      reply_to: form.email,
+      store_url: form.store,
+      plan: form.plan,
+      message: form.message,
+    };
+    const opts = { publicKey: EMAILJS.publicKey };
+
+    try {
+      // 1) Notify you with the submission details (critical).
+      await emailjs.send(EMAILJS.serviceId, EMAILJS.notifyTemplateId, params, opts);
+    } catch (err) {
+      console.error('EmailJS notification send failed:', err);
+      setStatus('error');
+      return;
+    }
+
+    // 2) Send the submitter a confirmation (best effort; do not fail the form if this errors).
+    try {
+      await emailjs.send(EMAILJS.serviceId, EMAILJS.autoReplyTemplateId, params, opts);
+    } catch (err) {
+      console.warn('EmailJS confirmation send failed:', err);
+    }
+
+    setStatus('sent');
+    setForm({ name: '', email: '', store: '', plan: 'Growth', message: '' });
   };
 
   return (
@@ -59,8 +101,16 @@ export default function Contact() {
                   <label htmlFor="c-msg">How can we help?</label>
                   <textarea id="c-msg" rows="4" value={form.message} onChange={update('message')} placeholder="Tell us about your store and goals…" />
                 </div>
-                <button className="btn btn--primary" onClick={submit}>Send message</button>
-                {sent && <p className="form-note">Thanks! Your message is on its way, we’ll be in touch shortly.</p>}
+                <button className="btn btn--primary" onClick={submit} disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending…' : 'Send message'}
+                </button>
+                {status === 'sent' && <p className="form-note">Thanks! Your message is on its way, we’ll be in touch shortly.</p>}
+                {status === 'error' && (
+                  <p className="form-note" style={{ color: 'var(--coral)' }}>
+                    Something went wrong sending your message. Please email us directly at{' '}
+                    <a href={`mailto:${SUPPORT_EMAIL}`} style={{ color: 'inherit' }}>{SUPPORT_EMAIL}</a>.
+                  </p>
+                )}
               </div>
             </Reveal>
 
