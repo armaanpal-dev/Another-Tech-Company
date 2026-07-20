@@ -101,7 +101,7 @@ export const posts = [
       { type: 'h2', text: 'Exact variant accuracy' },
       { type: 'p', text: 'When you build a reel, you link the specific variant shown in the video, such as Red in size M. That exact variant is what gets added to cart, and it is shown on the card. Shoppers do not have to guess or re-select, which removes a common point of friction.' },
       { type: 'h2', text: 'It uses your theme native cart' },
-      { type: 'p', text: 'Add to cart plugs into your existing Shopify cart. It updates the theme cart drawer and item count automatically, and works across popular themes including Dawn, Prestige, and Marmeto. Checkout stays exactly as your store already handles it.' },
+      { type: 'p', text: 'Add to cart plugs into your existing Shopify cart. It updates the theme cart drawer and item count automatically, and works across Dawn and Online Store 2.0 themes, premium themes such as Symmetry, and older vintage themes. It also works with third-party carts like GoKwik and Shiprocket, opening their cart rather than breaking it. Checkout stays exactly as your store already handles it.' },
       { type: 'h2', text: 'Why it matters' },
       { type: 'p', text: 'Every extra step between interest and purchase is a chance to lose the sale. By collapsing watch, decide, and add to cart into a single moment on a single page, in-video add to cart keeps momentum on the shopper side.' },
     ],

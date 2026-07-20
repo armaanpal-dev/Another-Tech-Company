@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { Reveal, VideoMock, CtaBand } from '../components/Shared';
 import './pages.css';
@@ -23,7 +24,7 @@ const rows = [
     eyebrow: 'Placement',
     title: 'Put reels anywhere on your store',
     body: 'Drop a shoppable video feed on your home or collection pages, a carousel on product pages, or let smart-tag reels auto-match by the product’s tags. The feed auto-detects the page and falls back to your homepage reels, so it’s never empty.',
-    points: ['Shoppable video feed (home / collections)', 'Product page carousel (1-2 card layout)', 'Smart tag reels, auto-match by tags (Pro)', 'Homepage fallback so it’s never empty'],
+    points: ['Shoppable video feed (home / collections)', 'Product page carousel (1-2 card layout)', 'Page galleries: assign videos to any Online Store page', 'Smart tag reels, auto-match by tags (Pro)'],
     rev: false,
     mock: { label: 'Story 2 / 6', product: 'Ribbed Knit Set', price: '$72' },
   },
@@ -51,9 +52,25 @@ const rows = [
     rev: true,
     mock: { label: 'Tap for sound', product: 'Canvas Sneaker', price: '$88' },
   },
+  {
+    eyebrow: 'Markets',
+    title: 'Correct prices in every market',
+    body: 'Prices are pulled live in the shopper’s own currency, so what the card shows is what the cart charges, even on stores selling across multiple markets. Sold-out variants are detected automatically and shown as unavailable, so nobody tries to buy something you cannot ship.',
+    points: ['Live prices in the shopper’s currency', 'Works with Shopify Markets', 'Card price matches the cart', 'Sold-out variants marked unavailable'],
+    rev: false,
+    mock: { label: 'In your currency', product: 'Wool Overshirt', price: '$120' },
+  },
+  {
+    eyebrow: 'Responsive',
+    title: 'Built for mobile and desktop separately',
+    body: 'Set different card heights and a different number of cards per view for mobile and desktop. Use a decimal, like 1.2 cards, to reveal a peek of the next video so shoppers know there is more to swipe.',
+    points: ['Separate mobile and desktop settings', 'Card height per breakpoint', 'Cards per view, including decimals', 'Peek the next video to invite swiping'],
+    rev: true,
+    mock: { label: 'Swipe for more', product: 'Ribbed Beanie', price: '$28' },
+  },
 ];
 
-const themes = ['Dawn', 'Online Store 2.0', 'Prestige', 'Marmeto'];
+const themes = ['Dawn', 'Online Store 2.0', 'Symmetry', 'Clean Canvas', 'Vintage themes', 'GoKwik', 'Shiprocket', 'Shopify Markets'];
 
 export default function Features() {
   return (
@@ -93,8 +110,8 @@ export default function Features() {
       <section className="section" id="compatibility" style={{ background: 'var(--paper-2)' }}>
         <div className="container center">
           <Reveal><span className="eyebrow">Built for speed &amp; every theme</span></Reveal>
-          <Reveal as="h2" className="h-lg mt-s">Fast on mobile, works with your theme</Reveal>
-          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Videos lazy-load only when in view and scripts are deferred, so the storefront bundle stays tiny (~12 KB gzipped) with no layout shift. Add-to-cart works across Online Store 2.0 themes.</p></Reveal>
+          <Reveal as="h2" className="h-lg mt-s">Works with your store, not against it</Reveal>
+          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Videos load only when they scroll into view, with poster images so nothing blocks your page from rendering. Add to cart works across Online Store 2.0, premium and vintage themes, and third-party carts like GoKwik and Shiprocket.</p></Reveal>
           <Reveal>
             <div className="integr mt-l">
               {themes.map((name) => (
@@ -102,6 +119,7 @@ export default function Features() {
               ))}
             </div>
           </Reveal>
+          <Reveal><p className="mt-m"><Link to="/compatibility" className="btn btn--ghost">See full compatibility →</Link></p></Reveal>
         </div>
       </section>
 

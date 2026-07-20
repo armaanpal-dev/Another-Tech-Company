@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { StickyCta } from './components/Shared';
 import Home from './pages/Home';
 import Features from './pages/Features';
 import HowItWorks from './pages/HowItWorks';
@@ -9,6 +10,7 @@ import Pricing from './pages/Pricing';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Faq from './pages/Faq';
+import Compatibility from './pages/Compatibility';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
@@ -34,6 +36,7 @@ export default function App() {
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/compatibility" element={<Compatibility />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/about" element={<About />} />
@@ -44,6 +47,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <StickyCta />
     </>
   );
 }

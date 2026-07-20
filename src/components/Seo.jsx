@@ -7,7 +7,7 @@ export default function Seo({
   title,
   description,
   path = '/',
-  image = `${BASE}/og-image.png`,
+  image = `${BASE}/og-image.svg`,
   type = 'website',
   schema,
 }) {

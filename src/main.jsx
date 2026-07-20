@@ -1,11 +1,11 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx';
 import './styles/global.css';
 
-createRoot(document.getElementById('root')).render(
+const tree = (
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
@@ -14,3 +14,13 @@ createRoot(document.getElementById('root')).render(
     </HelmetProvider>
   </StrictMode>
 );
+
+const container = document.getElementById('root');
+
+// Prerendered pages ship with markup already in #root, so hydrate them.
+// In dev (or if prerendering is skipped) fall back to a normal client render.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, tree);
+} else {
+  createRoot(container).render(tree);
+}

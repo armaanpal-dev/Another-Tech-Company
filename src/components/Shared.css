@@ -66,3 +66,22 @@
 }
 .stat__label { color: var(--slate); font-size: .95rem; font-weight: 500; }
 .dark-bg .stat__label { color: #C9C0E8; }
+
+/* Sticky mobile CTA */
+.stickycta { display: none; }
+@media (max-width: 780px) {
+  .stickycta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(18, 11, 41, .96);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, .12);
+  }
+  .stickycta__text { display: flex; flex-direction: column; line-height: 1.2; }
+  .stickycta__text strong { color: #fff; font-size: .95rem; }
+  .stickycta__text span { color: #C9C0E8; font-size: .8rem; }
+  .stickycta .btn { white-space: nowrap; padding: 11px 18px; font-size: .92rem; }
+  /* keep the footer clear of the bar */
+  .footer { padding-bottom: 96px; }
+}

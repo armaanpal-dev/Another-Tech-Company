@@ -6,6 +6,7 @@ const links = [
   { to: '/features', label: 'Features' },
   { to: '/how-it-works', label: 'How it works' },
   { to: '/pricing', label: 'Pricing' },
+  { to: '/compatibility', label: 'Compatibility' },
   { to: '/faq', label: 'FAQ' },
   { to: '/blog', label: 'Blog' },
 ];
@@ -15,7 +16,14 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const loc = useLocation();
 
-  useEffect(() => setOpen(false), [loc.pathname]);
+  // Close the mobile menu when the route changes. Adjusting state during render
+  // is React's recommended pattern here, and avoids an extra render pass.
+  const [lastPath, setLastPath] = useState(loc.pathname);
+  if (lastPath !== loc.pathname) {
+    setLastPath(loc.pathname);
+    setOpen(false);
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', onScroll);

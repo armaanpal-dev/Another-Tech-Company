@@ -19,12 +19,20 @@ const EMAILJS = {
 export default function Contact() {
   // status: 'idle' | 'sending' | 'sent' | 'error'
   const [status, setStatus] = useState('idle');
+  const [touched, setTouched] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', store: '', plan: 'Growth', message: '' });
+  // Honeypot: real people never fill this (it is hidden). Bots usually do.
+  const [botField, setBotField] = useState('');
 
   const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
 
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email);
+  const canSubmit = form.name.trim() !== '' && emailValid;
+
   const submit = async () => {
-    if (!form.name || !form.email || status === 'sending') return;
+    setTouched(true);
+    if (botField) { setStatus('sent'); return; } // silently drop bot submissions
+    if (!canSubmit || status === 'sending') return;
     setStatus('sending');
 
     const params = {
@@ -88,7 +96,7 @@ export default function Contact() {
                   <input id="c-email" type="email" value={form.email} onChange={update('email')} placeholder="jordan@store.com" />
                 </div>
                 <div className="form-field">
-                  <label htmlFor="c-store">Store URL</label>
+                  <label htmlFor="c-store">Store URL <span style={{ color: 'var(--slate)', fontWeight: 400 }}>(optional)</span></label>
                   <input id="c-store" value={form.store} onChange={update('store')} placeholder="yourstore.myshopify.com" />
                 </div>
                 <div className="form-field">
@@ -98,12 +106,27 @@ export default function Contact() {
                   </select>
                 </div>
                 <div className="form-field">
-                  <label htmlFor="c-msg">How can we help?</label>
+                  <label htmlFor="c-msg">How can we help? <span style={{ color: 'var(--slate)', fontWeight: 400 }}>(optional)</span></label>
                   <textarea id="c-msg" rows="4" value={form.message} onChange={update('message')} placeholder="Tell us about your store and goals…" />
                 </div>
+
+                {/* Honeypot: visually hidden and off the tab order. */}
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                  <label htmlFor="c-company">Company (leave blank)</label>
+                  <input id="c-company" name="company" tabIndex={-1} autoComplete="off" value={botField} onChange={(e) => setBotField(e.target.value)} />
+                </div>
+
                 <button className="btn btn--primary" onClick={submit} disabled={status === 'sending'}>
                   {status === 'sending' ? 'Sending…' : 'Send message'}
                 </button>
+                {touched && !canSubmit && status !== 'sending' && (
+                  <p className="form-note" style={{ color: 'var(--coral)' }}>
+                    Please add your name and a valid email so we can reply.
+                  </p>
+                )}
+                <p className="form-note" style={{ color: 'var(--slate)', fontSize: '.88rem' }}>
+                  We reply within a few hours on business days. We never share your details.
+                </p>
                 {status === 'sent' && <p className="form-note">Thanks! Your message is on its way, we’ll be in touch shortly.</p>}
                 {status === 'error' && (
                   <p className="form-note" style={{ color: 'var(--coral)' }}>

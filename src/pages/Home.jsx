@@ -4,18 +4,18 @@ import { Reveal, VideoMock, CtaBand, Stat } from '../components/Shared';
 import './Home.css';
 
 const features = [
-  { icon: '🎬', t: 'Shoppable video reels', d: 'Vertical, auto-playing, mute-by-default reels in a short-form, social style, right on your Shopify storefront.' },
-  { icon: '🛒', t: 'In-video add to cart', d: 'A product card overlays each reel with title, price, and an Add to Cart button. One tap adds to cart without leaving the page.' },
-  { icon: '🎯', t: 'Exact variant selection', d: 'Link the specific variant shown in the video, like “Red / M”, and that exact variant is what gets added to cart.' },
-  { icon: '🧩', t: 'Placements everywhere', d: 'A shoppable feed for your home and collection pages, plus a carousel and smart-tag reels on product pages.' },
-  { icon: '🏷️', t: 'Ribbon tags & branding', d: 'Add a “SALE”, “NEW”, or “BESTSELLER” ribbon, and match every card to your brand, colors, fonts, radius, and layout.' },
-  { icon: '📊', t: 'Real-time analytics', d: 'Track impressions, plays, clicks, and add-to-cart events per reel, with play rate, click-through, and conversion.' },
+  { icon: '🎬', t: 'Shoppable video, everywhere', d: 'Place video where shoppers actually decide: the homepage, collection pages, product pages, custom pages, or a floating corner player that stays with them across the store.' },
+  { icon: '🛒', t: 'Add to cart inside the video', d: 'Every video card carries the product title, live price, and an Add to Cart button. Shoppers add without leaving the page or losing their place.' },
+  { icon: '🌍', t: 'Correct prices in every market', d: 'Prices are pulled live in the shopper’s own currency, so the card matches what the cart charges. Sold-out variants are detected and shown as unavailable.' },
+  { icon: '🔌', t: 'Works with your cart', d: 'Built for Online Store 2.0, premium and vintage themes, and third-party carts like GoKwik and Shiprocket, so add to cart opens their cart correctly.' },
+  { icon: '🏷️', t: 'Smart tag matching', d: 'Automatically show the right videos on a product page based on that product’s tags. No manual linking, and it scales as you add products.' },
+  { icon: '📊', t: 'Know what’s working', d: 'Track impressions, plays, clicks, and add-to-carts per video, so you can see which content actually earns its place.' },
 ];
 
 const steps = [
-  { n: '01', t: 'Add a reel', d: 'Upload a product video, import from your Shopify Files, or paste a video URL, then link it to the exact product variant shown.' },
-  { n: '02', t: 'Place it on your store', d: 'In the Shopify theme editor, enable the app and drop a shoppable video block on your home page, product pages, or collections.' },
-  { n: '03', t: 'Sell with video', d: 'Shoppers watch, tap Add to Cart in the video, and you track views, clicks, and conversions in real time.' },
+  { n: '01', t: 'Upload your video', d: 'Pick a video from your Shopify Files library or paste a video URL.' },
+  { n: '02', t: 'Link a product', d: 'Choose the product, and the variant, that the video is selling.' },
+  { n: '03', t: 'Place it on your store', d: 'Add the block in your theme editor and choose where it appears. Most stores are live in under five minutes.' },
 ];
 
 export default function Home() {
@@ -31,8 +31,8 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Shoppable Video for Shopify | Watch, Tap, Buy"
-        description="Add shoppable video reels to your Shopify store. Shoppers watch, tap, and add to cart without leaving the page. Real-time analytics, full customization, free to start."
+        title="Shoppable Video for Shopify"
+        description="Turn your reels into a shoppable storefront. Add video galleries, product carousels and a floating player to any page. Add to cart inside the video."
         path="/"
         schema={schema}
       />
@@ -44,24 +44,24 @@ export default function Home() {
           <div className="hero__copy">
             <Reveal><span className="eyebrow eyebrow--light">Shoppable video for Shopify</span></Reveal>
             <Reveal as="h1" className="h-xl" delay={60}>
-              Watch, tap, <span className="hero__hl">buy.</span>
+              Turn your videos into a <span className="hero__hl">storefront.</span>
             </Reveal>
             <Reveal delay={120}>
               <p className="lead">
-                Another Shoppable Video turns your product videos into shoppable, social-style reels that live
-                directly on your storefront. Shoppers watch, tap, and add to cart, without ever
-                leaving the page.
+                Add shoppable video to any page of your Shopify store: homepage, collections,
+                product pages, or a floating player that follows shoppers as they browse.
+                Customers watch, tap, and add to cart without ever leaving the page.
               </p>
             </Reveal>
             <Reveal delay={180}>
               <div className="hero__btns">
-                <a href="https://apps.shopify.com" className="btn btn--primary btn--lg">Add to Shopify for free</a>
+                <a href="https://apps.shopify.com" className="btn btn--primary btn--lg">Add to Shopify, free plan available</a>
                 <Link to="/how-it-works" className="btn btn--ghost-light btn--lg">See how it works</Link>
               </div>
             </Reveal>
             <Reveal delay={240}>
               <div className="hero__trust">
-                Free plan available · No code required · Built for Shopify
+                Works with your existing theme. No code. No developer needed.
               </div>
             </Reveal>
           </div>
@@ -69,7 +69,7 @@ export default function Home() {
           <Reveal className="hero__art" delay={140}>
             <VideoMock />
             <div className="hero__float hero__float--1">Add to cart in-video</div>
-            <div className="hero__float hero__float--2">~12 KB · no layout shift</div>
+            <div className="hero__float hero__float--2">Live price, your currency</div>
           </Reveal>
         </div>
       </section>
@@ -79,9 +79,9 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-4 home__stats">
             <Reveal><Stat value="1-tap" label="Add to cart, in the video" /></Reveal>
-            <Reveal delay={80}><Stat value="~12 KB" label="Gzipped storefront bundle" /></Reveal>
+            <Reveal delay={80}><Stat value="Any page" label="Home, collections, product, floating" /></Reveal>
             <Reveal delay={160}><Stat value="$0" label="Free plan to get started" /></Reveal>
-            <Reveal delay={240}><Stat value="Any theme" label="Dawn, Prestige, Marmeto & more" /></Reveal>
+            <Reveal delay={240}><Stat value="Any theme" label="OS 2.0, premium & vintage themes" /></Reveal>
           </div>
         </div>
       </section>
@@ -93,8 +93,9 @@ export default function Home() {
             <Reveal><span className="eyebrow">Everything you need</span></Reveal>
             <Reveal as="h2" className="h-lg mt-s">One app for shoppable video</Reveal>
             <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>
-              From an auto-playing reel feed to in-video add to cart, Another Shoppable Video gives you shoppable
-              video across your store, no code required.
+              Another Shoppable Video turns short-form video, the kind you already make for
+              social, into a shoppable storefront experience. Upload a video, link it to a
+              product, and place it anywhere on your store.
             </p></Reveal>
           </div>
           <div className="grid grid-3 mt-l">
@@ -131,6 +132,9 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
+          </div>
+          <div className="center mt-l">
+            <Link to="/compatibility" className="btn btn--ghost-light">Works with your store →</Link>
           </div>
         </div>
       </section>

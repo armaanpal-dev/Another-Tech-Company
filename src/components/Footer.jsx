@@ -9,7 +9,7 @@ const cols = [
       ['How it works', '/how-it-works'],
       ['Pricing', '/pricing'],
       ['FAQ', '/faq'],
-      ['Compatibility', '/features#compatibility'],
+      ['Compatibility', '/compatibility'],
     ],
   },
   {
@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} Another Shoppable Video. All rights reserved.</span>
-          <span className="footer__badge">Built for Shopify</span>
+          <span className="footer__badge">Made for Shopify stores</span>
         </div>
       </div>
     </footer>

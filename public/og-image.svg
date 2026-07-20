@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Another Shoppable Video for Shopify">
+  <defs>
+    <linearGradient id="ogBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#120B29"/>
+      <stop offset="1" stop-color="#1E1040"/>
+    </linearGradient>
+    <linearGradient id="ogA" x1="80" y1="210" x2="240" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF3D9A"/>
+      <stop offset="1" stop-color="#8B5CFF"/>
+    </linearGradient>
+    <linearGradient id="ogHl" x1="80" y1="300" x2="900" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF3D9A"/>
+      <stop offset="1" stop-color="#8B5CFF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <circle cx="1010" cy="140" r="240" fill="#8B5CFF" opacity="0.16"/>
+  <circle cx="1120" cy="470" r="200" fill="#FF3D9A" opacity="0.12"/>
+
+  <!-- logo mark -->
+  <rect x="80" y="70" width="84" height="84" rx="22" fill="#0C0720"/>
+  <path d="M104 132 L122 92 L140 132" fill="none" stroke="url(#ogA)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M111 118 L133 118" fill="none" stroke="url(#ogA)" stroke-width="9" stroke-linecap="round"/>
+  <text x="184" y="124" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#FFFFFF">Another Shoppable Video</text>
+
+  <!-- headline -->
+  <text x="80" y="290" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">Turn your videos</text>
+  <text x="80" y="380" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">into a <tspan fill="url(#ogHl)">storefront.</tspan></text>
+
+  <!-- sub -->
+  <text x="80" y="452" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#C9C0E8">Shoppable video for Shopify. Add to cart inside the video.</text>
+
+  <!-- trust chips -->
+  <rect x="80" y="500" width="230" height="56" rx="28" fill="#FFFFFF" opacity="0.08"/>
+  <text x="110" y="536" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">Free plan</text>
+  <rect x="326" y="500" width="230" height="56" rx="28" fill="#FFFFFF" opacity="0.08"/>
+  <text x="356" y="536" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">No code</text>
+  <rect x="572" y="500" width="290" height="56" rx="28" fill="#FFFFFF" opacity="0.08"/>
+  <text x="602" y="536" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">Any theme</text>
+</svg>

@@ -6,45 +6,68 @@ import './pages.css';
 const plans = [
   {
     name: 'Free', price: '$0', unit: '/mo', desc: 'For new stores getting started with shoppable video.',
-    features: ['Up to 4 reels', 'Home page shoppable video feed', 'In-video add to cart', 'Basic analytics', '“Powered by Another Shoppable Video” watermark'],
+    features: ['4 videos', 'Homepage gallery', 'Add to cart inside the video', 'Basic analytics'],
     cta: 'Add to Shopify', featured: false, contact: false,
   },
   {
     name: 'Growth', price: '$21', unit: '/mo', desc: 'For stores adding video to product pages.',
-    features: ['Up to 21 reels', 'Everything in Free', 'Product page carousel', 'Floating Reel widget', 'Basic customization (colors, layout)', 'Watermark removed'],
+    features: ['21 videos', 'Everything in Free', 'Product page carousel', 'Floating reel', 'Colors & layout customization', 'Branding removed'],
     cta: 'Add to Shopify', featured: true, contact: false,
   },
   {
     name: 'Pro', price: '$49', unit: '/mo', desc: 'For brands running video across the whole store.',
-    features: ['Up to 49 reels', 'Everything in Growth', 'Collection & other page placements', 'Smart tag (auto-match) carousel', 'Advanced analytics (views, clicks, conversions)', 'Full customization', 'Priority support'],
+    features: ['49 videos', 'Everything in Growth', 'Collection & page galleries', 'Smart tag matching', 'Different floating video per page or product', 'Full customization, including typography', 'Advanced analytics'],
     cta: 'Add to Shopify', featured: false, contact: false,
   },
   {
-    name: 'Custom', price: 'Custom', unit: '', desc: 'For agencies and brands that need a bespoke setup.',
-    features: ['Unlimited reels', 'Everything in Pro', 'Custom widget layouts & placements', 'Features built for your store', 'Dedicated priority support'],
+    name: 'Custom', price: 'Custom', unit: '', desc: 'For agencies and larger brands that need a bespoke setup.',
+    features: ['Unlimited videos', 'Everything in Pro', 'Features built for your store', 'Dedicated priority support'],
     cta: 'Contact us', featured: false, contact: true,
   },
 ];
 
 const faqs = [
-  ['Is there really a free plan?', 'Yes. The Free plan lets you publish up to 4 reels in a home page shoppable video feed, with in-video add to cart, forever. Upgrade only when you need more reels or more placements.'],
+  ['Is there really a free plan?', 'Yes. The Free plan lets you publish 4 videos in a homepage gallery, with add to cart inside the video, forever. Upgrade only when you need more videos or more placements.'],
   ['How is it billed?', 'Through Shopify Billing, charges appear on your Shopify invoice. Free to start, upgrade anytime, cancel anytime. Taxes may apply.'],
-  ['Do I need to edit my theme or write code?', 'No. Another Shoppable Video installs as a theme app extension and uses drag-and-drop blocks in the Shopify theme editor. Nothing touches your theme files.'],
+  ['Do I need to edit my theme or write code?', 'No. It installs as an app block you add in the theme editor, and removing it leaves your theme exactly as it was.'],
   ['Will it slow down my store?', 'No. Videos lazy-load only when in view, scripts are deferred, and the storefront bundle is tiny (~12 KB gzipped) with no layout shift.'],
   ['Where can I import videos from?', 'Import videos directly from your store’s Shopify Files library, or paste a CDN / hosted video URL.'],
-  ['What happens when I downgrade?', 'Placements that the lower plan doesn’t allow automatically hide from your storefront. Your reels stay in the dashboard.'],
-  ['Can I remove the “Powered by Another Shoppable Video” watermark?', 'Yes, it’s removed on the Growth plan and above.'],
+  ['What happens if I downgrade?', 'Videos and placements beyond your new plan’s limits are hidden from your storefront automatically. Nothing is deleted, so upgrade again and it all returns.'],
+  ['Can I remove the app branding?', 'Yes. Branding is removed on the Growth plan and above.'],
 ];
 
 export default function Pricing() {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(([q, a]) => ({
-      '@type': 'Question', name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
-  };
+  const schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(([q, a]) => ({
+        '@type': 'Question', name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Another Shoppable Video',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Shopify',
+      url: 'https://anotherdev.in/pricing',
+      offers: [
+        { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD', category: 'Free', url: 'https://anotherdev.in/pricing' },
+        { '@type': 'Offer', name: 'Growth', price: '21', priceCurrency: 'USD', category: 'Subscription', url: 'https://anotherdev.in/pricing' },
+        { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD', category: 'Subscription', url: 'https://anotherdev.in/pricing' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://anotherdev.in/' },
+        { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://anotherdev.in/pricing' },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -58,8 +81,9 @@ export default function Pricing() {
       <section className="phero center">
         <div className="container">
           <Reveal><span className="eyebrow">Pricing</span></Reveal>
-          <Reveal as="h1" className="h-xl mt-s">Pricing that scales with your reels</Reveal>
-          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Start free. Upgrade when you need more reels and placements. Billed through Shopify, cancel anytime.</p></Reveal>
+          <Reveal as="h1" className="h-xl mt-s">Pricing that scales with your store</Reveal>
+          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Start free. Upgrade when you need more videos and placements. Billed through Shopify, cancel anytime.</p></Reveal>
+          <Reveal><p className="mt-s" style={{ textAlign: 'center', color: 'var(--slate)', fontSize: '.95rem' }}>Free plan forever. No credit card to start. Cancel anytime, and removing the app leaves your theme untouched.</p></Reveal>
         </div>
       </section>
 

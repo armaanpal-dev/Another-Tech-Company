@@ -80,6 +80,19 @@ export function CtaBand({
   );
 }
 
+/* Sticky mobile call to action. Hidden on desktop, where the nav CTA is always visible. */
+export function StickyCta() {
+  return (
+    <div className="stickycta" role="complementary" aria-label="Install call to action">
+      <div className="stickycta__text">
+        <strong>Free plan</strong>
+        <span>No code needed</span>
+      </div>
+      <a href="https://apps.shopify.com" className="btn btn--primary">Add to Shopify</a>
+    </div>
+  );
+}
+
 /* Stat block */
 export function Stat({ value, label }) {
   return (
