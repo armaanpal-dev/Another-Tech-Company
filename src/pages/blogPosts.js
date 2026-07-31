@@ -1,4 +1,4 @@
-// Blog content for Another Shoppable Video.
+// Blog content for AnotherDev.
 // Each post renders on /blog and at /blog/:slug. Keep copy factual and free of
 // invented statistics. Note: no em dashes anywhere in this file.
 
@@ -12,7 +12,7 @@ export const posts = [
     title: 'How to add shoppable video to your Shopify store',
     excerpt: 'A step by step guide to turning product videos into shoppable reels with in-video add to cart, no code required.',
     content: [
-      { type: 'p', text: 'Shoppable video lets a customer watch a product in motion and add it to cart in the same moment, without leaving the page they are on. This guide walks through adding shoppable video to a Shopify store from start to finish, using Another Shoppable Video.' },
+      { type: 'p', text: 'Shoppable video lets a customer watch a product in motion and add it to cart in the same moment, without leaving the page they are on. This guide walks through adding shoppable video to a Shopify store from start to finish, using AnotherDev.' },
       { type: 'h2', text: 'What you need before you start' },
       { type: 'p', text: 'You need a Shopify store on an Online Store 2.0 theme (Dawn and most modern themes qualify) and at least one product video. The video can be footage you already own, a clip from your Shopify Files library, or any hosted video URL. Vertical, short form clips in a 9:16 ratio work best.' },
       { type: 'h2', text: 'Step 1: Add a reel' },
@@ -117,7 +117,7 @@ export const posts = [
     content: [
       { type: 'p', text: 'Speed is part of the shopping experience and part of how search engines rank pages. The good news is that shoppable video can be added without hurting Core Web Vitals, as long as it is built the right way.' },
       { type: 'h2', text: 'Load video only when it is needed' },
-      { type: 'p', text: 'Videos should lazy-load, meaning they only start loading when they scroll into view. A reel near the bottom of a page should not compete for bandwidth with the content at the top. Another Shoppable Video defers its scripts and lazy-loads video for this reason.' },
+      { type: 'p', text: 'Videos should lazy-load, meaning they only start loading when they scroll into view. A reel near the bottom of a page should not compete for bandwidth with the content at the top. AnotherDev defers its scripts and lazy-loads video for this reason.' },
       { type: 'h2', text: 'Keep the footprint small' },
       { type: 'p', text: 'A heavy storefront widget is a hidden tax on every page load. The storefront bundle here is tiny, around 12 KB gzipped, and it is designed to avoid layout shift so content does not jump around as the page loads. That protects the Cumulative Layout Shift metric.' },
       { type: 'h2', text: 'Optimize the video files themselves' },
@@ -178,7 +178,7 @@ export const posts = [
         'Prefer billing handled through Shopify, so charges appear on your normal invoice.',
         'Make sure there is a free plan or trial so you can test before you commit.',
       ] },
-      { type: 'p', text: 'Another Shoppable Video is built around this checklist: in-video add to cart with exact variants, multiple placements, a lightweight and fast storefront widget, real time analytics, and a free plan billed through Shopify.' },
+      { type: 'p', text: 'AnotherDev is built around this checklist: in-video add to cart with exact variants, multiple placements, a lightweight and fast storefront widget, real time analytics, and a free plan billed through Shopify.' },
     ],
   },
 ];

@@ -5,7 +5,7 @@ import './pages.css';
 export default function Privacy() {
   return (
     <>
-      <Seo title="Privacy policy" description="How Another Shoppable Video collects, uses, and protects data for Shopify merchants and their store visitors." path="/privacy" />
+      <Seo title="Privacy policy" description="How AnotherDev collects, uses, and protects data for Shopify merchants and their store visitors." path="/privacy" />
       <section className="phero">
         <div className="container phero__inner">
           <Reveal><span className="eyebrow">Legal</span></Reveal>
@@ -17,7 +17,7 @@ export default function Privacy() {
       <section className="section--tight">
         <div className="container prose">
           <Reveal>
-            <p>Another Shoppable Video (“Another Shoppable Video”, “we”, “us”, or “our”), operated by AnotherDev, provides a shoppable-video application (the “App”) for merchants using the Shopify platform. This Privacy Policy explains what information we collect, how we use it, and the choices available to you.</p>
+            <p>AnotherDev (“AnotherDev”, “we”, “us”, or “our”), operated by AnotherDev, provides a shoppable-video application (the “App”) for merchants using the Shopify platform. This Privacy Policy explains what information we collect, how we use it, and the choices available to you.</p>
             <p>By installing or using the App, you agree to this Privacy Policy.</p>
 
             <h2>1. Who this policy covers</h2>

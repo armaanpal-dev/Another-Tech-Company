@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE = 'Another Shoppable Video';
+const SITE = 'AnotherDev';
+const FULL = 'AnotherDev - Shoppable Video';
 const BASE = 'https://anotherdev.in';
 
 export default function Seo({
@@ -11,7 +12,7 @@ export default function Seo({
   type = 'website',
   schema,
 }) {
-  const fullTitle = title ? `${title} | ${SITE}` : `${SITE} for Shopify: Watch, Tap, Buy`;
+  const fullTitle = title ? `${title} | ${SITE}` : `${FULL} for Shopify: Watch, tap, buy`;
   const url = `${BASE}${path}`;
 
   return (

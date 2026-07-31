@@ -1,14 +1,13 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import Seo from '../components/Seo';
 import { Reveal } from '../components/Shared';
+import { APP_STORE_URL, SUPPORT_EMAIL } from '../config';
 import './pages.css';
-
-const SUPPORT_EMAIL = 'armaanpal1996@gmail.com';
 
 // EmailJS config. The public key and service ID are safe to expose in the browser.
 // Never put the EmailJS PRIVATE key in client code (it is for server-side use only).
-// Paste the two Template IDs from your EmailJS dashboard below.
 const EMAILJS = {
   serviceId: 'service_xscmmfy',
   publicKey: 'UFz_hzZ47PlJHpFP4',
@@ -16,11 +15,11 @@ const EMAILJS = {
   autoReplyTemplateId: 'template_y0214pd', // sends a confirmation to the person who submitted
 };
 
-export default function Contact() {
+export default function Support() {
   // status: 'idle' | 'sending' | 'sent' | 'error'
   const [status, setStatus] = useState('idle');
   const [touched, setTouched] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', store: '', plan: 'Growth', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', store: '', topic: 'General question', message: '' });
   // Honeypot: real people never fill this (it is hidden). Bots usually do.
   const [botField, setBotField] = useState('');
 
@@ -40,13 +39,13 @@ export default function Contact() {
       from_email: form.email,
       reply_to: form.email,
       store_url: form.store,
-      plan: form.plan,
+      plan: form.topic,
       message: form.message,
     };
     const opts = { publicKey: EMAILJS.publicKey };
 
     try {
-      // 1) Notify you with the submission details (critical).
+      // 1) Notify us with the submission details (critical).
       await emailjs.send(EMAILJS.serviceId, EMAILJS.notifyTemplateId, params, opts);
     } catch (err) {
       console.error('EmailJS notification send failed:', err);
@@ -62,22 +61,22 @@ export default function Contact() {
     }
 
     setStatus('sent');
-    setForm({ name: '', email: '', store: '', plan: 'Growth', message: '' });
+    setForm({ name: '', email: '', store: '', topic: 'General question', message: '' });
   };
 
   return (
     <>
       <Seo
-        title="Contact"
-        description="Talk to the Another Shoppable Video team about shoppable video for your Shopify store. Ask about plans, enquire about a Custom setup, or get onboarding help."
-        path="/contact"
+        title="Support"
+        description="Get help with AnotherDev shoppable video for Shopify. Email support, ask about plans, or request a custom feature for the Custom and Enterprise tier."
+        path="/support"
       />
 
       <section className="phero center">
         <div className="container">
-          <Reveal><span className="eyebrow">Contact</span></Reveal>
-          <Reveal as="h1" className="h-xl mt-s">Let’s talk video commerce</Reveal>
-          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Ask about plans, enquire about a Custom setup, or get help getting set up. We reply within a few hours.</p></Reveal>
+          <Reveal><span className="eyebrow">Support</span></Reveal>
+          <Reveal as="h1" className="h-xl mt-s">We are here to help</Reveal>
+          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Ask a question, get help with setup, or request a custom feature. We reply within a few hours on business days.</p></Reveal>
         </div>
       </section>
 
@@ -92,7 +91,7 @@ export default function Contact() {
                   <input id="c-name" value={form.name} onChange={update('name')} placeholder="Jordan Lee" />
                 </div>
                 <div className="form-field">
-                  <label htmlFor="c-email">Work email</label>
+                  <label htmlFor="c-email">Email</label>
                   <input id="c-email" type="email" value={form.email} onChange={update('email')} placeholder="jordan@store.com" />
                 </div>
                 <div className="form-field">
@@ -100,14 +99,19 @@ export default function Contact() {
                   <input id="c-store" value={form.store} onChange={update('store')} placeholder="yourstore.myshopify.com" />
                 </div>
                 <div className="form-field">
-                  <label htmlFor="c-plan">Interested in</label>
-                  <select id="c-plan" value={form.plan} onChange={update('plan')}>
-                    <option>Free</option><option>Growth</option><option>Pro</option><option>Custom</option><option>Just exploring</option>
+                  <label htmlFor="c-topic">Topic</label>
+                  <select id="c-topic" value={form.topic} onChange={update('topic')}>
+                    <option>General question</option>
+                    <option>Setup help</option>
+                    <option>Billing or plans</option>
+                    <option>Request a custom feature</option>
+                    <option>Custom / Enterprise enquiry</option>
+                    <option>Report a bug</option>
                   </select>
                 </div>
                 <div className="form-field">
                   <label htmlFor="c-msg">How can we help? <span style={{ color: 'var(--slate)', fontWeight: 400 }}>(optional)</span></label>
-                  <textarea id="c-msg" rows="4" value={form.message} onChange={update('message')} placeholder="Tell us about your store and goals…" />
+                  <textarea id="c-msg" rows="4" value={form.message} onChange={update('message')} placeholder="Tell us about your store and what you need…" />
                 </div>
 
                 {/* Honeypot: visually hidden and off the tab order. */}
@@ -143,10 +147,15 @@ export default function Contact() {
                 <p>Prefer email? That’s the fastest way to reach us, we reply within a few hours.</p>
                 <ul>
                   <li>📧 <a href={`mailto:${SUPPORT_EMAIL}`} style={{ color: 'inherit' }}>{SUPPORT_EMAIL}</a></li>
-                  <li>🏷️ Custom plan enquiry, email us with the subject “Custom plan enquiry”</li>
-                  <li>🏢 AnotherDev, <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>anotherdev.in</a></li>
+                  <li>🏷️ Custom plan enquiry: email us with the subject “Custom plan enquiry”</li>
+                  <li>🏢 AnotherDev: <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>anotherdev.in</a></li>
                 </ul>
-                <a href="https://apps.shopify.com" className="btn btn--primary mt-m" style={{ width: '100%', justifyContent: 'center' }}>Add to Shopify for free</a>
+                <p style={{ marginTop: 18 }}>
+                  Looking for answers first? See the <Link to="/faq" className="post__link">FAQ</Link>, or read our{' '}
+                  <Link to="/privacy" className="post__link">Privacy policy</Link> and{' '}
+                  <Link to="/terms" className="post__link">Terms</Link>.
+                </p>
+                <a href={APP_STORE_URL} className="btn btn--primary mt-m" style={{ width: '100%', justifyContent: 'center' }}>Add to Shopify, free plan available</a>
               </aside>
             </Reveal>
           </div>

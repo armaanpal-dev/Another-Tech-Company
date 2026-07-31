@@ -26,7 +26,7 @@ const routes = [
   '/faq',
   '/blog',
   '/about',
-  '/contact',
+  '/support',
   '/privacy',
   '/terms',
   ...posts.map((p) => `/blog/${p.slug}`),

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Another Shoppable Video for Shopify">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AnotherDev for Shopify">
   <defs>
     <linearGradient id="ogBg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#120B29"/>
@@ -22,7 +22,7 @@
   <rect x="80" y="70" width="84" height="84" rx="22" fill="#0C0720"/>
   <path d="M104 132 L122 92 L140 132" fill="none" stroke="url(#ogA)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M111 118 L133 118" fill="none" stroke="url(#ogA)" stroke-width="9" stroke-linecap="round"/>
-  <text x="184" y="124" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#FFFFFF">Another Shoppable Video</text>
+  <text x="184" y="124" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#FFFFFF">AnotherDev</text>
 
   <!-- headline -->
   <text x="80" y="290" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">Turn your videos</text>

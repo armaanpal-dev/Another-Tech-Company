@@ -12,7 +12,7 @@ export default function HowItWorks() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'How to add shoppable video to Shopify with Another Shoppable Video',
+    name: 'How to add shoppable video to Shopify with AnotherDev',
     step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.t, text: s.d })),
   };
 
@@ -52,7 +52,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <CtaBand title="Ready in minutes" sub="Install Another Shoppable Video free and follow these steps live in your own store." />
+      <CtaBand title="Ready in minutes" sub="Install AnotherDev free and follow these steps live in your own store." />
     </>
   );
 }

@@ -8,7 +8,7 @@ export default function Blog() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'Another Shoppable Video Blog',
+    name: 'AnotherDev Blog',
     description: 'Guides on shoppable video, UGC, and conversion for Shopify merchants.',
     url: 'https://anotherdev.in/blog',
     blogPost: posts.map((p) => ({
@@ -25,7 +25,7 @@ export default function Blog() {
     <>
       <Seo
         title="Blog"
-        description="Guides and playbooks on shoppable video, UGC, and conversion optimization for Shopify merchants, from the team behind Another Shoppable Video."
+        description="Guides and playbooks on shoppable video, UGC, and conversion optimization for Shopify merchants, from the team behind AnotherDev."
         path="/blog"
         schema={schema}
       />
@@ -58,7 +58,7 @@ export default function Blog() {
         </div>
       </section>
 
-      <CtaBand title="Less reading, more selling" sub="Put these ideas to work. Install Another Shoppable Video free and ship your first shoppable reel." />
+      <CtaBand title="Less reading, more selling" sub="Put these ideas to work. Install AnotherDev free and ship your first shoppable reel." />
     </>
   );
 }

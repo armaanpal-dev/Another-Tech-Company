@@ -77,7 +77,7 @@ export default function Features() {
     <>
       <Seo
         title="Features: Shoppable video, in-video add to cart, analytics"
-        description="Shoppable video reels, in-video add to cart, exact variant selection, flexible placements, real-time analytics, and full brand customization, every Another Shoppable Video feature for Shopify."
+        description="Shoppable video reels, in-video add to cart, exact variant selection, flexible placements, real-time analytics, and full brand customization, every AnotherDev feature for Shopify."
         path="/features"
       />
 

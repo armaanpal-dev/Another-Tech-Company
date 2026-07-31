@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { APP_STORE_URL } from '../config';
 import './Shared.css';
 
 /* Accordion FAQ item */
@@ -72,8 +73,8 @@ export function CtaBand({
         <h2 className="h-lg">{title}</h2>
         <p className="lead mx-auto" style={{ textAlign: 'center' }}>{sub}</p>
         <div className="ctaband__btns">
-          <a href="https://apps.shopify.com" className="btn btn--primary btn--lg">Add to Shopify for free</a>
-          <Link to="/contact" className="btn btn--ghost-light btn--lg">Talk to us</Link>
+          <a href={APP_STORE_URL} className="btn btn--primary btn--lg">Add to Shopify, free plan available</a>
+          <Link to="/support" className="btn btn--ghost-light btn--lg">Talk to us</Link>
         </div>
       </div>
     </section>
@@ -88,7 +89,7 @@ export function StickyCta() {
         <strong>Free plan</strong>
         <span>No code needed</span>
       </div>
-      <a href="https://apps.shopify.com" className="btn btn--primary">Add to Shopify</a>
+      <a href={APP_STORE_URL} className="btn btn--primary">Add to Shopify</a>
     </div>
   );
 }

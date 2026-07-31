@@ -56,7 +56,7 @@ export default function BlogPost() {
         </div>
       </section>
 
-      <CtaBand title="Ready to make your store shoppable?" sub="Install Another Shoppable Video free and add your first shoppable reel in minutes." />
+      <CtaBand title="Ready to make your store shoppable?" sub="Install AnotherDev free and add your first shoppable reel in minutes." />
     </>
   );
 }

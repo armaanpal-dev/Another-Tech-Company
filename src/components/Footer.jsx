@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { APP_STORE_URL, SUPPORT_EMAIL } from '../config';
 import './Footer.css';
 
 const cols = [
@@ -6,18 +7,18 @@ const cols = [
     title: 'Product',
     links: [
       ['Features', '/features'],
-      ['How it works', '/how-it-works'],
       ['Pricing', '/pricing'],
-      ['FAQ', '/faq'],
+      ['How it works', '/how-it-works'],
       ['Compatibility', '/compatibility'],
     ],
   },
   {
     title: 'Company',
     links: [
-      ['Blog', '/blog'],
       ['About', '/about'],
-      ['Contact', '/contact'],
+      ['Blog', '/blog'],
+      ['FAQ', '/faq'],
+      ['Support', '/support'],
     ],
   },
   {
@@ -30,18 +31,19 @@ const cols = [
 ];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
   return (
     <footer className="footer dark-bg">
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              <img className="footer__mark" src="/logo.svg" alt="" width="30" height="30" /> Another Shoppable Video
+              <img className="footer__mark" src="/logo.svg" alt="" width="30" height="30" /> AnotherDev
             </Link>
             <p className="footer__tag">
-              Turn browsers into buyers with shoppable video and UGC, built for Shopify.
+              Shoppable video for Shopify. Add to cart inside the video, on any page of your store.
             </p>
-            <a href="https://apps.shopify.com" className="btn btn--primary footer__cta">Add to Shopify for free</a>
+            <a href={APP_STORE_URL} className="btn btn--primary footer__cta">Add to Shopify, free plan available</a>
           </div>
 
           <div className="footer__cols">
@@ -55,11 +57,18 @@ export default function Footer() {
                 </ul>
               </div>
             ))}
+            <div className="footer__col">
+              <h4>Get started</h4>
+              <ul>
+                <li><a href={APP_STORE_URL}>Add to Shopify</a></li>
+                <li><a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a></li>
+              </ul>
+            </div>
           </div>
         </div>
 
         <div className="footer__bottom">
-          <span>© {new Date().getFullYear()} Another Shoppable Video. All rights reserved.</span>
+          <span>© {year} AnotherDev. Not affiliated with or endorsed by Shopify.</span>
           <span className="footer__badge">Made for Shopify stores</span>
         </div>
       </div>

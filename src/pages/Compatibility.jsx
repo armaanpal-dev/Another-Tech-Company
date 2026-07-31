@@ -30,7 +30,7 @@ export default function Compatibility() {
     <>
       <Seo
         title="Compatibility"
-        description="Another Shoppable Video works with Dawn and Online Store 2.0 themes, premium and vintage themes, third-party carts like GoKwik and Shiprocket, and Shopify Markets multi-currency pricing."
+        description="AnotherDev works with Dawn and Online Store 2.0 themes, premium and vintage themes, third-party carts like GoKwik and Shiprocket, and Shopify Markets multi-currency pricing."
         path="/compatibility"
       />
 
@@ -38,7 +38,7 @@ export default function Compatibility() {
         <div className="container phero__inner">
           <Reveal><span className="eyebrow eyebrow--light">Compatibility</span></Reveal>
           <Reveal as="h1" className="h-xl mt-s">Works with your store, not against it</Reveal>
-          <Reveal><p className="lead">Shoppable video should fit the store you already have. Another Shoppable Video is built to work with your theme, your cart, and the currencies you sell in.</p></Reveal>
+          <Reveal><p className="lead">Shoppable video should fit the store you already have. AnotherDev is built to work with your theme, your cart, and the currencies you sell in.</p></Reveal>
         </div>
       </section>
 

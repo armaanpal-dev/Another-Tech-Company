@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { Reveal, Faq } from '../components/Shared';
+import { APP_STORE_URL } from '../config';
 import './pages.css';
 
 const plans = [
@@ -49,7 +50,7 @@ export default function Pricing() {
     {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
-      name: 'Another Shoppable Video',
+      name: 'AnotherDev - Shoppable Video',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Shopify',
       url: 'https://anotherdev.in/pricing',
@@ -73,7 +74,7 @@ export default function Pricing() {
     <>
       <Seo
         title="Pricing"
-        description="Simple pricing for Another Shoppable Video shoppable video on Shopify. Start free with up to 4 reels; Growth $21/mo and Pro $49/mo add more reels, placements, and analytics. Billed through Shopify, cancel anytime."
+        description="Simple pricing for AnotherDev shoppable video on Shopify. Start free with up to 4 reels; Growth $21/mo and Pro $49/mo add more reels, placements, and analytics. Billed through Shopify, cancel anytime."
         path="/pricing"
         schema={schema}
       />
@@ -99,8 +100,8 @@ export default function Pricing() {
                   <p className="plan__desc">{p.desc}</p>
                   <ul>{p.features.map((f) => <li key={f}>{f}</li>)}</ul>
                   {p.contact
-                    ? <Link to="/contact" className="btn btn--ghost">{p.cta}</Link>
-                    : <a href="https://apps.shopify.com" className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`}>{p.cta}</a>}
+                    ? <Link to="/support" className="btn btn--ghost">{p.cta}</Link>
+                    : <a href={APP_STORE_URL} className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`}>{p.cta}</a>}
                 </div>
               </Reveal>
             ))}

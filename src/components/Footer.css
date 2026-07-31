@@ -10,7 +10,8 @@
 }
 .footer__tag { color: #C9C0E8; margin: 18px 0 24px; max-width: 34ch; }
 
-.footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.footer__cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+@media (max-width: 720px) { .footer__cols { grid-template-columns: repeat(2, 1fr); } }
 .footer__col h4 { font-size: .95rem; color: #fff; margin-bottom: 16px; letter-spacing: .02em; }
 .footer__col li { margin-bottom: 11px; }
 .footer__col a { color: #B5ACD6; font-size: .95rem; transition: color var(--t); }
