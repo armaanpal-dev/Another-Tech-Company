@@ -33,8 +33,8 @@ It is a strong fit for anyone searching for a shoppable video app for Shopify, a
 - Managed billing through Shopify.
 
 ## Pricing
-- [Free](https://anotherdev.in/pricing): $0/mo, up to 4 reels, home page shoppable video feed, in-video add to cart, basic analytics, "Powered by AnotherDev" watermark.
-- [Growth](https://anotherdev.in/pricing): $21/mo, up to 21 reels, product page carousel, basic customization, watermark removed.
+- [Free](https://anotherdev.in/pricing): $0/mo, up to 4 videos, home page shoppable video feed, in-video add to cart, basic analytics.
+- [Growth](https://anotherdev.in/pricing): $21/mo, up to 21 videos, product page carousel, floating reel, colors and layout customization.
 - [Pro](https://anotherdev.in/pricing): $49/mo, up to 49 reels, collection and other-page placements, smart-tag auto-match carousel, advanced analytics, full customization, priority support.
 - [Custom](https://anotherdev.in/support): custom pricing, unlimited videos, custom widget layouts and placements, features built for your store, dedicated priority support.
 

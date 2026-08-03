@@ -18,7 +18,6 @@ const faqs = [
   ['How is it billed?', 'Through Shopify Billing, so charges appear on your Shopify invoice. Free to start, upgrade anytime, cancel anytime.'],
   ['What analytics do I get?', 'Impressions, plays, clicks, and add-to-cart events per reel, plus play rate, click-through rate, and conversion, with advanced charts on Pro.'],
   ['Do you collect my customers personal data?', 'No. Storefront analytics are anonymous (a random session ID for de-duplication only). See the Privacy policy for details.'],
-  ['Can I remove the "Powered by AnotherDev" watermark?', 'Yes, it is removed on the Growth plan and above.'],
   ['Do you offer custom or enterprise setups?', 'Yes. The Custom plan includes unlimited reels, custom layouts, and features built for your store. Contact us to discuss it.'],
   ['What is the Floating Reel?', 'The Floating Reel pins a small looping video to the corner of your storefront that follows shoppers as they browse. One tap opens it full-screen with sound and a Shop now button to the product. You choose the corner, control which pages it shows on by URL path (with wildcards like /collections/*), and shoppers can dismiss it anytime. It is included on the Growth and Pro plans.'],
 ];

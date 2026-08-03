@@ -31,7 +31,7 @@ const steps = [
 
 const preview = [
   { name: 'Free', price: '$0', unit: '/mo', points: ['4 videos', 'Homepage gallery', 'Add to cart in the video'], featured: false },
-  { name: 'Growth', price: '$21', unit: '/mo', points: ['21 videos', 'Product page carousel', 'Floating reel', 'Branding removed'], featured: true },
+  { name: 'Growth', price: '$21', unit: '/mo', points: ['21 videos', 'Product page carousel', 'Floating reel', 'Custom colors & layout'], featured: true },
   { name: 'Pro', price: '$49', unit: '/mo', points: ['49 videos', 'All placements', 'Smart tag matching', 'Advanced analytics'], featured: false },
 ];
 

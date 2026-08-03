@@ -12,7 +12,7 @@ const plans = [
   },
   {
     name: 'Growth', price: '$21', unit: '/mo', desc: 'For stores adding video to product pages.',
-    features: ['21 videos', 'Everything in Free', 'Product page carousel', 'Floating reel', 'Colors & layout customization', 'Branding removed'],
+    features: ['21 videos', 'Everything in Free', 'Product page carousel', 'Floating reel', 'Colors & layout customization'],
     cta: 'Add to Shopify', featured: true, contact: false,
   },
   {
@@ -34,7 +34,6 @@ const faqs = [
   ['Will it slow down my store?', 'No. Videos lazy-load only when in view, scripts are deferred, and the storefront bundle is tiny (~12 KB gzipped) with no layout shift.'],
   ['Where can I import videos from?', 'Import videos directly from your store’s Shopify Files library, or paste a CDN / hosted video URL.'],
   ['What happens if I downgrade?', 'Videos and placements beyond your new plan’s limits are hidden from your storefront automatically. Nothing is deleted, so upgrade again and it all returns.'],
-  ['Can I remove the app branding?', 'Yes. Branding is removed on the Growth plan and above.'],
 ];
 
 export default function Pricing() {
