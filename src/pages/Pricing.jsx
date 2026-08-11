@@ -59,14 +59,6 @@ export default function Pricing() {
         { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD', category: 'Subscription', url: 'https://anotherdev.in/pricing' },
       ],
     },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://anotherdev.in/' },
-        { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://anotherdev.in/pricing' },
-      ],
-    },
   ];
 
   return (
