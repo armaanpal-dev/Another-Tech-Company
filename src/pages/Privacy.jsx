@@ -17,7 +17,7 @@ export default function Privacy() {
       <section className="section--tight">
         <div className="container prose">
           <Reveal>
-            <p>AnotherDev (“AnotherDev”, “we”, “us”, or “our”), operated by AnotherDev, provides a shoppable-video application (the “App”) for merchants using the Shopify platform. This Privacy Policy explains what information we collect, how we use it, and the choices available to you.</p>
+            <p>AnotherDev - Shoppable Video (the “App”, “we”, “us”, or “our”), provided by AnotherDev, is a shoppable-video application for merchants using the Shopify platform. This Privacy Policy explains what information we collect, how we use it, and the choices available to you.</p>
             <p>By installing or using the App, you agree to this Privacy Policy.</p>
 
             <h2>1. Who this policy covers</h2>

@@ -13,7 +13,7 @@ export default function About() {
     <>
       <Seo
         title="About"
-        description="AnotherDev is built by AnotherDev to make every Shopify store shoppable through video, the fastest, simplest way to turn product videos into add-to-cart moments."
+        description="AnotherDev - Shoppable Video is the Shopify app from AnotherDev that makes every store shoppable through video, the fastest, simplest way to turn product videos into add-to-cart moments."
         path="/about"
       />
 
@@ -21,7 +21,7 @@ export default function About() {
         <div className="container phero__inner">
           <Reveal><span className="eyebrow eyebrow--light">About</span></Reveal>
           <Reveal as="h1" className="h-xl mt-s">We make commerce worth watching</Reveal>
-          <Reveal><p className="lead">AnotherDev is built by <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>AnotherDev</a>. It started with a simple frustration: brands pour effort into product video, but static storefronts can’t show how a product looks, moves, or fits. We built the bridge, shoppable reels, with add-to-cart built in, right where shoppers decide.</p></Reveal>
+          <Reveal><p className="lead">AnotherDev - Shoppable Video is built by <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>AnotherDev</a>. It started with a simple frustration: brands pour effort into product video, but static storefronts can’t show how a product looks, moves, or fits. We built the bridge, shoppable reels, with add-to-cart built in, right where shoppers decide.</p></Reveal>
         </div>
       </section>
 

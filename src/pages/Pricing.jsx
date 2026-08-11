@@ -65,7 +65,7 @@ export default function Pricing() {
     <>
       <Seo
         title="Pricing"
-        description="Simple pricing for AnotherDev shoppable video on Shopify. Start free with up to 4 reels; Growth $21/mo and Pro $49/mo add more reels, placements, and analytics. Billed through Shopify, cancel anytime."
+        description="Simple pricing for AnotherDev shoppable video on Shopify. Start free with 4 videos; Growth $21/mo and Pro $49/mo add more videos, placements, and analytics. Billed through Shopify, cancel anytime."
         path="/pricing"
         schema={schema}
       />

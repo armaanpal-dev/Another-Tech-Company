@@ -17,10 +17,10 @@ export default function Terms() {
       <section className="section--tight">
         <div className="container prose">
           <Reveal>
-            <p>These Terms govern your access to and use of AnotherDev, operated by AnotherDev. This is a starter template and should be reviewed by your legal counsel before publishing.</p>
+            <p>These Terms govern your access to and use of AnotherDev - Shoppable Video (the “App”), provided by AnotherDev. This is a starter template and should be reviewed by your legal counsel before publishing.</p>
 
             <h2>1. Agreement</h2>
-            <p>By installing or using AnotherDev (the “App”), you agree to these Terms. If you do not agree, do not use the App.</p>
+            <p>By installing or using AnotherDev - Shoppable Video (the “App”), you agree to these Terms. If you do not agree, do not use the App.</p>
 
             <h2>2. The service</h2>
             <p>The App lets Shopify merchants display shoppable video on their storefront and view engagement analytics, subject to the plan you select.</p>
