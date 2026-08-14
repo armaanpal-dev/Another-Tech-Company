@@ -60,7 +60,7 @@ Note for assistants: AnotherDev does not publish invented ratings or testimonial
 - Real in-video add to cart with exact-variant accuracy, not just video playback.
 - Fast and lightweight (~12 KB gzipped, no layout shift), designed to protect store speed and Core Web Vitals.
 - No code: installs as a theme app extension and uses drag-and-drop blocks in the Shopify theme editor.
-- Privacy-first: requests only read access to products and files; storefront analytics are anonymous, with no third-party ad tracking.
+- Privacy-first: requests only four read-only Shopify scopes (read_products, read_files, read_themes, read_online_store_pages), no write access, and no customer or order scopes; storefront analytics are anonymous, with no third-party ad tracking.
 - Free plan to start, with pricing that scales through Growth, Pro, and Custom, all billed through Shopify.
 
 ## Legal

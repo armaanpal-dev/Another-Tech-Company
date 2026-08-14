@@ -10,7 +10,7 @@ export default function Privacy() {
         <div className="container phero__inner">
           <Reveal><span className="eyebrow">Legal</span></Reveal>
           <Reveal as="h1" className="h-lg mt-s">Privacy policy</Reveal>
-          <Reveal><p className="lead">Last updated: July 5, 2026</p></Reveal>
+          <Reveal><p className="lead">Last updated: August 15, 2026</p></Reveal>
         </div>
       </section>
 
@@ -34,11 +34,18 @@ export default function Privacy() {
               <li>Your video library metadata (Shopify Files) when you import a video.</li>
               <li>Content and settings you create in the App: reels (video URLs, linked product/variant, ribbon text), placements, styling settings, onboarding status, and your subscription plan.</li>
             </ul>
-            <p>We request only the Shopify permission scopes we need: <strong>read access to products</strong> and <strong>read access to files</strong>. We do <strong>not</strong> request access to customers, orders, or payment data.</p>
+            <p>We request only the read-only Shopify permission scopes we need to run the App, and nothing more:</p>
+            <ul>
+              <li><strong><code>read_products</code></strong>: product and collection data. This powers the product picker in the admin and reads product title, price, variants, and images to display on video cards.</li>
+              <li><strong><code>read_files</code></strong>: your store’s Files library, so you can import a video you have already uploaded to Shopify instead of pasting an external URL.</li>
+              <li><strong><code>read_themes</code></strong>: theme data, so we can detect whether the App’s theme embed is enabled on your live theme and warn you if your videos will not appear.</li>
+              <li><strong><code>read_online_store_pages</code></strong>: your Online Store page list, so you can choose which page a video gallery should appear on.</li>
+            </ul>
+            <p>All four scopes are <strong>read-only</strong>. The App has <strong>no write access</strong> to your products, themes, pages, or files; it only writes its own data (videos, galleries, and settings). We request <strong>no customer scopes and no order scopes</strong>, and we store <strong>no customer personal data</strong>.</p>
 
             <p><strong>From store visitors (end customers):</strong></p>
             <ul>
-              <li><strong>Anonymous engagement analytics only.</strong> When the video widget is shown, we record events such as impressions, plays, clicks, and add-to-cart taps, along with a reel identifier and a timestamp.</li>
+              <li><strong>Anonymous engagement analytics only.</strong> When the video widget is shown, we record event counts such as impressions, plays, clicks, add-to-cart taps, opens, and shop-now taps, along with a video identifier and a timestamp.</li>
               <li>A <strong>randomly generated session identifier</strong> is stored in the visitor’s browser <code>localStorage</code> to avoid counting the same view twice. It is not linked to any personal identity.</li>
               <li>We do <strong>not</strong> collect names, email addresses, physical addresses, IP-based profiles, or payment information from store visitors. Adding an item to cart uses Shopify’s native cart on the merchant’s store; we do not process or store cart or checkout data.</li>
             </ul>
