@@ -29,6 +29,7 @@ const routes = [
   '/support',
   '/privacy',
   '/terms',
+  '/affiliate-terms', // unlisted: reachable by direct URL only, noindex, not in sitemap or nav
   ...posts.map((p) => `/blog/${p.slug}`),
 ];
 
@@ -52,6 +53,7 @@ for (const route of routes) {
   let page = template
     .replace(/<title>[\s\S]*?<\/title>/, '')
     .replace(/<meta\s+name="description"[^>]*>/i, '')
+    .replace(/<meta\s+name="robots"[^>]*>/i, '')
     .replace(/<link\s+rel="canonical"[^>]*>/i, '')
     .replace(/<meta\s+property="og:(type|site_name|title|description|url|image|image:width|image:height)"[^>]*>/gi, '')
     .replace(/<meta\s+name="twitter:card"[^>]*>/i, '');

@@ -47,16 +47,20 @@ export default function Seo({
   image = `${BASE}/og-image.svg`,
   type = 'website',
   schema,
+  noindex = false,
 }) {
   const fullTitle = title ? `${title} | ${SITE}` : `${FULL} for Shopify: Watch, tap, buy`;
   const url = `${BASE}${path}`;
-  const breadcrumb = buildBreadcrumb(path, title);
+  // Unlisted pages (noindex) do not need breadcrumb structured data.
+  const breadcrumb = noindex ? null : buildBreadcrumb(path, title);
 
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={url} />
+      {noindex
+        ? <meta name="robots" content="noindex, nofollow" />
+        : <link rel="canonical" href={url} />}
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />
