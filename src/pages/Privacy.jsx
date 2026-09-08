@@ -16,20 +16,22 @@ export default function Privacy() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container prose">
-          <Reveal>
-            <div className="policy-notice">
-              <p><strong>AnotherDev operates more than one Shopify app, and each app has its own privacy policy:</strong></p>
-              <ul style={{ margin: '10px 0 0' }}>
-                <li><strong>AnotherDev - Shoppable Video</strong>: this page, also available as a <Link to="/privacy/shoppable-video">standalone page</Link>.</li>
-                <li><strong>AnotherDev - Search and Filters</strong>: see its <Link to="/privacy/search">privacy policy</Link>.</li>
-              </ul>
-            </div>
-            <ShoppableVideoPolicyBody />
-          </Reveal>
-        </div>
-      </section>
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container prose">
+            <Reveal>
+              <div className="policy-notice">
+                <p><strong>AnotherDev operates more than one Shopify app, and each app has its own privacy policy:</strong></p>
+                <ul style={{ margin: '10px 0 0' }}>
+                  <li><strong>AnotherDev - Shoppable Video</strong>: this page, also available as a <Link to="/privacy/shoppable-video">standalone page</Link>.</li>
+                  <li><strong>AnotherDev - Search and Filters</strong>: see its <Link to="/privacy/search">privacy policy</Link>.</li>
+                </ul>
+              </div>
+              <ShoppableVideoPolicyBody />
+            </Reveal>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

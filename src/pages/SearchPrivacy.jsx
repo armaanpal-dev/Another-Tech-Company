@@ -22,13 +22,15 @@ export default function SearchPrivacy() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container prose">
-          <Reveal>
-            <SearchPolicyBody />
-          </Reveal>
-        </div>
-      </section>
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container prose">
+            <Reveal>
+              <SearchPolicyBody />
+            </Reveal>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

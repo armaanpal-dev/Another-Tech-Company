@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import Icon from '../components/Icon';
 import { Reveal, Faq } from '../components/Shared';
 import { APP_STORE_URL } from '../config';
 import './pages.css';
@@ -79,36 +80,38 @@ export default function Pricing() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container">
-          <div className="plans plans--4">
-            {plans.map((p, i) => (
-              <Reveal key={p.name} delay={i * 80}>
-                <div className={`plan ${p.featured ? 'plan--featured' : ''}`}>
-                  {p.featured && <span className="plan__badge">Most popular</span>}
-                  <span className="plan__name">{p.name}</span>
-                  <div className="plan__price">{p.price}{p.unit && <span>{p.unit}</span>}</div>
-                  <p className="plan__desc">{p.desc}</p>
-                  <ul>{p.features.map((f) => <li key={f}>{f}</li>)}</ul>
-                  {p.contact
-                    ? <Link to="/support" className="btn btn--ghost">{p.cta}</Link>
-                    : <a href={APP_STORE_URL} className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`}>{p.cta}</a>}
-                </div>
-              </Reveal>
-            ))}
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container">
+            <div className="plans plans--4">
+              {plans.map((p, i) => (
+                <Reveal key={p.name} delay={i * 80}>
+                  <div className={`plan ${p.featured ? 'plan--featured' : ''}`}>
+                    {p.featured && <span className="plan__badge">Most popular</span>}
+                    <span className="plan__name">{p.name}</span>
+                    <div className="plan__price">{p.price}{p.unit && <span>{p.unit}</span>}</div>
+                    <p className="plan__desc">{p.desc}</p>
+                    <ul>{p.features.map((f) => <li key={f}><Icon name="check" size={16} strokeWidth={2.2} />{f}</li>)}</ul>
+                    {p.contact
+                      ? <Link to="/support" className="btn btn--ghost">{p.cta}</Link>
+                      : <a href={APP_STORE_URL} className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`}>{p.cta}</a>}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <p className="center mt-m" style={{ color: 'var(--slate)' }}>Prices in USD, billed monthly through Shopify. Prices display in your store’s own currency on the storefront.</p>
           </div>
-          <p className="center mt-m" style={{ color: 'var(--slate)' }}>Prices in USD, billed monthly through Shopify. Prices display in your store’s own currency on the storefront.</p>
-        </div>
-      </section>
+        </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="shead"><Reveal as="h2" className="h-lg">Frequently asked questions</Reveal></div>
-          <div className="faq mt-l">
-            {faqs.map(([q, a]) => <Faq key={q} q={q} a={a} />)}
+        <section className="section">
+          <div className="container">
+            <div className="shead"><Reveal as="h2" className="h-lg">Frequently asked questions</Reveal></div>
+            <div className="faq mt-l">
+              {faqs.map(([q, a]) => <Faq key={q} q={q} a={a} />)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }

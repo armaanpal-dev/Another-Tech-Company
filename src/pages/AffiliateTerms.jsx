@@ -32,16 +32,18 @@ export default function AffiliateTerms() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container prose">
-          <Reveal>
-            <p>By participating in the AnotherDev - Shoppable Video affiliate program, you agree to the following terms.</p>
-            <ol>
-              {terms.map((t, i) => <li key={i} style={{ marginBottom: 14 }}>{t}</li>)}
-            </ol>
-          </Reveal>
-        </div>
-      </section>
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container prose">
+            <Reveal>
+              <p>By participating in the AnotherDev - Shoppable Video affiliate program, you agree to the following terms.</p>
+              <ol>
+                {terms.map((t, i) => <li key={i} style={{ marginBottom: 14 }}>{t}</li>)}
+              </ol>
+            </Reveal>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

@@ -25,26 +25,27 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="shead">
-            <Reveal><span className="eyebrow">What we believe</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">The principles behind the product</Reveal>
+      <div className="lightzone">
+        <section className="section">
+          <div className="container">
+            <div className="shead">
+              <Reveal><span className="eyebrow">What we believe</span></Reveal>
+              <Reveal as="h2" className="h-lg mt-s">The principles behind the product</Reveal>
+            </div>
+            <div className="values mt-l">
+              {values.map((v, i) => (
+                <Reveal key={v.n} delay={i * 80}>
+                  <div className="value card">
+                    <span className="value__n">{v.n}</span>
+                    <h3 className="h-md mt-s">{v.t}</h3>
+                    <p>{v.d}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
-          <div className="values mt-l">
-            {values.map((v, i) => (
-              <Reveal key={v.n} delay={i * 80}>
-                <div className="value card">
-                  <span className="value__n">{v.n}</span>
-                  <h3 className="h-md mt-s">{v.t}</h3>
-                  <p>{v.d}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
       <CtaBand title="Build with us" sub="Add AnotherDev to your store free, or reach out, we love hearing from merchants." />
     </>
   );

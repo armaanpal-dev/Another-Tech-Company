@@ -33,25 +33,26 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <div className="frow">
-            <div className="frow__media"><VideoMock /></div>
-            <div>
-              {steps.map((s, i) => (
-                <Reveal key={s.n} delay={i * 60}>
-                  <div className="hiw-step">
-                    <span className="hiw-step__n">{s.n}</span>
-                    <h3 className="h-md">{s.t}</h3>
-                    <p style={{ color: 'var(--slate)' }}>{s.d}</p>
-                  </div>
-                </Reveal>
-              ))}
+      <div className="lightzone">
+        <section className="section">
+          <div className="container">
+            <div className="frow">
+              <div className="frow__media"><VideoMock /></div>
+              <div>
+                {steps.map((s, i) => (
+                  <Reveal key={s.n} delay={i * 60}>
+                    <div className="hiw-step">
+                      <span className="hiw-step__n">{s.n}</span>
+                      <h3 className="h-md">{s.t}</h3>
+                      <p style={{ color: 'var(--slate)' }}>{s.d}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
       <CtaBand title="Ready in minutes" sub="Install AnotherDev free and follow these steps live in your own store." />
     </>
   );

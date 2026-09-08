@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import Icon from '../components/Icon';
 import { Reveal, CtaBand } from '../components/Shared';
 import { posts } from './blogPosts';
 import './pages.css';
@@ -38,25 +39,26 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container">
-          <div className="blog-grid">
-            {posts.map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 3) * 70}>
-                <Link to={`/blog/${p.slug}`} className="post">
-                  <span className={`post__cover ${p.cover}`} aria-hidden="true" />
-                  <span className="post__cat">{p.cat}</span>
-                  <span className="post__meta">{p.date} · {p.read} read</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.excerpt}</p>
-                  <span className="post__link">Read article →</span>
-                </Link>
-              </Reveal>
-            ))}
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container">
+            <div className="blog-grid">
+              {posts.map((p, i) => (
+                <Reveal key={p.slug} delay={(i % 3) * 70}>
+                  <Link to={`/blog/${p.slug}`} className="post">
+                    <span className={`post__cover ${p.cover}`} aria-hidden="true" />
+                    <span className="post__cat">{p.cat}</span>
+                    <span className="post__meta">{p.date} · {p.read} read</span>
+                    <h3>{p.title}</h3>
+                    <p>{p.excerpt}</p>
+                    <span className="post__link">Read article <Icon name="arrow" size={16} /></span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
       <CtaBand title="Less reading, more selling" sub="Put these ideas to work. Install AnotherDev free and ship your first shoppable reel." />
     </>
   );

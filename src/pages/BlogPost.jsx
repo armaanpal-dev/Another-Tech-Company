@@ -47,15 +47,16 @@ export default function BlogPost() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container prose">
-          <Reveal>
-            {post.content.map((block, i) => <Block key={i} block={block} />)}
-            <p style={{ marginTop: 32 }}><Link to="/blog" className="post__link">← Back to all articles</Link></p>
-          </Reveal>
-        </div>
-      </section>
-
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container prose">
+            <Reveal>
+              {post.content.map((block, i) => <Block key={i} block={block} />)}
+              <p style={{ marginTop: 32 }}><Link to="/blog" className="post__link">← Back to all articles</Link></p>
+            </Reveal>
+          </div>
+        </section>
+      </div>
       <CtaBand title="Ready to make your store shoppable?" sub="Install AnotherDev free and add your first shoppable reel in minutes." />
     </>
   );

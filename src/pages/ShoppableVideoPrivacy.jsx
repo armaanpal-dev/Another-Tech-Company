@@ -22,13 +22,15 @@ export default function ShoppableVideoPrivacy() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container prose">
-          <Reveal>
-            <ShoppableVideoPolicyBody />
-          </Reveal>
-        </div>
-      </section>
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container prose">
+            <Reveal>
+              <ShoppableVideoPolicyBody />
+            </Reveal>
+          </div>
+        </section>
+      </div>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import Icon from '../components/Icon';
 import { Reveal, VideoMock, CtaBand } from '../components/Shared';
 import './pages.css';
 
@@ -89,40 +90,41 @@ export default function Features() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          {rows.map((r) => (
-            <Reveal key={r.title}>
-              <div className={`frow ${r.rev ? 'frow--rev' : ''}`}>
-                <div className="frow__media"><VideoMock label={r.mock.label} product={r.mock.product} price={r.mock.price} /></div>
-                <div>
-                  <span className="eyebrow">{r.eyebrow}</span>
-                  <h3 className="h-lg mt-s">{r.title}</h3>
-                  <p className="lead">{r.body}</p>
-                  <ul>{r.points.map((p) => <li key={p}>{p}</li>)}</ul>
+      <div className="lightzone">
+        <section className="section">
+          <div className="container">
+            {rows.map((r) => (
+              <Reveal key={r.title}>
+                <div className={`frow ${r.rev ? 'frow--rev' : ''}`}>
+                  <div className="frow__media"><VideoMock label={r.mock.label} product={r.mock.product} price={r.mock.price} /></div>
+                  <div>
+                    <span className="eyebrow">{r.eyebrow}</span>
+                    <h3 className="h-lg mt-s">{r.title}</h3>
+                    <p className="lead">{r.body}</p>
+                    <ul>{r.points.map((p) => <li key={p}><Icon name="check" size={16} strokeWidth={2.2} />{p}</li>)}</ul>
+                  </div>
                 </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="section band" id="compatibility">
+          <div className="container center">
+            <Reveal><span className="eyebrow">Built for speed &amp; every theme</span></Reveal>
+            <Reveal as="h2" className="h-lg mt-s">Works with your store, not against it</Reveal>
+            <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Videos load only when they scroll into view, with poster images so nothing blocks your page from rendering. Add to cart works across Online Store 2.0, premium and vintage themes, and third-party carts like GoKwik and Shiprocket.</p></Reveal>
+            <Reveal>
+              <div className="integr mt-l">
+                {themes.map((name) => (
+                  <div key={name} className="integr__item"><Icon name="puzzle" size={22} />{name}</div>
+                ))}
               </div>
             </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="section band" id="compatibility">
-        <div className="container center">
-          <Reveal><span className="eyebrow">Built for speed &amp; every theme</span></Reveal>
-          <Reveal as="h2" className="h-lg mt-s">Works with your store, not against it</Reveal>
-          <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Videos load only when they scroll into view, with poster images so nothing blocks your page from rendering. Add to cart works across Online Store 2.0, premium and vintage themes, and third-party carts like GoKwik and Shiprocket.</p></Reveal>
-          <Reveal>
-            <div className="integr mt-l">
-              {themes.map((name) => (
-                <div key={name} className="integr__item"><span>🛍️</span>{name}</div>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal><p className="mt-m"><Link to="/compatibility" className="btn btn--ghost">See full compatibility →</Link></p></Reveal>
-        </div>
-      </section>
-
+            <Reveal><p className="mt-m"><Link to="/compatibility" className="btn btn--ghost">See full compatibility →</Link></p></Reveal>
+          </div>
+        </section>
+      </div>
       <CtaBand title="See it live on your store" sub="Install free and add your first shoppable reel in minutes." />
     </>
   );

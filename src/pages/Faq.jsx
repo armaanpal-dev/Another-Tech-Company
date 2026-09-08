@@ -49,14 +49,15 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <section className="section--tight">
-        <div className="container">
-          <div className="faq">
-            {faqs.map(([q, a]) => <Faq key={q} q={q} a={a} />)}
+      <div className="lightzone">
+        <section className="section--tight">
+          <div className="container">
+            <div className="faq">
+              {faqs.map(([q, a]) => <Faq key={q} q={q} a={a} />)}
+            </div>
           </div>
-        </div>
-      </section>
-
+        </section>
+      </div>
       <CtaBand title="Ready to make your store shoppable?" sub="Install AnotherDev free and add your first shoppable reel in minutes." />
     </>
   );
