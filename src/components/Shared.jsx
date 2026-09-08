@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Icon from './Icon';
 import { APP_STORE_URL } from '../config';
 import './Shared.css';
 
@@ -9,7 +10,8 @@ export function Faq({ q, a }) {
   return (
     <div className={`faq__item ${open ? 'open' : ''}`}>
       <button className="faq__q" aria-expanded={open} onClick={() => setOpen(!open)}>
-        {q} <i>+</i>
+        {q}
+        <i className="faq__plus" aria-hidden="true"><span /><span /></i>
       </button>
       <div className="faq__a"><p>{a}</p></div>
     </div>
@@ -42,7 +44,14 @@ export function Reveal({ children, as: Tag = 'div', delay = 0, className = '' })
 export function SectionHead({ badge, icon, title, sub, align = 'center', className = '' }) {
   return (
     <div className={`shead ${align === 'left' ? 'shead--left' : ''} ${className}`}>
-      {badge && <Reveal><span className="badge">{icon && <i>{icon}</i>}{badge}</span></Reveal>}
+      {badge && (
+        <Reveal>
+          <span className="badge">
+            {icon && <Icon name={icon} size={16} strokeWidth={1.8} />}
+            {badge}
+          </span>
+        </Reveal>
+      )}
       <Reveal as="h2" className="h-lg" delay={60}>{title}</Reveal>
       {sub && <Reveal delay={110}><p className="lead">{sub}</p></Reveal>}
     </div>
@@ -51,14 +60,14 @@ export function SectionHead({ badge, icon, title, sub, align = 'center', classNa
 
 /* Endless scrolling chip row. The list is rendered twice so the
    translate(-50%) loop is seamless. */
-export function Marquee({ items, reverse = false, icon = '✓' }) {
+export function Marquee({ items, reverse = false }) {
   return (
     <div className={`marquee ${reverse ? 'marquee--rev' : ''}`} aria-label={items.join(', ')}>
       <div className="marquee__track">
         {[0, 1].map((pass) => (
           items.map((t) => (
             <span className="marquee__item" key={`${pass}-${t}`} aria-hidden={pass === 1}>
-              <i>{icon}</i>{t}
+              <Icon name="check" size={15} strokeWidth={2.2} />{t}
             </span>
           ))
         ))}
@@ -105,7 +114,9 @@ export function CtaBand({
               <h2 className="h-lg">{title}</h2>
               <p className="lead mx-auto">{sub}</p>
               <div className="ctaband__btns">
-                <a href={APP_STORE_URL} className="btn btn--primary btn--lg">Add to Shopify, free plan available</a>
+                <a href={APP_STORE_URL} className="btn btn--primary btn--lg">
+                  Add to Shopify, free plan available <Icon name="arrow" size={18} />
+                </a>
                 <Link to="/support" className="btn btn--ghost-light btn--lg">Talk to us</Link>
               </div>
             </div>
@@ -143,7 +154,7 @@ export function Stat({ value, label }) {
 export function StatCard({ icon, value, label, note }) {
   return (
     <div className="statcard card card--lit">
-      <span className="statcard__icon" aria-hidden="true">{icon}</span>
+      <span className="statcard__icon"><Icon name={icon} size={22} /></span>
       <span className="statcard__value">{value}</span>
       <span className="statcard__label">{label}</span>
       {note && <span className="statcard__note">{note}</span>}

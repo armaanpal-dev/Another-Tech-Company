@@ -10,7 +10,7 @@
 }
 .hero__glow {
   position: absolute; top: -260px; left: 50%; transform: translateX(-50%);
-  width: 1000px; height: 760px; pointer-events: none;
+  width: min(1000px, 130vw); height: 760px; pointer-events: none;
   background:
     radial-gradient(circle at 50% 45%, rgba(255,92,122,0.22), transparent 62%),
     radial-gradient(circle at 68% 30%, rgba(124,107,255,0.22), transparent 60%);
@@ -57,8 +57,14 @@
 .worksw { display: grid; gap: 16px; }
 .worksw__title { max-width: 22ch; margin: 0 auto; }
 
+/* ---- Intro paragraph ---- */
+.intro {
+  max-width: 74ch; margin: 0 auto; text-align: center;
+  font-size: clamp(1.06rem, 1.6vw, 1.3rem);
+}
+
 /* ---- Showcase cards (2 up) ---- */
-.showcase__card { display: block; padding: 20px 20px 26px; height: 100%; }
+.showcase__card { display: flex; flex-direction: column; padding: 20px 20px 26px; height: 100%; }
 .showcase__card .mm { margin-bottom: 24px; }
 .showcase__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 8px; }
 .showcase__card h3 { flex: 1; }
@@ -70,20 +76,27 @@
 .split__copy { min-width: 0; }
 .split__media { min-width: 0; }
 .split__btns { margin-top: 32px; }
-@media (max-width: 940px) {
-  .split { grid-template-columns: 1fr; gap: 44px; }
-  /* Lead with the visual on narrow screens, as the hero does. */
-  .split__media { order: -1; }
+
+/* ---- Compatibility chips ---- */
+.chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  color: var(--text); font-size: .95rem; font-weight: 500;
+  padding: 11px 20px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  transition: border-color var(--t), background var(--t), transform var(--t);
 }
+.chip:hover { border-color: rgba(79,227,193,0.45); background: var(--surface-2); transform: translateY(-2px); }
+.chip .icon { color: var(--mint); flex: none; }
 
 /* ---- Inline stat row under the stat cards ---- */
 .statrow {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 36px;
   padding-top: 30px; border-top: 1px solid var(--line);
   color: var(--text-3); font-size: .94rem;
 }
-.statrow span { display: inline-flex; align-items: center; gap: 9px; }
-.statrow i { font-style: normal; }
+.statrow span { display: inline-flex; align-items: center; gap: 10px; }
+.statrow .icon { color: var(--coral); flex: none; }
 
 /* ---- Feed demo strip ---- */
 .feeddemo__label {
@@ -93,7 +106,8 @@
 }
 
 /* ---- How-it-works steps ---- */
-.step { position: relative; }
+.step { position: relative; display: flex; flex-direction: column; }
+.steps .step { padding: 34px 30px; }
 .step__n {
   font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 1;
   background: var(--grad-cta); -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -101,11 +115,14 @@
 }
 .step h3 { margin-bottom: 10px; }
 .step p { color: var(--text-3); }
-.steps .step { padding: 32px 28px; }
 
 /* ---- Pricing preview ---- */
 .priceprev { display: flex; flex-direction: column; text-align: left; position: relative; }
 .priceprev--on { border-color: rgba(255,92,122,0.55); box-shadow: var(--shadow-pop); }
+.lightzone .priceprev--on {
+  border-color: rgba(255,92,122,0.5);
+  box-shadow: 0 1px 2px rgba(21,12,49,0.05), 0 24px 54px -22px rgba(255,92,122,0.45);
+}
 .priceprev__badge {
   position: absolute; top: -12px; left: 30px;
   background: var(--grad-cta); color: #fff; font-family: var(--font-display);
@@ -117,17 +134,26 @@
   color: var(--text); margin: 8px 0 18px; letter-spacing: -0.03em;
 }
 .priceprev__price span { font-size: .95rem; color: var(--text-3); font-weight: 500; }
-.priceprev__list { margin: 0 0 26px; flex: 1; }
-.priceprev__list li { position: relative; padding-left: 26px; margin-bottom: 10px; font-size: .95rem; color: var(--text-2); }
-.priceprev__list li::before { content: '✓'; position: absolute; left: 0; color: var(--mint); font-weight: 700; }
+.priceprev__list { margin: 0 0 26px; flex: 1; display: grid; gap: 10px; align-content: start; }
+.priceprev__list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: .95rem; color: var(--text-2);
+}
+.priceprev__list .icon { color: var(--mint); flex: none; margin-top: 3px; }
+.lightzone .priceprev__list .icon { color: #12A085; }
 
 @media (max-width: 940px) {
+  .split { grid-template-columns: 1fr; gap: 44px; }
+  /* Lead with the visual on narrow screens, as the hero does. */
+  .split__media { order: -1; }
   .feats.grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 620px) {
   .hero { padding: 60px 0 76px; }
   .hero__title { max-width: none; }
+  .hero__btns { width: 100%; }
   .hero__btns .btn { width: 100%; }
   .feats.grid-4 { grid-template-columns: 1fr; }
-  .statrow { flex-direction: column; align-items: center; gap: 12px; }
+  .statrow { flex-direction: column; align-items: center; gap: 14px; }
+  .steps .step { padding: 28px 24px; }
 }

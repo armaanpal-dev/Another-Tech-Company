@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Icon from './Icon';
 import './Interactive.css';
 
 /* ---------------------------------------------------------------------------
@@ -36,7 +37,9 @@ export function ShoppableDemo() {
         <div className="demo__screen">
           <div className="demo__shimmer" />
           <span className="demo__live"><i /> {reel.tag}</span>
-          <span className={`demo__cart ${bump ? 'is-bump' : ''}`} aria-live="polite">🛒 {cart}</span>
+          <span className={`demo__cart ${bump ? 'is-bump' : ''}`} aria-live="polite">
+            <Icon name="cart" size={13} strokeWidth={2} /> {cart}
+          </span>
 
           <div className="demo__rail" aria-hidden="true">
             {REELS.map((_, d) => <span key={d} className={`demo__dot ${d === i ? 'on' : ''}`} />)}
@@ -124,7 +127,7 @@ export function MockCart() {
           <span className="mm__pbtn">Add</span>
         </span>
       </span>
-      <span className="mm__cursor">👆</span>
+      <span className="mm__cursor"><Icon name="pointer" size={22} strokeWidth={1.9} /></span>
     </div>
   );
 }
@@ -159,11 +162,11 @@ export function MockChart() {
    No figures are shown, merchants see their own in the dashboard.
 --------------------------------------------------------------------------- */
 const STEPS = [
-  { icon: '👁️', t: 'Impression', d: 'The reel is shown to a shopper' },
-  { icon: '▶️', t: 'Play', d: 'They start watching' },
-  { icon: '👆', t: 'Click', d: 'They tap the product card' },
-  { icon: '🛒', t: 'Add to cart', d: 'The exact variant is added' },
-  { icon: '📈', t: 'Conversion', d: 'Derived as a rate from the events above' },
+  { icon: 'eye', t: 'Impression', d: 'The reel is shown to a shopper' },
+  { icon: 'video', t: 'Play', d: 'They start watching' },
+  { icon: 'pointer', t: 'Click', d: 'They tap the product card' },
+  { icon: 'cart', t: 'Add to cart', d: 'The exact variant is added' },
+  { icon: 'trending', t: 'Conversion', d: 'Derived as a rate from the events above' },
 ];
 
 export function FunnelViz() {
@@ -182,7 +185,7 @@ export function FunnelViz() {
         {STEPS.map((s, i) => (
           <li key={s.t} className={`flow__row ${i === active ? 'is-on' : ''}`}>
             <span className="flow__n">{i + 1}</span>
-            <span className="flow__icon" aria-hidden="true">{s.icon}</span>
+            <span className="flow__icon"><Icon name={s.icon} size={18} /></span>
             <span className="flow__body">
               <strong>{s.t}</strong>
               <em>{s.d}</em>
@@ -200,10 +203,10 @@ export function FunnelViz() {
    on its own.
 --------------------------------------------------------------------------- */
 const PLAYER_POINTS = [
-  { icon: '📱', t: 'A social-style player', d: 'Vertical, auto-playing and muted by default, the format shoppers already know how to use.' },
-  { icon: '🏷️', t: 'The product, on the video', d: 'A card overlays each reel with the title, live price, compare-at price, and an Add to Cart button.' },
-  { icon: '🎯', t: 'The exact variant shown', d: 'The colour and size in the clip is what gets added, so nobody ends up with the wrong option.' },
-  { icon: '🛒', t: 'Your own native cart', d: 'Adding opens the cart your theme actually uses, and updates the drawer and count automatically.' },
+  { icon: 'mobile', t: 'A social-style player', d: 'Vertical, auto-playing and muted by default, the format shoppers already know how to use.' },
+  { icon: 'tag', t: 'The product, on the video', d: 'A card overlays each reel with the title, live price, compare-at price, and an Add to Cart button.' },
+  { icon: 'target', t: 'The exact variant shown', d: 'The colour and size in the clip is what gets added, so nobody ends up with the wrong option.' },
+  { icon: 'cart', t: 'Your own native cart', d: 'Adding opens the cart your theme actually uses, and updates the drawer and count automatically.' },
 ];
 
 export function PlayerShowcase() {
@@ -228,12 +231,14 @@ export function PlayerShowcase() {
               aria-pressed={i === active}
               onClick={() => setActive(i)}
             >
-              <span className="player__icon" aria-hidden="true">{p.icon}</span>
+              <span className="player__icon"><Icon name={p.icon} size={20} /></span>
               <span className="player__body">
                 <strong>{p.t}</strong>
                 <em>{p.d}</em>
               </span>
-              <span className="player__mark" aria-hidden="true">✓</span>
+              <span className="player__mark" aria-hidden="true">
+                <Icon name="check" size={13} strokeWidth={2.6} />
+              </span>
             </button>
           </li>
         ))}
