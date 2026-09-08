@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { Reveal, VideoMock, CtaBand, Faq } from '../components/Shared';
+import { ShoppableDemo, ReelCarousel, FunnelViz } from '../components/Interactive';
 import { APP_STORE_URL } from '../config';
 import './Home.css';
 
@@ -156,6 +157,48 @@ export default function Home() {
           <div className="center mt-l">
             <Link to="/features" className="btn btn--ghost">Explore all features →</Link>
           </div>
+        </div>
+      </section>
+
+      {/* SEE IT IN ACTION (interactive demo) */}
+      <section className="section dark-bg">
+        <div className="container">
+          <div className="center home__head">
+            <Reveal><span className="eyebrow eyebrow--light">See it in action</span></Reveal>
+            <Reveal as="h2" className="h-lg mt-s">Watch, tap, add to cart</Reveal>
+            <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>This is the storefront widget. Try it: tap Add to cart, or use the arrows to switch reels.</p></Reveal>
+          </div>
+
+          <div className="home__demo mt-l">
+            <Reveal><ShoppableDemo /></Reveal>
+            <Reveal delay={100}>
+              <div className="home__demo-copy">
+                <h3 className="h-md">A social-style player, built to sell</h3>
+                <ul className="home__ticks">
+                  <li>Vertical, auto-playing, mute by default</li>
+                  <li>Product card with the live price and an Add to Cart button</li>
+                  <li>The exact variant shown is what gets added</li>
+                  <li>Adds to your theme’s own native cart</li>
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="home__feeddemo mt-xl">
+            <Reveal><p className="eyebrow eyebrow--light center" style={{ textAlign: 'center', marginBottom: 18 }}>The shoppable video feed</p></Reveal>
+            <Reveal><ReelCarousel /></Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ANALYTICS FUNNEL */}
+      <section className="section">
+        <div className="container">
+          <div className="center home__head">
+            <Reveal><span className="eyebrow">Analytics</span></Reveal>
+            <Reveal as="h2" className="h-lg mt-s">Measure what every reel does</Reveal>
+          </div>
+          <Reveal className="mt-l"><FunnelViz /></Reveal>
         </div>
       </section>
 

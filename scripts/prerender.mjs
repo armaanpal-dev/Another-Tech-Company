@@ -28,6 +28,7 @@ const routes = [
   '/about',
   '/support',
   '/privacy',
+  '/privacy/shoppable-video', // standalone per-app policy: noindex, not in sitemap or nav
   '/terms',
   '/affiliate-terms', // unlisted: reachable by direct URL only, noindex, not in sitemap or nav
   ...posts.map((p) => `/blog/${p.slug}`),

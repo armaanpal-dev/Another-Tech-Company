@@ -139,3 +139,11 @@
 .hiw-step:last-child { border-bottom: 0; }
 .hiw-step h3 { margin: 4px 0 8px; }
 .hiw-step .home__step-n { display: inline-block; margin-bottom: 0; }
+
+/* Privacy multi-app notice callout */
+.policy-notice {
+  background: var(--paper-2); border: 1px solid var(--line-dark);
+  border-left: 4px solid var(--coral); border-radius: var(--radius-sm);
+  padding: 16px 18px; margin-bottom: 28px;
+}
+.policy-notice p { margin: 0; }

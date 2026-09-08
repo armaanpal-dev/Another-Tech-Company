@@ -1,0 +1,110 @@
+/* ============================================================
+   Interactive marketing components: shoppable demo, reel row, funnel
+   Uses the site design tokens so it stays on-theme in one place.
+============================================================ */
+
+/* Shared gradient "video" backgrounds */
+.demo--a .demo__screen, .reelrow__card.demo--a { background: linear-gradient(200deg, #5B3FA8 0%, #C9577E 55%, #FF8A5C 100%); }
+.demo--b .demo__screen, .reelrow__card.demo--b { background: linear-gradient(200deg, #2A1A5C 0%, #5B3FA8 50%, #4FE3C1 120%); }
+.demo--c .demo__screen, .reelrow__card.demo--c { background: linear-gradient(200deg, #3A2270 0%, #C9577E 60%, #FFB35C 110%); }
+
+/* ---- Shoppable demo phone ---- */
+.demo { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.demo__phone {
+  width: 300px; aspect-ratio: 9/16; padding: 10px; border-radius: 32px;
+  background: linear-gradient(160deg, #2A1A5C, #1C1240);
+  box-shadow: 0 40px 90px -30px rgba(18,11,41,0.7), inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.demo__screen { position: relative; width: 100%; height: 100%; border-radius: 24px; overflow: hidden; transition: background var(--t); }
+.demo__shimmer { position: absolute; inset: 0; background: radial-gradient(120% 60% at 30% 0%, rgba(255,255,255,0.28), transparent 60%); }
+.demo__live {
+  position: absolute; top: 14px; left: 14px; display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(0,0,0,0.35); color: #fff; backdrop-filter: blur(6px);
+  padding: 5px 11px; border-radius: 999px; font-size: 11px; font-weight: 600;
+}
+.demo__live i { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); animation: pulse 1.8s infinite; }
+.demo__cart {
+  position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.95); color: var(--ink);
+  font-weight: 700; font-size: 12px; padding: 6px 12px; border-radius: 999px; transition: transform var(--t);
+}
+.demo__cart.is-bump { transform: scale(1.25); }
+.demo__rail { position: absolute; top: 52px; right: 14px; display: flex; flex-direction: column; gap: 6px; }
+.demo__dot { width: 4px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.35); transition: all var(--t); }
+.demo__dot.on { background: #fff; height: 26px; }
+.demo__nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 34px; height: 34px; border-radius: 50%; border: 0; cursor: pointer;
+  background: rgba(0,0,0,0.35); color: #fff; font-size: 20px; line-height: 1;
+  backdrop-filter: blur(6px); display: grid; place-items: center;
+}
+.demo__nav--prev { left: 10px; }
+.demo__nav--next { right: 10px; }
+.demo__nav:hover { background: rgba(0,0,0,0.55); }
+.demo__card {
+  position: absolute; left: 12px; right: 12px; bottom: 14px; display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); padding: 9px; border-radius: 14px;
+  box-shadow: 0 12px 30px -10px rgba(0,0,0,0.4);
+}
+.demo__thumb { width: 44px; height: 44px; border-radius: 9px; background: var(--grad-cta); flex: none; }
+.demo__meta { flex: 1; min-width: 0; }
+.demo__meta strong { display: block; font-size: 13px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.demo__variant { display: block; font-size: 11px; color: var(--slate); }
+.demo__price { font-size: 12.5px; color: var(--ink); font-weight: 700; }
+.demo__price s { color: var(--slate); font-weight: 500; margin-left: 5px; }
+.demo__add {
+  background: var(--grad-cta); color: #fff; border: 0; cursor: pointer; flex: none;
+  font-family: var(--font-display); font-weight: 600; font-size: 12px; padding: 10px 14px; border-radius: 9px;
+  transition: transform var(--t);
+}
+.demo__add:active { transform: scale(0.94); }
+.demo__toast {
+  position: absolute; left: 50%; bottom: 84px; transform: translateX(-50%);
+  background: var(--ink); color: #fff; font-size: 12px; font-weight: 600;
+  padding: 8px 16px; border-radius: 999px; animation: toastIn .25s ease;
+}
+@keyframes toastIn { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.demo__hint { color: var(--slate); font-size: .9rem; max-width: 34ch; text-align: center; }
+.dark-bg .demo__hint { color: #C9C0E8; }
+
+/* ---- Reel gallery carousel ---- */
+.reelrow {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 6px 4px 18px; -webkit-overflow-scrolling: touch;
+}
+.reelrow::-webkit-scrollbar { height: 8px; }
+.reelrow::-webkit-scrollbar-thumb { background: var(--line); border-radius: 999px; }
+.reelrow__card {
+  position: relative; flex: 0 0 auto; width: 190px; aspect-ratio: 9/16; scroll-snap-align: start;
+  border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-card);
+}
+.reelrow__shimmer { position: absolute; inset: 0; background: radial-gradient(120% 60% at 30% 0%, rgba(255,255,255,0.25), transparent 60%); }
+.reelrow__tag {
+  position: absolute; left: 9px; right: 9px; bottom: 9px; display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.95); padding: 7px 8px; border-radius: 12px;
+}
+.reelrow__tag strong { display: block; font-size: 11.5px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.reelrow__tag span { font-size: 11px; color: var(--slate); font-weight: 700; }
+.reelrow__tag div { flex: 1; min-width: 0; }
+.reelrow__add {
+  background: var(--grad-cta); color: #fff !important; font-size: 11px !important; font-weight: 700;
+  padding: 7px 11px; border-radius: 8px; flex: none;
+}
+
+/* ---- Conversion funnel ---- */
+.funnel { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.funnel__step { text-align: center; }
+.funnel__bar {
+  width: var(--w); min-width: 200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--grad-cta); color: #fff; padding: 14px 20px; border-radius: 12px;
+  font-family: var(--font-display); font-weight: 600; box-shadow: var(--shadow-card);
+}
+.funnel__icon { font-size: 1.05rem; }
+.funnel__desc { color: var(--slate); font-size: .88rem; margin-top: 5px; }
+.dark-bg .funnel__desc { color: #C9C0E8; }
+.funnel__note { margin-top: 14px; color: var(--slate); font-size: .85rem; text-align: center; max-width: 60ch; margin-left: auto; margin-right: auto; }
+.dark-bg .funnel__note { color: #B5ACD6; }
+
+@media (max-width: 560px) {
+  .demo__phone { width: 260px; }
+  .funnel__bar { width: 100% !important; min-width: 0; }
+}
