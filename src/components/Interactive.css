@@ -80,7 +80,7 @@
 .reelrow::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 999px; }
 .reelrow__card {
   position: relative; flex: 0 0 auto; width: 190px; aspect-ratio: 9/16; scroll-snap-align: start;
-  border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-card);
+  border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-lift);
 }
 .reelrow__shimmer { position: absolute; inset: 0; background: radial-gradient(120% 60% at 30% 0%, rgba(255,255,255,0.25), transparent 60%); }
 .reelrow__tag {
@@ -162,7 +162,7 @@
   position: relative; border-radius: var(--radius);
   border: 1px solid var(--line-2); padding: 22px;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-lift);
   overflow: hidden;
 }
 .flow::before {
@@ -205,7 +205,7 @@
 }
 .player__item.is-on {
   background: var(--surface); border-color: var(--line-2);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-lift);
 }
 .player__item.is-on::before {
   content: ''; position: absolute; left: 0; top: 22%; bottom: 22%; width: 3px;

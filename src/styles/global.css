@@ -2,44 +2,45 @@
    AnotherDev, Shoppable Video for Shopify
    Design tokens & global styles
 
-   The page runs on one deep ink-violet stage. Runs of sections
-   lift onto a light ground inside a .lightzone, which fades in
-   and out of the dark so the change of ground never reads as a
-   hard seam. Components are written against tokens only, so a
-   .lightzone re-points those tokens and everything inside it
-   flips automatically.
+   One continuous ink stage. Runs of sections lift onto a light
+   ground inside a .lightzone, whose own background ramps from
+   fully transparent to opaque paper. Because the ramp carries no
+   assumed dark colour, whatever the stage paints behind it shows
+   through at the edges and the change of ground never seams.
+
+   Components are written against tokens only, so a .lightzone
+   re-points those tokens and everything inside it flips ground.
    ============================================================ */
 
 :root {
-  /* Stage: depths of the same ink violet */
-  --ink:        #0C0720;   /* page floor, deepest */
-  --ink-2:      #120B29;   /* section band */
-  --ink-3:      #1C1240;   /* raised panel */
-  --ink-4:      #271A52;   /* hover / active panel */
+  /* Stage. Neutrals are biased toward the violet accent rather
+     than a flat grey, so the darks read as chosen. */
+  --ink:        #0B0616;   /* page floor */
+  --ink-2:      #120B29;   /* raised */
+  --ink-3:      #1C1240;   /* panel */
 
-  /* Accents */
-  --coral:      #FF5C7A;   /* primary accent + CTA */
-  --coral-2:    #FF8A5C;   /* gradient partner */
-  --violet:     #7C6BFF;   /* secondary accent */
-  --lilac:      #B8A9FF;   /* soft accent text */
-  --mint:       #4FE3C1;   /* success / highlight */
+  /* Accents, the client's existing palette */
+  --coral:      #FF5C7A;
+  --coral-2:    #FF8A5C;
+  --violet:     #7C6BFF;
+  --lilac:      #B8A9FF;
+  --mint:       #4FE3C1;
 
-  /* Text */
+  /* Text on the stage */
   --text:       #FFFFFF;
-  --text-2:     #D2CAEE;   /* body copy */
-  --text-3:     #9990BA;   /* meta, captions */
+  --text-2:     #C7BEE4;
+  --text-3:     #948BB4;
 
   /* Surfaces & lines */
-  --surface:    rgba(255,255,255,0.05);
-  --surface-2:  rgba(255,255,255,0.085);
-  --line:       rgba(255,255,255,0.13);
-  --line-2:     rgba(255,255,255,0.22);
+  --surface:    rgba(255,255,255,0.045);
+  --surface-2:  rgba(255,255,255,0.08);
+  --line:       rgba(255,255,255,0.11);
+  --line-2:     rgba(255,255,255,0.2);
   --input-bg:   rgba(0,0,0,0.25);
 
   /* Legacy aliases. Custom properties resolve where they are
-     declared, so every one of these is redeclared inside
-     .lightzone as well, or light sections would inherit dark values. */
-  --paper:      var(--ink);
+     declared, so each is redeclared inside .lightzone too. */
+  --paper:      #FAF7FF;
   --paper-2:    var(--ink-2);
   --slate:      var(--text-2);
   --line-dark:  var(--line);
@@ -47,15 +48,20 @@
   --grad-cta:   linear-gradient(100deg, var(--coral) 0%, var(--coral-2) 100%);
   --grad-text:  linear-gradient(92deg, var(--coral) 0%, var(--coral-2) 100%);
 
-  --font-display: 'Clash Display', 'Space Grotesk', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-body:    'Schibsted Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --maxw: 1200px;
-  --radius: 22px;
-  --radius-lg: 28px;
-  --radius-sm: 14px;
-  --shadow-card: 0 24px 60px -24px rgba(0,0,0,0.7);
-  --shadow-pop: 0 22px 60px -22px rgba(255,92,122,0.55);
+
+  /* Radius by role, not one value stamped on everything. */
+  --radius-lg: 26px;   /* feature panels, pricing, CTA */
+  --radius:    18px;   /* general blocks */
+  --radius-sm: 12px;   /* inputs, small chips, list rows */
+
+  /* Elevation by role. */
+  --shadow-lift: 0 24px 60px -26px rgba(0,0,0,0.75);
+  --shadow-pop:  0 22px 60px -24px rgba(255,92,122,0.5);
 
   --t: 0.28s cubic-bezier(.2,.8,.2,1);
 
@@ -64,8 +70,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* `clip` rather than `hidden`: it kills sideways scroll without
-   turning the root into a scroll container, so the sticky nav still works. */
+/* `clip` rather than `hidden`: kills sideways scroll without making
+   the root a scroll container, so the sticky nav still works. */
 html { scroll-behavior: smooth; background: var(--ink); overflow-x: clip; }
 
 body {
@@ -73,19 +79,20 @@ body {
   color: var(--text-2);
   background: var(--ink);
   background-image:
-    radial-gradient(1200px 700px at 80% -5%, rgba(124,107,255,0.16), transparent 60%),
-    radial-gradient(900px 600px at 0% 8%, rgba(255,92,122,0.10), transparent 55%);
+    radial-gradient(1100px 680px at 78% -6%, rgba(124,107,255,0.15), transparent 62%),
+    radial-gradient(860px 560px at 2% 6%, rgba(255,92,122,0.09), transparent 58%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.65;
+  line-height: 1.6;
   overflow-x: clip;
   max-width: 100%;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.08;
-  letter-spacing: -0.025em;
+  font-optical-sizing: auto;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
   font-weight: 700;
   color: var(--text);
   text-wrap: balance;
@@ -100,165 +107,164 @@ svg { display: block; }
 
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-.section { padding: 110px 0; position: relative; }
-.section--tight { padding: 72px 0; }
+.section { padding: 104px 0; position: relative; }
+.section--tight { padding: 68px 0; }
 
 /* ============================================================
    Light zone
-   A run of sections on a light ground. The ::before / ::after
-   ramps blend the dark stage into the light ground over 220px,
-   so there is no hard edge where the ground changes.
+   The ramp lives on the zone's own background and fades from
+   transparent to paper, so it composites over whatever the stage
+   is painting rather than guessing at it. Multiple stops keep the
+   fade off a straight line, which is what made it band before.
    ============================================================ */
 .lightzone {
   position: relative;
   isolation: isolate;
-  background: #FBF8FF;
-  color: #4B4468;
+  color: #4A4363;
 
   --text:      #150C31;
-  --text-2:    #4B4468;
-  --text-3:    #6F6890;
+  --text-2:    #4A4363;
+  --text-3:    #6E6790;
   --surface:   #FFFFFF;
-  --surface-2: #F5F1FF;
-  --line:      #E7E0F7;
-  --line-2:    #D8CEF0;
+  --surface-2: #F3EFFC;
+  --line:      #E6DFF6;
+  --line-2:    #D5CAEE;
   --input-bg:  #FFFFFF;
 
-  --paper:     #FBF8FF;
-  --paper-2:   #F5F1FF;
-  --slate:     #4B4468;
-  --line-dark: #E7E0F7;
+  --paper:     #FAF7FF;
+  --paper-2:   #F3EFFC;
+  --slate:     #4A4363;
+  --line-dark: #E6DFF6;
 
-  /* Real elevation reads better than a glow on a light ground. */
-  --shadow-card: 0 1px 2px rgba(21,12,49,0.05), 0 20px 46px -20px rgba(21,12,49,0.20);
-}
-.lightzone::before,
-.lightzone::after {
-  content: ''; position: absolute; left: 0; right: 0;
-  height: 220px; pointer-events: none; z-index: 0;
-}
-.lightzone::before {
-  top: 0;
-  background: linear-gradient(180deg, #0C0720 0%, rgba(12,7,32,0.62) 30%, rgba(12,7,32,0.22) 62%, rgba(251,248,255,0) 100%);
-}
-.lightzone::after {
-  bottom: 0;
-  background: linear-gradient(0deg, #0C0720 0%, rgba(12,7,32,0.62) 30%, rgba(12,7,32,0.22) 62%, rgba(251,248,255,0) 100%);
-}
-/* Content sits above the ramps. */
-.lightzone > * { position: relative; z-index: 1; }
-/* Clear the ramps so no heading lands in the blend. */
-.lightzone > .section:first-child { padding-top: 210px; }
-.lightzone > .section:last-child { padding-bottom: 210px; }
-.lightzone > .section:first-child.section--tight { padding-top: 200px; }
-.lightzone > .section:last-child.section--tight { padding-bottom: 200px; }
+  --shadow-lift: 0 1px 2px rgba(21,12,49,0.05), 0 22px 48px -22px rgba(21,12,49,0.22);
 
-/* A soft tint used to separate neighbouring sections on the dark
-   stage. Deliberately borderless, so nothing reads as a divider. */
-.band { background: radial-gradient(1200px 520px at 50% 0%, rgba(124,107,255,0.09), transparent 72%); }
-.lightzone .band { background: radial-gradient(1100px 500px at 50% 0%, rgba(124,107,255,0.055), transparent 72%); }
+  background: linear-gradient(
+    180deg,
+    rgba(250,247,255,0)    0px,
+    rgba(250,247,255,0.35) 70px,
+    rgba(250,247,255,0.78) 140px,
+    rgba(250,247,255,0.96) 190px,
+    rgba(250,247,255,1)    230px,
+    rgba(250,247,255,1)    calc(100% - 230px),
+    rgba(250,247,255,0.96) calc(100% - 190px),
+    rgba(250,247,255,0.78) calc(100% - 140px),
+    rgba(250,247,255,0.35) calc(100% - 70px),
+    rgba(250,247,255,0)    100%
+  );
+}
+/* Clear the ramp so no heading lands in the fade. */
+.lightzone > .section:first-child { padding-top: 190px; }
+.lightzone > .section:last-child { padding-bottom: 190px; }
+.lightzone > .section:first-child.section--tight { padding-top: 175px; }
+.lightzone > .section:last-child.section--tight { padding-bottom: 175px; }
+
+/* A whisper of tint to separate neighbouring sections. Borderless
+   on purpose, so nothing reads as a divider. */
+.band { background: radial-gradient(1100px 500px at 50% 0%, rgba(124,107,255,0.08), transparent 72%); }
+.lightzone .band { background: radial-gradient(1000px 460px at 50% 0%, rgba(124,107,255,0.05), transparent 72%); }
 
 /* ---- Type scale ---- */
-.h-xl { font-size: clamp(2.5rem, 5.6vw, 4.3rem); }
-.h-lg { font-size: clamp(2rem, 4vw, 3.1rem); }
-.h-md { font-size: clamp(1.4rem, 2.4vw, 1.85rem); }
-.h-sm { font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.01em; color: var(--text); }
+.h-xl { font-size: clamp(2.6rem, 5.8vw, 4.5rem); font-weight: 800; letter-spacing: -0.038em; }
+.h-lg { font-size: clamp(2rem, 4vw, 3.05rem); letter-spacing: -0.032em; }
+.h-md { font-size: clamp(1.35rem, 2.3vw, 1.75rem); letter-spacing: -0.024em; }
+.h-sm { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; line-height: 1.25; letter-spacing: -0.018em; color: var(--text); }
 
-.lead { font-size: clamp(1.02rem, 1.5vw, 1.18rem); color: var(--text-2); max-width: 62ch; }
+.lead { font-size: clamp(1.02rem, 1.5vw, 1.16rem); color: var(--text-2); max-width: 62ch; line-height: 1.65; }
+
+/* Data voice: figures, prices, sizes. */
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 
 /* Accent words inside a headline */
 .hl { color: var(--coral); }
 .hl--violet { color: var(--violet); }
-.hl--mint { color: #17B899; }
-.lightzone .hl--mint { color: #12A085; }
-.hl--grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hl--mint { color: #16B296; }
+.lightzone .hl--mint { color: #0E9077; }
 
-/* ---- Badge pill above a section title ---- */
+/* ---- Micro label above a section title ---- */
 .badge {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 8px 16px; border-radius: 999px;
-  background: var(--surface); border: 1px solid var(--line);
-  font-family: var(--font-display); font-weight: 600; font-size: .82rem;
-  letter-spacing: .04em; color: var(--text);
-  backdrop-filter: blur(8px);
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-weight: 500; font-size: .72rem;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--text-3);
 }
 .badge .icon { color: var(--coral); }
-.badge--coral { color: var(--coral); border-color: rgba(255,92,122,0.32); background: rgba(255,92,122,0.09); }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--coral);
 }
 .eyebrow--light { color: var(--lilac); }
 .lightzone .eyebrow--light { color: var(--violet); }
-.eyebrow::before { content: ''; width: 22px; height: 2px; background: currentColor; border-radius: 2px; }
 
 /* ---- Section heading block ---- */
-.shead { max-width: 760px; margin: 0 auto; text-align: center; }
-.shead h2 { margin-top: 18px; }
-.shead .lead { margin: 16px auto 0; text-align: center; max-width: 58ch; }
-.shead--left { margin: 0; text-align: left; }
+.shead { max-width: 720px; margin: 0 auto; text-align: center; }
+.shead h2 { margin-top: 14px; }
+.shead .lead { margin: 18px auto 0; text-align: center; max-width: 56ch; }
+.shead--left { margin: 0; text-align: left; max-width: 46ch; }
 .shead--left .lead { margin-left: 0; text-align: left; }
+
+/* A heading that sits beside its supporting copy rather than above
+   it, so not every section on the page is a centred stack. */
+.shead-split {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 20px 64px; align-items: end;
+}
+.shead-split .shead { text-align: left; margin: 0; max-width: none; }
+.shead-split .lead { text-align: left; margin: 0; }
+@media (max-width: 860px) {
+  .shead-split { grid-template-columns: 1fr; gap: 18px; align-items: start; }
+}
 
 /* ---- Buttons ---- */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  font-family: var(--font-display); font-weight: 600; font-size: .98rem;
-  padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--font-display); font-weight: 600; font-size: .96rem;
+  letter-spacing: -0.01em;
+  padding: 13px 24px; border-radius: 999px; border: 0; cursor: pointer;
   text-align: center;
   transition: transform var(--t), box-shadow var(--t), background var(--t), border-color var(--t), color var(--t);
 }
 .btn--primary { background: var(--grad-cta); color: #fff; box-shadow: var(--shadow-pop); }
-.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 26px 70px -20px rgba(255,92,122,0.7); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 26px 66px -22px rgba(255,92,122,0.65); }
 .btn--ghost,
 .btn--ghost-light {
-  background: var(--surface); color: var(--text);
-  border: 1.5px solid var(--line-2);
-  backdrop-filter: blur(8px);
+  background: transparent; color: var(--text);
+  border: 1px solid var(--line-2);
 }
 .btn--ghost:hover,
-.btn--ghost-light:hover { background: var(--surface-2); border-color: var(--coral); color: var(--coral); }
-.btn--lg { padding: 17px 32px; font-size: 1.05rem; }
+.btn--ghost-light:hover { border-color: var(--coral); color: var(--coral); }
+.btn--lg { padding: 16px 30px; font-size: 1.02rem; }
 .btn .icon { flex: none; }
 
-/* Circular arrow affordance on cards */
+/* Circular arrow affordance */
 .arrowbtn {
-  width: 42px; height: 42px; flex: none; border-radius: 50%;
+  width: 40px; height: 40px; flex: none; border-radius: 50%;
   display: grid; place-items: center;
   background: var(--grad-cta); color: #fff;
-  box-shadow: 0 12px 30px -12px rgba(255,92,122,0.75);
+  box-shadow: 0 10px 26px -12px rgba(255,92,122,0.7);
   transition: transform var(--t);
 }
 
-/* ---- Cards ---- */
+/* ---- Cards ----
+   Deliberately not the default wrapper. A card is for something
+   that is genuinely a separate object: a plan, an article, a
+   showcase panel. Lists of features are not cards. */
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 30px;
-  backdrop-filter: blur(10px);
   transition: transform var(--t), box-shadow var(--t), border-color var(--t), background var(--t);
 }
 .card:hover {
-  transform: translateY(-4px);
-  background: var(--surface-2);
-  border-color: rgba(255,92,122,0.45);
-  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+  border-color: rgba(255,92,122,0.4);
+  box-shadow: var(--shadow-lift);
 }
-.lightzone .card { box-shadow: 0 1px 2px rgba(21,12,49,0.04); }
-.lightzone .card:hover { background: #fff; box-shadow: var(--shadow-card); }
-
-/* Card with a lit top edge */
-.card--lit { position: relative; overflow: hidden; }
-.card--lit::before {
-  content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,92,122,0.75), transparent);
-  opacity: 0; transition: opacity var(--t);
-}
-.card--lit:hover::before { opacity: 1; }
+.lightzone .card { background: #fff; box-shadow: 0 1px 2px rgba(21,12,49,0.04); }
+.lightzone .card:hover { box-shadow: var(--shadow-lift); }
 
 /* ---- Grids ---- */
 .grid { display: grid; gap: 24px; }
@@ -266,11 +272,8 @@ svg { display: block; }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
-/* Equal-height cards.
-   Every card in a grid is wrapped in a .reveal for the scroll
-   animation, so the wrapper is the real grid item. Without this the
-   wrapper stretches but the card inside keeps its content height,
-   which is what left the steps and pricing cards ragged. */
+/* Equal-height items. Each card is wrapped in a .reveal for the
+   scroll animation, so the wrapper is the real grid item. */
 .grid > .reveal,
 .plans > .reveal,
 .blog-grid > .reveal,
@@ -288,70 +291,68 @@ svg { display: block; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 .mt-s { margin-top: 16px; } .mt-m { margin-top: 28px; } .mt-l { margin-top: 52px; } .mt-xl { margin-top: 72px; }
 
-/* Legacy hook from the old light/dark split. Colour now comes from
-   the zone, so this only needs to not fight it. */
 .dark-bg { color: var(--text); }
 .dark-bg h1, .dark-bg h2, .dark-bg h3 { color: var(--text); }
 .dark-bg .lead { color: var(--text-2); }
 
-.pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 15px; border-radius: 999px; font-size: 13px; font-weight: 600;
-  background: var(--surface); border: 1px solid var(--line); color: var(--text-2);
-}
-
-/* ---- Feature / placement cards ---- */
+/* ---- Feature / placement blocks (unboxed) ----
+   Open space and a coloured mark carry these, not a border and a
+   fill on every one. */
 .feat { display: flex; flex-direction: column; }
 .feat__icon {
   display: inline-grid; place-items: center;
-  width: 50px; height: 50px; border-radius: 14px; margin-bottom: 20px;
-  background: var(--surface-2); border: 1px solid var(--line);
+  width: 44px; height: 44px; border-radius: 12px; margin-bottom: 18px;
+  background: rgba(255,92,122,0.11);
+  border: 1px solid rgba(255,92,122,0.22);
   color: var(--coral);
-  transition: border-color var(--t), transform var(--t), background var(--t), color var(--t);
+  transition: background var(--t), border-color var(--t), transform var(--t);
 }
-.feat:hover .feat__icon { border-color: rgba(255,92,122,0.5); transform: translateY(-2px); }
+.feat:hover .feat__icon { background: rgba(255,92,122,0.18); transform: translateY(-2px); }
 .feat h3 { margin-bottom: 8px; }
-.feat p { color: var(--text-3); font-size: .94rem; }
+.feat p { color: var(--text-3); font-size: .93rem; line-height: 1.6; }
 .feat__where {
-  display: inline-flex; align-self: flex-start; margin: 4px 0 10px;
-  font-size: .74rem; font-weight: 600; letter-spacing: .04em;
-  color: var(--violet); background: rgba(124,107,255,.12); border: 1px solid rgba(124,107,255,.26);
-  padding: 4px 11px; border-radius: 999px;
+  display: inline-flex; align-self: flex-start; margin: 2px 0 10px;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--violet);
 }
-.feats .feat { padding: 26px 24px; }
 
 /* ---- Marquee ---- */
 .marquee {
   overflow: hidden; position: relative;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
-.marquee__track { display: flex; width: max-content; gap: 16px; animation: marquee 38s linear infinite; }
-.marquee--rev .marquee__track { animation-direction: reverse; animation-duration: 46s; }
+.marquee__track { display: flex; width: max-content; gap: 14px; animation: marquee 44s linear infinite; }
+.marquee--rev .marquee__track { animation-direction: reverse; animation-duration: 52s; }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee__item {
-  display: inline-flex; align-items: center; gap: 10px; flex: none;
-  padding: 13px 22px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 9px; flex: none;
+  padding: 11px 20px; border-radius: 999px;
   background: var(--surface); border: 1px solid var(--line);
-  color: var(--text); font-family: var(--font-display); font-weight: 600; font-size: .95rem;
+  color: var(--text-2); font-size: .92rem; font-weight: 500;
   white-space: nowrap;
 }
 .marquee__item .icon { color: var(--mint); }
 
 /* ---- Accessibility ---- */
-:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--coral); color:#fff; padding: 10px 16px; border-radius: 8px; z-index: 999; }
 .skip-link:focus { left: 8px; }
 
-/* ---- Animations ---- */
-@keyframes floatUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-.reveal { opacity: 0; }
-.reveal.in { animation: floatUp .7s cubic-bezier(.2,.8,.2,1) forwards; }
+/* ---- Reveal on scroll ----
+   Resting state is visible. Only elements that start below the fold
+   are armed, so the page's first frame is complete rather than a
+   set of empty boxes waiting on an observer. */
+@keyframes floatUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.reveal { opacity: 1; }
+.reveal.is-armed { opacity: 0; }
+.reveal.in { animation: floatUp .68s cubic-bezier(.2,.8,.2,1) both; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; }
+  .reveal, .reveal.is-armed { opacity: 1; }
   .marquee__track { transform: none; }
 }
 
@@ -359,17 +360,16 @@ svg { display: block; }
 @media (max-width: 940px) {
   .grid-4 { grid-template-columns: repeat(2,1fr); }
   .grid-3 { grid-template-columns: 1fr; }
-  .section { padding: 78px 0; }
-  .section--tight { padding: 56px 0; }
-  .lightzone::before, .lightzone::after { height: 150px; }
-  .lightzone > .section:first-child { padding-top: 150px; }
-  .lightzone > .section:last-child { padding-bottom: 150px; }
-  .lightzone > .section:first-child.section--tight { padding-top: 140px; }
-  .lightzone > .section:last-child.section--tight { padding-bottom: 140px; }
+  .section { padding: 74px 0; }
+  .section--tight { padding: 54px 0; }
+  .lightzone > .section:first-child { padding-top: 140px; }
+  .lightzone > .section:last-child { padding-bottom: 140px; }
+  .lightzone > .section:first-child.section--tight { padding-top: 130px; }
+  .lightzone > .section:last-child.section--tight { padding-bottom: 130px; }
 }
 @media (max-width: 620px) {
   .grid-2, .grid-4 { grid-template-columns: 1fr; }
   .container { padding: 0 20px; }
-  .btn { font-size: .94rem; padding: 13px 22px; }
-  .btn--lg { padding: 15px 24px; font-size: .98rem; }
+  .btn { font-size: .92rem; padding: 12px 20px; }
+  .btn--lg { padding: 14px 22px; font-size: .96rem; }
 }

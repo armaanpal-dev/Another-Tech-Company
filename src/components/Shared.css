@@ -54,7 +54,7 @@
     linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
   padding: 88px 32px;
   text-align: center;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-lift);
 }
 .ctaband__inner { position: relative; z-index: 1; }
 .ctaband__panel h2 { max-width: 20ch; margin: 0 auto 18px; }
@@ -90,8 +90,9 @@
   color: var(--coral); margin-bottom: 26px;
 }
 .statcard__value {
-  font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em;
-  font-size: clamp(2.4rem, 4.4vw, 3.3rem); line-height: 1; color: var(--text);
+  font-family: var(--font-mono); font-weight: 600; letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1; color: var(--text);
 }
 .statcard__label { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--text); margin-top: 14px; }
 .statcard__note { color: var(--text-3); font-size: .9rem; margin-top: 6px; }

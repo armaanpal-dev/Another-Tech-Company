@@ -27,9 +27,15 @@
 }
 .hero__inner { position: relative; display: flex; flex-direction: column; align-items: center; }
 
-.badge--shopify { gap: 12px; padding: 9px 18px; font-size: .78rem; letter-spacing: .1em; }
-.badge--shopify img { width: 18px; height: 18px; border-radius: 5px; }
-.badge__rule { width: 1px; height: 15px; background: var(--line-2); }
+/* The one badge that is a pill: it carries the Shopify mark, so it
+   reads as a credential rather than a section label. */
+.badge--shopify {
+  gap: 11px; padding: 8px 16px 8px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  color: var(--text-2); font-size: .68rem; letter-spacing: .18em;
+}
+.badge--shopify img { width: 17px; height: 17px; border-radius: 5px; }
+.badge__rule { width: 1px; height: 13px; background: var(--line-2); }
 
 .hero__title { margin-top: 26px; max-width: 16ch; }
 .hero__lead { margin: 24px auto 0; text-align: center; max-width: 60ch; }
@@ -77,6 +83,10 @@
 .split__media { min-width: 0; }
 .split__btns { margin-top: 32px; }
 
+/* Unboxed lists carry themselves on space rather than borders. */
+.feats { gap: 46px 34px; }
+.placements-grid { gap: 46px 34px; }
+
 /* ---- Compatibility chips ---- */
 .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .chip {
@@ -100,18 +110,18 @@
 
 /* ---- Feed demo strip ---- */
 .feeddemo__label {
-  font-family: var(--font-display); font-weight: 600; font-size: .82rem;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--text-3);
-  margin-bottom: 22px;
+  font-family: var(--font-mono); font-weight: 500; font-size: .72rem;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--text-3);
+  margin-bottom: 24px;
 }
 
 /* ---- How-it-works steps ---- */
 .step { position: relative; display: flex; flex-direction: column; }
 .steps .step { padding: 34px 30px; }
 .step__n {
-  font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: 1;
-  background: var(--grad-cta); -webkit-background-clip: text; background-clip: text; color: transparent;
-  display: block; margin-bottom: 16px;
+  font-family: var(--font-mono); font-weight: 600; font-size: 1.05rem; line-height: 1;
+  letter-spacing: .1em; color: var(--coral);
+  display: block; margin-bottom: 18px;
 }
 .step h3 { margin-bottom: 10px; }
 .step p { color: var(--text-3); }
@@ -130,8 +140,9 @@
 }
 .priceprev__name { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--text); }
 .priceprev__price {
-  font-family: var(--font-display); font-weight: 700; font-size: 2.4rem;
-  color: var(--text); margin: 8px 0 18px; letter-spacing: -0.03em;
+  font-family: var(--font-mono); font-weight: 600; font-size: 2.2rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text); margin: 10px 0 20px; letter-spacing: -0.04em;
 }
 .priceprev__price span { font-size: .95rem; color: var(--text-3); font-weight: 500; }
 .priceprev__list { margin: 0 0 26px; flex: 1; display: grid; gap: 10px; align-content: start; }

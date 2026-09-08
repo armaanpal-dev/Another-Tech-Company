@@ -18,16 +18,27 @@ export function Faq({ q, a }) {
   );
 }
 
-/* Reveal-on-scroll wrapper */
+/* Reveal-on-scroll wrapper.
+
+   The resting state is visible. Only elements that begin below the
+   fold get armed into their hidden start state, so the first frame
+   of the page is complete rather than a grid of empty boxes waiting
+   on an observer. */
 export function Reveal({ children, as: Tag = 'div', delay = 0, className = '' }) {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+
+    el.classList.add('is-armed');
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
           el.style.animationDelay = `${delay}ms`;
+          el.classList.remove('is-armed');
           el.classList.add('in');
           io.unobserve(el);
         }

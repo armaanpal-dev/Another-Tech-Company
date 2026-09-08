@@ -279,15 +279,24 @@ export default function Home() {
         {/* FULL FEATURE GRID */}
         <section className="section">
           <div className="container">
-            <SectionHead
-              badge="The full toolkit"
-              icon="sliders"
-              title={<>Everything the app <span className="hl">actually does</span></>}
-            />
+            <div className="shead-split">
+              <SectionHead
+                align="left"
+                badge="The full toolkit"
+                icon="sliders"
+                title={<>Everything the app <span className="hl">actually does</span></>}
+              />
+              <Reveal delay={110}>
+                <p className="lead">
+                  Eight things the app does the day you install it, from placing a reel to
+                  reading what it earned. No theme code, and nothing that costs page speed.
+                </p>
+              </Reveal>
+            </div>
             <div className="grid grid-4 mt-l feats">
               {features.map((f, i) => (
                 <Reveal key={f.t} delay={(i % 4) * 60}>
-                  <div className="card feat">
+                  <div className="feat">
                     <span className="feat__icon"><Icon name={f.icon} size={22} /></span>
                     <h3 className="h-sm">{f.t}</h3>
                     <p>{f.d}</p>
@@ -307,10 +316,10 @@ export default function Home() {
               title={<>Put video where shoppers <span className="hl">decide</span></>}
               sub="Five ways to show shoppable video across your store, from the homepage to a player that follows shoppers everywhere."
             />
-            <div className="grid grid-3 mt-l">
+            <div className="grid grid-3 mt-l placements-grid">
               {placements.map((p, i) => (
                 <Reveal key={p.t} delay={(i % 3) * 60}>
-                  <div className="card feat">
+                  <div className="feat">
                     <span className="feat__icon"><Icon name={p.icon} size={22} /></span>
                     <h3 className="h-sm">{p.t}</h3>
                     <span className="feat__where">{p.where}</span>
@@ -350,12 +359,17 @@ export default function Home() {
       {/* ---------- BY THE NUMBERS (dark) ---------- */}
       <section className="section band">
         <div className="container">
-          <SectionHead
-            badge="What you get"
-            icon="trending"
-            title={<>The short version, in <span className="hl">numbers</span></>}
-            sub="No lock-in, no theme surgery, and nothing that costs you page speed."
-          />
+          <div className="shead-split">
+            <SectionHead
+              align="left"
+              badge="What you get"
+              icon="trending"
+              title={<>The short version, in <span className="hl">numbers</span></>}
+            />
+            <Reveal delay={110}>
+              <p className="lead">No lock-in and no theme surgery. Install it, place a reel, and take it back out again without leaving a trace in your theme.</p>
+            </Reveal>
+          </div>
 
           <div className="grid grid-3 mt-l">
             <Reveal><StatCard icon="pin" value="5" label="Placements" note="Feed, product reels, smart tags, floating, page galleries" /></Reveal>
@@ -450,12 +464,17 @@ export default function Home() {
       {/* ---------- BLOG PREVIEW (dark) ---------- */}
       <section className="section">
         <div className="container">
-          <SectionHead
-            badge="From the blog"
-            icon="page"
-            title={<>Guides on <span className="hl">video commerce</span></>}
-            sub="Practical walkthroughs for Shopify merchants adding video to the storefront."
-          />
+          <div className="shead-split">
+            <SectionHead
+              align="left"
+              badge="From the blog"
+              icon="page"
+              title={<>Guides on <span className="hl">video commerce</span></>}
+            />
+            <Reveal delay={110}>
+              <p className="lead">Practical walkthroughs for Shopify merchants adding video to the storefront.</p>
+            </Reveal>
+          </div>
           <div className="grid grid-3 mt-l">
             {latest.map((p, i) => (
               <Reveal key={p.slug} delay={i * 70}>
