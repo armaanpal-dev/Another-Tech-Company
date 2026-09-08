@@ -15,6 +15,7 @@ import About from './pages/About';
 import Support from './pages/Support';
 import Privacy from './pages/Privacy';
 import ShoppableVideoPrivacy from './pages/ShoppableVideoPrivacy';
+import SearchPrivacy from './pages/SearchPrivacy';
 import Terms from './pages/Terms';
 import AffiliateTerms from './pages/AffiliateTerms';
 import NotFound from './pages/NotFound';
@@ -46,6 +47,7 @@ export default function App() {
           <Route path="/contact" element={<Navigate to="/support" replace />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/privacy/shoppable-video" element={<ShoppableVideoPrivacy />} />
+          <Route path="/privacy/search" element={<SearchPrivacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/affiliate-terms" element={<AffiliateTerms />} />
           <Route path="*" element={<NotFound />} />
