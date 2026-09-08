@@ -43,15 +43,14 @@ export default function Blog() {
           <div className="blog-grid">
             {posts.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 3) * 70}>
-                <article className="post">
-                  <Link to={`/blog/${p.slug}`} className={`post__cover ${p.cover}`} aria-label={p.title} />
-                  <div className="post__body">
-                    <span className="post__meta">{p.cat} · {p.date} · {p.read} read</span>
-                    <h3>{p.title}</h3>
-                    <p>{p.excerpt}</p>
-                    <Link to={`/blog/${p.slug}`} className="post__link">Read article →</Link>
-                  </div>
-                </article>
+                <Link to={`/blog/${p.slug}`} className="post">
+                  <span className={`post__cover ${p.cover}`} aria-hidden="true" />
+                  <span className="post__cat">{p.cat}</span>
+                  <span className="post__meta">{p.date} · {p.read} read</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.excerpt}</p>
+                  <span className="post__link">Read article →</span>
+                </Link>
               </Reveal>
             ))}
           </div>

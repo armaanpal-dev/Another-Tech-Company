@@ -47,8 +47,8 @@ export default function Compatibility() {
           <div className="grid grid-2">
             {blocks.map((b, i) => (
               <Reveal key={b.t} delay={i * 80}>
-                <div className="card home__feat">
-                  <span className="home__feat-icon">{b.icon}</span>
+                <div className="card feat">
+                  <span className="feat__icon">{b.icon}</span>
                   <h3 className="h-md">{b.t}</h3>
                   <p>{b.d}</p>
                 </div>
@@ -58,9 +58,9 @@ export default function Compatibility() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
+      <section className="section band">
         <div className="container">
-          <div className="center home__head">
+          <div className="shead">
             <Reveal><span className="eyebrow">Why it matters</span></Reveal>
             <Reveal as="h2" className="h-lg mt-s">Add to cart that does not break</Reveal>
             <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>

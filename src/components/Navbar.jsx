@@ -5,10 +5,10 @@ import './Navbar.css';
 
 const links = [
   { to: '/features', label: 'Features' },
-  { to: '/pricing', label: 'Pricing' },
   { to: '/how-it-works', label: 'How it works' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: '/blog', label: 'Blog' },
   { to: '/faq', label: 'FAQ' },
-  { to: '/support', label: 'Support' },
 ];
 
 export default function Navbar() {
@@ -31,7 +31,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+    <header className={`nav ${scrolled ? 'nav--scrolled' : ''} ${open ? 'nav--open' : ''}`}>
       <div className="container nav__inner">
         <Link to="/" className="nav__logo" aria-label="AnotherDev home">
           <img className="nav__mark" src="/logo.svg" alt="" width="30" height="30" />
@@ -47,6 +47,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__cta">
+          <Link to="/support" className="btn btn--ghost nav__demo">Talk to us</Link>
           <a href={APP_STORE_URL} className="btn btn--primary">Add to Shopify</a>
         </div>
 
@@ -60,6 +61,7 @@ export default function Navbar() {
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className="nav__mlink">{l.label}</NavLink>
           ))}
+          <NavLink to="/support" className="nav__mlink">Support</NavLink>
           <a href={APP_STORE_URL} className="btn btn--primary nav__mcta">Add to Shopify</a>
         </div>
       )}

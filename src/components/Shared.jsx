@@ -38,6 +38,35 @@ export function Reveal({ children, as: Tag = 'div', delay = 0, className = '' })
   return <Tag ref={ref} className={`reveal ${className}`}>{children}</Tag>;
 }
 
+/* Centred (or left-aligned) section heading: badge pill, title, lead. */
+export function SectionHead({ badge, icon, title, sub, align = 'center', className = '' }) {
+  return (
+    <div className={`shead ${align === 'left' ? 'shead--left' : ''} ${className}`}>
+      {badge && <Reveal><span className="badge">{icon && <i>{icon}</i>}{badge}</span></Reveal>}
+      <Reveal as="h2" className="h-lg" delay={60}>{title}</Reveal>
+      {sub && <Reveal delay={110}><p className="lead">{sub}</p></Reveal>}
+    </div>
+  );
+}
+
+/* Endless scrolling chip row. The list is rendered twice so the
+   translate(-50%) loop is seamless. */
+export function Marquee({ items, reverse = false, icon = '✓' }) {
+  return (
+    <div className={`marquee ${reverse ? 'marquee--rev' : ''}`} aria-label={items.join(', ')}>
+      <div className="marquee__track">
+        {[0, 1].map((pass) => (
+          items.map((t) => (
+            <span className="marquee__item" key={`${pass}-${t}`} aria-hidden={pass === 1}>
+              <i>{icon}</i>{t}
+            </span>
+          ))
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* Phone-style shoppable video mockup (pure CSS/SVG, no assets) */
 export function VideoMock({ label = 'Now playing', price = '$48', product = 'Linen Wrap Dress' }) {
   return (
@@ -61,21 +90,27 @@ export function VideoMock({ label = 'Now playing', price = '$48', product = 'Lin
   );
 }
 
-/* Reusable closing CTA band */
+/* Reusable closing CTA, as an inset panel rather than a full-bleed band. */
 export function CtaBand({
   title = 'Ready to make your store shoppable?',
   sub = 'Install free in two minutes. No code, no theme edits, no developer required.',
 }) {
   return (
     <section className="ctaband">
-      <div className="container ctaband__inner">
-        <div className="ctaband__glow" aria-hidden="true" />
-        <h2 className="h-lg">{title}</h2>
-        <p className="lead mx-auto" style={{ textAlign: 'center' }}>{sub}</p>
-        <div className="ctaband__btns">
-          <a href={APP_STORE_URL} className="btn btn--primary btn--lg">Add to Shopify, free plan available</a>
-          <Link to="/support" className="btn btn--ghost-light btn--lg">Talk to us</Link>
-        </div>
+      <div className="container">
+        <Reveal>
+          <div className="ctaband__panel">
+            <div className="ctaband__glow" aria-hidden="true" />
+            <div className="ctaband__inner">
+              <h2 className="h-lg">{title}</h2>
+              <p className="lead mx-auto">{sub}</p>
+              <div className="ctaband__btns">
+                <a href={APP_STORE_URL} className="btn btn--primary btn--lg">Add to Shopify, free plan available</a>
+                <Link to="/support" className="btn btn--ghost-light btn--lg">Talk to us</Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -100,6 +135,18 @@ export function Stat({ value, label }) {
     <div className="stat">
       <span className="stat__value">{value}</span>
       <span className="stat__label">{label}</span>
+    </div>
+  );
+}
+
+/* Large stat card: icon tile, headline figure, label, supporting line. */
+export function StatCard({ icon, value, label, note }) {
+  return (
+    <div className="statcard card card--lit">
+      <span className="statcard__icon" aria-hidden="true">{icon}</span>
+      <span className="statcard__value">{value}</span>
+      <span className="statcard__label">{label}</span>
+      {note && <span className="statcard__note">{note}</span>}
     </div>
   );
 }

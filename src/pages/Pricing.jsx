@@ -103,7 +103,7 @@ export default function Pricing() {
 
       <section className="section">
         <div className="container">
-          <div className="center home__head"><Reveal as="h2" className="h-lg">Frequently asked questions</Reveal></div>
+          <div className="shead"><Reveal as="h2" className="h-lg">Frequently asked questions</Reveal></div>
           <div className="faq mt-l">
             {faqs.map(([q, a]) => <Faq key={q} q={q} a={a} />)}
           </div>

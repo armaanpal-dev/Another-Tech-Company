@@ -84,8 +84,8 @@ export default function Support() {
         <div className="container">
           <div className="contact-grid">
             <Reveal>
-              <div>
-                <h3 className="h-md" style={{ marginBottom: 18 }}>Send us a message</h3>
+              <div className="contact-form">
+                <h3 className="h-md" style={{ marginBottom: 22 }}>Send us a message</h3>
                 <div className="form-field">
                   <label htmlFor="c-name">Name</label>
                   <input id="c-name" value={form.name} onChange={update('name')} placeholder="Jordan Lee" />

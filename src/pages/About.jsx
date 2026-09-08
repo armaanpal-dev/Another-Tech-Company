@@ -27,7 +27,7 @@ export default function About() {
 
       <section className="section">
         <div className="container">
-          <div className="center home__head">
+          <div className="shead">
             <Reveal><span className="eyebrow">What we believe</span></Reveal>
             <Reveal as="h2" className="h-lg mt-s">The principles behind the product</Reveal>
           </div>

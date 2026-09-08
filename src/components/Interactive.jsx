@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Interactive.css';
 
 /* ---------------------------------------------------------------------------
@@ -97,9 +97,66 @@ export function ReelCarousel() {
 }
 
 /* ---------------------------------------------------------------------------
-   Conversion-funnel visualizer: the events every reel reports, in order.
-   No numbers are shown, this illustrates the stages; merchants see their own
-   figures in the dashboard.
+   Card media: four small, non-interactive illustrations that sit at the top of
+   the showcase cards. Pure CSS, no image assets, so they cost nothing to load.
+--------------------------------------------------------------------------- */
+export function MockFeed() {
+  return (
+    <div className="mm mm--feed" aria-hidden="true">
+      <div className="mm__row">
+        {['demo--a', 'demo--c', 'demo--b', 'demo--a'].map((h, i) => (
+          <span key={i} className={`mm__tile ${h}`}>
+            <em className="mm__chip" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function MockCart() {
+  return (
+    <div className="mm mm--cart" aria-hidden="true">
+      <span className="mm__phone demo--a">
+        <span className="mm__pcard">
+          <span className="mm__pthumb" />
+          <span className="mm__plines"><em /><em /></span>
+          <span className="mm__pbtn">Add</span>
+        </span>
+      </span>
+      <span className="mm__cursor">👆</span>
+    </div>
+  );
+}
+
+export function MockTags() {
+  return (
+    <div className="mm mm--tags" aria-hidden="true">
+      <div className="mm__tagcol">
+        {['summer', 'linen', 'sale'].map((t) => <span key={t} className="mm__tag">{t}</span>)}
+      </div>
+      <span className="mm__wire" />
+      <span className="mm__tile demo--c mm__tile--tall"><em className="mm__chip" /></span>
+    </div>
+  );
+}
+
+export function MockChart() {
+  const bars = [38, 62, 45, 78, 56, 92, 70];
+  return (
+    <div className="mm mm--chart" aria-hidden="true">
+      <div className="mm__bars">
+        {bars.map((h, i) => <span key={i} style={{ height: `${h}%` }} />)}
+      </div>
+      <div className="mm__legend"><em /><em /><em /></div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Analytics flow: the events every reel reports, as a numbered stack. One row
+   is highlighted at a time, cycling, so the sequence reads as a journey.
+   No figures are shown, merchants see their own in the dashboard.
 --------------------------------------------------------------------------- */
 const STEPS = [
   { icon: '👁️', t: 'Impression', d: 'The reel is shown to a shopper' },
@@ -110,18 +167,81 @@ const STEPS = [
 ];
 
 export function FunnelViz() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const id = setInterval(() => setActive((v) => (v + 1) % STEPS.length), 1900);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <div className="funnel">
-      {STEPS.map((s, idx) => (
-        <div className="funnel__step" key={s.t} style={{ '--w': `${100 - idx * 14}%` }}>
-          <div className="funnel__bar">
-            <span className="funnel__icon" aria-hidden="true">{s.icon}</span>
-            <span className="funnel__name">{s.t}</span>
-          </div>
-          <p className="funnel__desc">{s.d}</p>
-        </div>
-      ))}
-      <p className="funnel__note">These are the event types each reel reports in real time. You see your own numbers, play rate, click-through, and conversion, in the dashboard.</p>
+    <div className="flow">
+      <ol className="flow__list">
+        {STEPS.map((s, i) => (
+          <li key={s.t} className={`flow__row ${i === active ? 'is-on' : ''}`}>
+            <span className="flow__n">{i + 1}</span>
+            <span className="flow__icon" aria-hidden="true">{s.icon}</span>
+            <span className="flow__body">
+              <strong>{s.t}</strong>
+              <em>{s.d}</em>
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Player showcase: a selectable list of what the storefront player does, with
+   the live demo phone alongside. Selecting a row is optional, it also advances
+   on its own.
+--------------------------------------------------------------------------- */
+const PLAYER_POINTS = [
+  { icon: '📱', t: 'A social-style player', d: 'Vertical, auto-playing and muted by default, the format shoppers already know how to use.' },
+  { icon: '🏷️', t: 'The product, on the video', d: 'A card overlays each reel with the title, live price, compare-at price, and an Add to Cart button.' },
+  { icon: '🎯', t: 'The exact variant shown', d: 'The colour and size in the clip is what gets added, so nobody ends up with the wrong option.' },
+  { icon: '🛒', t: 'Your own native cart', d: 'Adding opens the cart your theme actually uses, and updates the drawer and count automatically.' },
+];
+
+export function PlayerShowcase() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || paused) return;
+    const id = setInterval(() => setActive((v) => (v + 1) % PLAYER_POINTS.length), 3600);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  return (
+    <div className="player">
+      <ul className="player__list" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        {PLAYER_POINTS.map((p, i) => (
+          <li key={p.t}>
+            <button
+              type="button"
+              className={`player__item ${i === active ? 'is-on' : ''}`}
+              aria-pressed={i === active}
+              onClick={() => setActive(i)}
+            >
+              <span className="player__icon" aria-hidden="true">{p.icon}</span>
+              <span className="player__body">
+                <strong>{p.t}</strong>
+                <em>{p.d}</em>
+              </span>
+              <span className="player__mark" aria-hidden="true">✓</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <div className="player__media">
+        <ShoppableDemo />
+      </div>
     </div>
   );
 }

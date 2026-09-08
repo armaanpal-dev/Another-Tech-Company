@@ -107,7 +107,7 @@ export default function Features() {
         </div>
       </section>
 
-      <section className="section" id="compatibility" style={{ background: 'var(--paper-2)' }}>
+      <section className="section band" id="compatibility">
         <div className="container center">
           <Reveal><span className="eyebrow">Built for speed &amp; every theme</span></Reveal>
           <Reveal as="h2" className="h-lg mt-s">Works with your store, not against it</Reveal>

@@ -25,7 +25,9 @@ const cols = [
     title: 'Legal',
     links: [
       ['Privacy policy', '/privacy'],
+      ['Shoppable Video privacy', '/privacy/shoppable-video'],
       ['Terms of service', '/terms'],
+      ['Affiliate terms', '/affiliate-terms'],
     ],
   },
 ];
@@ -33,12 +35,12 @@ const cols = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="footer dark-bg">
+    <footer className="footer">
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              <img className="footer__mark" src="/logo.svg" alt="" width="30" height="30" /> AnotherDev
+              <img className="footer__mark" src="/logo.svg" alt="" width="32" height="32" /> AnotherDev
             </Link>
             <p className="footer__tag">
               Shoppable video for Shopify. Add to cart inside the video, on any page of your store.

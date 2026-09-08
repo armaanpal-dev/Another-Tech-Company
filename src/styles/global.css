@@ -1,57 +1,87 @@
 /* ============================================================
    AnotherDev, Shoppable Video for Shopify
    Design tokens & global styles
+
+   Dark-first system. One deep ink-violet stage runs the whole
+   site; sections separate by surface elevation and glow, not by
+   flipping to a light background.
    ============================================================ */
 
 :root {
-  /* Palette, "Spotlight": deep ink violet stage + warm electric coral CTA */
-  --ink:        #120B29;   /* near-black violet, primary bg */
-  --ink-2:      #1C1240;   /* raised surface */
-  --ink-3:      #271A52;   /* card / border-light */
-  --lilac:      #B8A9FF;   /* soft accent text */
-  --coral:      #FF5C7A;   /* primary CTA */
-  --coral-2:    #FF8A5C;   /* gradient partner */
-  --mint:       #4FE3C1;   /* success / highlight */
-  --paper:      #FBF8FF;   /* light section bg */
-  --paper-2:    #F1ECFF;   /* light raised */
-  --slate:      #5A5475;   /* muted body on light */
-  --line:       rgba(184,169,255,0.18);
-  --line-dark:  #E4DCF7;
+  /* Stage: three depths of the same ink violet */
+  --ink:        #0C0720;   /* page floor, deepest */
+  --ink-2:      #120B29;   /* section band */
+  --ink-3:      #1C1240;   /* raised panel */
+  --ink-4:      #271A52;   /* hover / active panel */
 
-  --grad-cta: linear-gradient(100deg, var(--coral) 0%, var(--coral-2) 100%);
-  --grad-stage: radial-gradient(1200px 600px at 70% -10%, #34206B 0%, transparent 60%),
-                radial-gradient(900px 500px at 0% 20%, #2A1A5C 0%, transparent 55%),
+  /* Accents, unchanged from the original palette */
+  --coral:      #FF5C7A;   /* primary accent + CTA */
+  --coral-2:    #FF8A5C;   /* gradient partner */
+  --violet:     #7C6BFF;   /* secondary accent */
+  --lilac:      #B8A9FF;   /* soft accent text */
+  --mint:       #4FE3C1;   /* success / highlight */
+
+  /* Text on the dark stage */
+  --text:       #FFFFFF;
+  --text-2:     #C9C0E8;   /* body copy */
+  --text-3:     #8E85B0;   /* meta, captions */
+
+  /* Surfaces & lines, all translucent so the stage glows through */
+  --surface:    rgba(255,255,255,0.035);
+  --surface-2:  rgba(255,255,255,0.06);
+  --line:       rgba(255,255,255,0.09);
+  --line-2:     rgba(255,255,255,0.16);
+
+  /* Legacy aliases: older page styles still reference these names.
+     They now resolve to dark equivalents so nothing renders white. */
+  --paper:      var(--ink);
+  --paper-2:    var(--ink-2);
+  --slate:      var(--text-2);
+  --line-dark:  var(--line);
+
+  --grad-cta:   linear-gradient(100deg, var(--coral) 0%, var(--coral-2) 100%);
+  --grad-text:  linear-gradient(92deg, var(--coral) 0%, var(--coral-2) 100%);
+  --grad-stage: radial-gradient(1100px 620px at 78% -12%, rgba(124,107,255,0.20) 0%, transparent 62%),
+                radial-gradient(880px 520px at 4% 14%, rgba(255,92,122,0.14) 0%, transparent 58%),
                 var(--ink);
 
   --font-display: 'Clash Display', 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   --maxw: 1200px;
-  --radius: 18px;
-  --radius-sm: 12px;
-  --shadow-card: 0 18px 50px -20px rgba(18,11,41,0.35);
-  --shadow-pop: 0 30px 80px -30px rgba(255,92,122,0.45);
+  --radius: 22px;
+  --radius-lg: 28px;
+  --radius-sm: 14px;
+  --shadow-card: 0 24px 60px -24px rgba(0,0,0,0.65);
+  --shadow-pop: 0 22px 60px -22px rgba(255,92,122,0.55);
 
   --t: 0.28s cubic-bezier(.2,.8,.2,1);
+
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--ink); }
 
 body {
   font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--paper);
+  color: var(--text-2);
+  background: var(--ink);
+  background-image:
+    radial-gradient(1200px 700px at 80% -5%, rgba(124,107,255,0.16), transparent 60%),
+    radial-gradient(900px 600px at 0% 8%, rgba(255,92,122,0.10), transparent 55%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   font-weight: 700;
+  color: var(--text);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -60,9 +90,48 @@ ul { list-style: none; }
 
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-.section { padding: 96px 0; }
-.section--tight { padding: 64px 0; }
+.section { padding: 110px 0; position: relative; }
+.section--tight { padding: 72px 0; }
 
+/* A band that sits a step above the floor. Used to separate
+   neighbouring sections now that everything shares one stage. */
+.band {
+  background: linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---- Type scale ---- */
+.h-xl { font-size: clamp(2.5rem, 5.6vw, 4.3rem); }
+.h-lg { font-size: clamp(2rem, 4vw, 3.1rem); }
+.h-md { font-size: clamp(1.4rem, 2.4vw, 1.85rem); }
+.h-sm { font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.01em; color: var(--text); }
+
+.lead { font-size: clamp(1.02rem, 1.5vw, 1.18rem); color: var(--text-2); max-width: 62ch; }
+
+/* Accent word inside a headline, the way the reference site colours
+   one or two words of every title. */
+.hl { color: var(--coral); }
+.hl--violet { color: var(--violet); }
+.hl--mint { color: var(--mint); }
+.hl--grad {
+  background: var(--grad-text);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---- Badge pill above a section title ---- */
+.badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 16px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  font-family: var(--font-display); font-weight: 600; font-size: .82rem;
+  letter-spacing: .04em; color: var(--text);
+  backdrop-filter: blur(8px);
+}
+.badge i { font-style: normal; font-size: .95rem; line-height: 1; }
+.badge--coral { color: var(--coral); border-color: rgba(255,92,122,0.32); background: rgba(255,92,122,0.09); }
+
+/* The old eyebrow, restyled to read on the dark stage */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-display);
@@ -73,34 +142,67 @@ ul { list-style: none; }
 .eyebrow--light { color: var(--lilac); }
 .eyebrow::before { content: ''; width: 22px; height: 2px; background: currentColor; border-radius: 2px; }
 
-.h-xl { font-size: clamp(2.6rem, 6vw, 4.4rem); }
-.h-lg { font-size: clamp(2rem, 4vw, 3rem); }
-.h-md { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+/* ---- Section heading block ---- */
+.shead { max-width: 760px; margin: 0 auto; text-align: center; }
+.shead h2 { margin-top: 18px; }
+.shead .lead { margin: 16px auto 0; text-align: center; max-width: 58ch; }
+.shead--left { margin: 0; text-align: left; }
+.shead--left .lead { margin-left: 0; text-align: left; }
 
-.lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--slate); max-width: 56ch; }
-
-/* Buttons */
+/* ---- Buttons ---- */
 .btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-display); font-weight: 600; font-size: 1rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 600; font-size: .98rem;
   padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer;
-  transition: transform var(--t), box-shadow var(--t), background var(--t);
+  transition: transform var(--t), box-shadow var(--t), background var(--t), border-color var(--t), color var(--t);
+  white-space: nowrap;
 }
 .btn--primary { background: var(--grad-cta); color: #fff; box-shadow: var(--shadow-pop); }
-.btn--primary:hover { transform: translateY(-2px); }
-.btn--ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line-dark); }
-.btn--ghost:hover { border-color: var(--coral); color: var(--coral); }
-.btn--ghost-light { background: rgba(255,255,255,0.06); color: #fff; border: 1.5px solid rgba(255,255,255,0.18); }
-.btn--ghost-light:hover { background: rgba(255,255,255,0.12); }
-.btn--lg { padding: 17px 34px; font-size: 1.08rem; }
-
-/* Cards */
-.card {
-  background: #fff; border: 1px solid var(--line-dark);
-  border-radius: var(--radius); padding: 30px;
-  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 26px 70px -20px rgba(255,92,122,0.7); }
+.btn--ghost,
+.btn--ghost-light {
+  background: var(--surface); color: var(--text);
+  border: 1.5px solid var(--line-2);
+  backdrop-filter: blur(8px);
 }
-.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); border-color: var(--coral); }
+.btn--ghost:hover,
+.btn--ghost-light:hover { background: var(--surface-2); border-color: var(--coral); color: var(--coral); }
+.btn--lg { padding: 17px 32px; font-size: 1.05rem; }
+
+/* Circular arrow affordance on cards */
+.arrowbtn {
+  width: 42px; height: 42px; flex: none; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--grad-cta); color: #fff;
+  font-size: 1.05rem; line-height: 1;
+  box-shadow: 0 12px 30px -12px rgba(255,92,122,0.75);
+  transition: transform var(--t);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t), background var(--t);
+}
+.card:hover {
+  transform: translateY(-4px);
+  background: var(--surface-2);
+  border-color: rgba(255,92,122,0.45);
+  box-shadow: var(--shadow-card);
+}
+
+/* Card with a lit top edge, the reference site's signature */
+.card--lit { position: relative; overflow: hidden; }
+.card--lit::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,92,122,0.75), transparent);
+  opacity: 0; transition: opacity var(--t);
+}
+.card--lit:hover::before { opacity: 1; }
 
 .grid { display: grid; gap: 24px; }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
@@ -109,24 +211,63 @@ ul { list-style: none; }
 
 .center { text-align: center; }
 .mx-auto { margin-left: auto; margin-right: auto; }
-.mt-s { margin-top: 16px; } .mt-m { margin-top: 28px; } .mt-l { margin-top: 48px; }
+.mt-s { margin-top: 16px; } .mt-m { margin-top: 28px; } .mt-l { margin-top: 52px; } .mt-xl { margin-top: 72px; }
 
-.dark-bg { background: var(--grad-stage); color: #fff; }
-.dark-bg .lead { color: #C9C0E8; }
-.dark-bg h1, .dark-bg h2, .dark-bg h3 { color: #fff; }
+/* Legacy hook: pages still tag hero sections with this. It is now a
+   no-op on colour, since the whole site is already dark. */
+.dark-bg { color: var(--text); }
+.dark-bg h1, .dark-bg h2, .dark-bg h3 { color: var(--text); }
+.dark-bg .lead { color: var(--text-2); }
 
 .pill {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
-  background: var(--paper-2); color: var(--slate);
+  padding: 8px 15px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text-2);
 }
 
-/* Accessibility */
+/* ---- Feature / placement cards ---- */
+.feat { display: flex; flex-direction: column; }
+.feat__icon {
+  font-size: 1.35rem; display: inline-grid; place-items: center;
+  width: 50px; height: 50px; border-radius: 14px; margin-bottom: 20px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  transition: border-color var(--t), transform var(--t), background var(--t);
+}
+.feat:hover .feat__icon { border-color: rgba(255,92,122,0.5); transform: translateY(-2px); }
+.feat h3 { margin-bottom: 8px; }
+.feat p { color: var(--text-3); font-size: .94rem; }
+.feat__where {
+  display: inline-block; align-self: flex-start; margin: 4px 0 10px;
+  font-size: .74rem; font-weight: 600; letter-spacing: .04em;
+  color: var(--lilac); background: rgba(124,77,255,.13); border: 1px solid rgba(124,107,255,.26);
+  padding: 4px 11px; border-radius: 999px;
+}
+.feats .feat { padding: 26px 24px; }
+
+/* ---- Marquee: an endlessly scrolling row of chips ---- */
+.marquee {
+  overflow: hidden; position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.marquee__track { display: flex; width: max-content; gap: 16px; animation: marquee 38s linear infinite; }
+.marquee--rev .marquee__track { animation-direction: reverse; animation-duration: 46s; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee__item {
+  display: inline-flex; align-items: center; gap: 10px; flex: none;
+  padding: 13px 22px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  color: var(--text); font-family: var(--font-display); font-weight: 600; font-size: .95rem;
+}
+.marquee__item i { font-style: normal; color: var(--coral); }
+
+/* ---- Accessibility ---- */
 :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--coral); color:#fff; padding: 10px 16px; border-radius: 8px; z-index: 999; }
 .skip-link:focus { left: 8px; }
 
-/* Animations */
+/* ---- Animations ---- */
 @keyframes floatUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 .reveal { opacity: 0; }
 .reveal.in { animation: floatUp .7s cubic-bezier(.2,.8,.2,1) forwards; }
@@ -134,13 +275,15 @@ ul { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; }
+  .marquee__track { transform: none; }
 }
 
-/* Responsive */
+/* ---- Responsive ---- */
 @media (max-width: 940px) {
   .grid-4 { grid-template-columns: repeat(2,1fr); }
   .grid-3 { grid-template-columns: 1fr; }
-  .section { padding: 72px 0; }
+  .section { padding: 78px 0; }
+  .section--tight { padding: 56px 0; }
 }
 @media (max-width: 620px) {
   .grid-2, .grid-4 { grid-template-columns: 1fr; }

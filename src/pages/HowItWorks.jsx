@@ -41,7 +41,7 @@ export default function HowItWorks() {
               {steps.map((s, i) => (
                 <Reveal key={s.n} delay={i * 60}>
                   <div className="hiw-step">
-                    <span className="home__step-n" style={{ fontSize: '1.9rem', WebkitBackgroundClip: 'text' }}>{s.n}</span>
+                    <span className="hiw-step__n">{s.n}</span>
                     <h3 className="h-md">{s.t}</h3>
                     <p style={{ color: 'var(--slate)' }}>{s.d}</p>
                   </div>

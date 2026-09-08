@@ -1,18 +1,43 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal, VideoMock, CtaBand, Faq } from '../components/Shared';
-import { ShoppableDemo, ReelCarousel, FunnelViz } from '../components/Interactive';
+import { Reveal, CtaBand, Faq, SectionHead, Marquee, StatCard } from '../components/Shared';
+import { ReelCarousel, FunnelViz, PlayerShowcase, MockFeed, MockCart, MockTags, MockChart } from '../components/Interactive';
+import { posts } from './blogPosts';
 import { APP_STORE_URL } from '../config';
 import './Home.css';
 
+/* The four headline capabilities, each with its own card illustration. */
+const showcase = [
+  {
+    t: 'Shoppable video, everywhere',
+    d: 'Place video where shoppers decide: the homepage, collection pages, product pages, custom pages, or a floating corner player that stays with them across the store.',
+    to: '/features',
+    Media: MockFeed,
+  },
+  {
+    t: 'Add to cart inside the video',
+    d: 'Every video card carries the product title, live price, and an Add to Cart button. Shoppers add without leaving the page or losing their place.',
+    to: '/features',
+    Media: MockCart,
+  },
+  {
+    t: 'Smart tag matching',
+    d: 'Automatically show the right videos on a product page based on that product’s tags. No manual linking, and it scales as you add products.',
+    to: '/features',
+    Media: MockTags,
+  },
+  {
+    t: 'Know what is working',
+    d: 'Track impressions, plays, clicks, and add-to-carts per video, so you can see which content actually drives results.',
+    to: '/features',
+    Media: MockChart,
+  },
+];
+
 const features = [
-  { icon: '🎬', t: 'Shoppable video, everywhere', d: 'Place video where shoppers decide: the homepage, collection pages, product pages, custom pages, or a floating corner player that stays with them across the store.' },
-  { icon: '🛒', t: 'Add to cart inside the video', d: 'Every video card carries the product title, live price, and an Add to Cart button. Shoppers add without leaving the page or losing their place.' },
   { icon: '🌍', t: 'Correct prices in every market', d: 'Prices are pulled live in the shopper’s own currency, so what the card shows is what the cart charges. Sold-out variants are detected automatically.' },
   { icon: '📱', t: 'Mobile and desktop, separately', d: 'Set different card heights and a different number of cards per view for each. Use a decimal like 1.2 cards to reveal a peek of the next video.' },
   { icon: '🎨', t: 'Matches your brand', d: 'Control colors, fonts, sizes and weights, button text, corner radius, and card shadow, so the widget looks like part of your theme.' },
-  { icon: '🏷️', t: 'Smart tag matching', d: 'Automatically show the right videos on a product page based on that product’s tags. No manual linking, and it scales as you add products.' },
-  { icon: '📊', t: 'Know what is working', d: 'Track impressions, plays, clicks, and add-to-carts per video, so you can see which content actually drives results.' },
   { icon: '⚡', t: 'Built for speed', d: 'Videos load only when they scroll into view, with poster images so nothing blocks your page from rendering.' },
 ];
 
@@ -43,7 +68,9 @@ const faqTeaser = [
   ['I sell in multiple currencies. Will prices be right?', 'Yes. Prices are fetched live in the shopper’s currency, so the card always matches what the cart charges.'],
 ];
 
-const compat = ['Any Online Store 2.0 theme', 'Premium and vintage themes', 'GoKwik and Shiprocket carts', 'Shopify Markets currencies', 'No theme code edits'];
+/* Two marquee rows of what the app is built to work with. */
+const worksWithA = ['Dawn', 'Online Store 2.0', 'Symmetry', 'Clean Canvas', 'Vintage themes', 'Premium themes'];
+const worksWithB = ['GoKwik carts', 'Shiprocket carts', 'Shopify Markets', 'Multi-currency pricing', 'Theme app blocks', 'No code edits'];
 
 export default function Home() {
   const schema = {
@@ -79,6 +106,8 @@ export default function Home() {
     publisher: { '@type': 'Organization', name: 'AnotherDev', url: 'https://anotherdev.in' },
   };
 
+  const latest = posts.slice(0, 3);
+
   return (
     <>
       <Seo
@@ -88,135 +117,147 @@ export default function Home() {
       />
 
       {/* HERO */}
-      <section className="hero dark-bg">
+      <section className="hero">
         <div className="hero__glow" aria-hidden="true" />
-        <div className="container hero__grid">
-          <div className="hero__copy">
-            <Reveal><span className="eyebrow eyebrow--light">AnotherDev - Shoppable Video for Shopify</span></Reveal>
-            <Reveal as="h1" className="h-xl" delay={60}>
-              Turn your videos into a <span className="hero__hl">storefront.</span>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="lead">
-                Add shoppable video to any page of your Shopify store: homepage, collections,
-                product pages, or a floating player that follows shoppers as they browse.
-                Customers watch, tap, and add to cart without ever leaving the page.
-              </p>
-            </Reveal>
-            <Reveal delay={180}>
-              <div className="hero__btns">
-                <a href={APP_STORE_URL} className="btn btn--primary btn--lg">Add to Shopify, free plan available</a>
-                <Link to="/how-it-works" className="btn btn--ghost-light btn--lg">See how it works</Link>
-              </div>
-            </Reveal>
-            <Reveal delay={240}>
-              <div className="hero__trust">
-                Works with your existing theme. No code. No developer needed.
-              </div>
-            </Reveal>
-          </div>
+        <div className="hero__grid-lines" aria-hidden="true" />
+        <div className="container hero__inner">
+          <Reveal>
+            <span className="badge badge--shopify">
+              <img src="/logo.svg" alt="" width="18" height="18" />
+              <span className="badge__rule" />
+              SHOPPABLE VIDEO FOR SHOPIFY
+            </span>
+          </Reveal>
 
-          <Reveal className="hero__art" delay={140}>
-            <VideoMock />
-            <div className="hero__float hero__float--1">Add to cart in-video</div>
-            <div className="hero__float hero__float--2">Live price, your currency</div>
+          <Reveal as="h1" className="h-xl hero__title" delay={60}>
+            Turn your videos into a <span className="hl">storefront</span>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <p className="lead hero__lead">
+              Add shoppable video to any page of your Shopify store: homepage, collections,
+              product pages, or a floating player that follows shoppers as they browse.
+              Customers watch, tap, and add to cart without ever leaving the page.
+            </p>
+          </Reveal>
+
+          <Reveal delay={180}>
+            <div className="hero__btns">
+              <a href={APP_STORE_URL} className="btn btn--primary btn--lg">Add to Shopify, free plan available →</a>
+              <Link to="/how-it-works" className="btn btn--ghost-light btn--lg">See how it works</Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={240}>
+            <p className="hero__trust">Works with your existing theme. No code. No developer needed.</p>
+          </Reveal>
+
+          <Reveal delay={300}>
+            <span className="hero__scroll" aria-hidden="true"><i /></span>
           </Reveal>
         </div>
       </section>
 
-      {/* WHAT IT IS */}
-      <section className="section--tight">
-        <div className="container center">
-          <Reveal><p className="lead mx-auto" style={{ textAlign: 'center', maxWidth: '760px' }}>
-            AnotherDev turns short-form video, the kind you already make for social, into a
-            shoppable storefront experience. Upload a video, link it to a product, and place it
-            anywhere on your store. Each video shows the product with its live price and an Add
-            to Cart button, so a shopper can buy in the moment they are interested.
-          </p></Reveal>
+      {/* WORKS WITH: marquee band */}
+      <section className="section--tight band">
+        <div className="container">
+          <Reveal as="h2" className="h-md center worksw__title">
+            Built for the store you <span className="hl">already have</span>
+          </Reveal>
+        </div>
+        <div className="worksw mt-m">
+          <Reveal><Marquee items={worksWithA} /></Reveal>
+          <Reveal delay={80}><Marquee items={worksWithB} reverse /></Reveal>
         </div>
       </section>
 
-      {/* FEATURE GRID */}
+      {/* SHOWCASE: 2x2 capability cards */}
       <section className="section">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow">Everything you need</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">One app for shoppable video</Reveal>
-          </div>
-          <div className="grid grid-4 mt-l home__feats">
-            {features.map((f, i) => (
-              <Reveal key={f.t} delay={(i % 4) * 60}>
-                <div className="card home__feat">
-                  <span className="home__feat-icon">{f.icon}</span>
-                  <h3 className="h-sm">{f.t}</h3>
-                  <p>{f.d}</p>
-                </div>
+          <SectionHead
+            badge="Everything you need"
+            icon="🎬"
+            title={<>One app for all your <span className="hl">shoppable video</span></>}
+            sub="Everything you need to add, place, customize and measure shoppable video, in a single Shopify app."
+          />
+
+          <div className="grid grid-2 mt-l showcase">
+            {showcase.map((s, i) => (
+              <Reveal key={s.t} delay={(i % 2) * 80}>
+                <Link to={s.to} className="showcase__card card card--lit">
+                  <s.Media />
+                  <div className="showcase__foot">
+                    <h3 className="h-md">{s.t}</h3>
+                    <span className="arrowbtn" aria-hidden="true">↗</span>
+                  </div>
+                  <p>{s.d}</p>
+                </Link>
               </Reveal>
             ))}
           </div>
+
           <div className="center mt-l">
             <Link to="/features" className="btn btn--ghost">Explore all features →</Link>
           </div>
         </div>
       </section>
 
-      {/* SEE IT IN ACTION (interactive demo) */}
-      <section className="section dark-bg">
-        <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow eyebrow--light">See it in action</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Watch, tap, add to cart</Reveal>
-            <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>This is the storefront widget. Try it: tap Add to cart, or use the arrows to switch reels.</p></Reveal>
-          </div>
-
-          <div className="home__demo mt-l">
-            <Reveal><ShoppableDemo /></Reveal>
-            <Reveal delay={100}>
-              <div className="home__demo-copy">
-                <h3 className="h-md">A social-style player, built to sell</h3>
-                <ul className="home__ticks">
-                  <li>Vertical, auto-playing, mute by default</li>
-                  <li>Product card with the live price and an Add to Cart button</li>
-                  <li>The exact variant shown is what gets added</li>
-                  <li>Adds to your theme’s own native cart</li>
-                </ul>
+      {/* ANALYTICS: copy left, numbered flow right */}
+      <section className="section band">
+        <div className="container split">
+          <div className="split__copy">
+            <SectionHead
+              align="left"
+              badge="Analytics"
+              icon="📊"
+              title={<><span className="hl--violet">Performance</span> you can actually read</>}
+              sub="Every reel reports what it did, in order, in real time. Track how your video performs in each placement, see which clips earn attention, and put your effort behind the ones that sell."
+            />
+            <Reveal delay={160}>
+              <div className="split__btns">
+                <Link to="/features" className="btn btn--ghost">See the metrics →</Link>
               </div>
             </Reveal>
           </div>
 
-          <div className="home__feeddemo mt-xl">
-            <Reveal><p className="eyebrow eyebrow--light center" style={{ textAlign: 'center', marginBottom: 18 }}>The shoppable video feed</p></Reveal>
-            <Reveal><ReelCarousel /></Reveal>
-          </div>
+          <Reveal className="split__media" delay={120}><FunnelViz /></Reveal>
         </div>
       </section>
 
-      {/* ANALYTICS FUNNEL */}
+      {/* PLAYER: selectable list + live demo phone */}
       <section className="section">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow">Analytics</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Measure what every reel does</Reveal>
+          <SectionHead
+            badge="See it in action"
+            icon="▶️"
+            title={<>Built to <span className="hl">sell</span>, <span className="hl--violet">convert</span> and <span className="hl--mint">engage</span></>}
+            sub="This is the storefront widget. Try it: tap Add to cart, or use the arrows to switch reels."
+          />
+          <Reveal className="mt-l"><PlayerShowcase /></Reveal>
+
+          <div className="feeddemo mt-xl">
+            <Reveal><p className="feeddemo__label center">The shoppable video feed</p></Reveal>
+            <Reveal delay={80}><ReelCarousel /></Reveal>
           </div>
-          <Reveal className="mt-l"><FunnelViz /></Reveal>
         </div>
       </section>
 
       {/* PLACEMENTS */}
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
+      <section className="section band">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow">Placements</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Put video where shoppers decide</Reveal>
-            <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>Five ways to show shoppable video across your store, from the homepage to a player that follows shoppers everywhere.</p></Reveal>
-          </div>
+          <SectionHead
+            badge="Placements"
+            icon="📍"
+            title={<>Put video where shoppers <span className="hl">decide</span></>}
+            sub="Five ways to show shoppable video across your store, from the homepage to a player that follows shoppers everywhere."
+          />
           <div className="grid grid-3 mt-l">
             {placements.map((p, i) => (
               <Reveal key={p.t} delay={(i % 3) * 60}>
-                <div className="card home__feat">
-                  <span className="home__feat-icon">{p.icon}</span>
+                <div className="card feat">
+                  <span className="feat__icon">{p.icon}</span>
                   <h3 className="h-sm">{p.t}</h3>
-                  <span className="home__place-where">{p.where}</span>
+                  <span className="feat__where">{p.where}</span>
                   <p>{p.d}</p>
                 </div>
               </Reveal>
@@ -225,24 +266,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COMPATIBILITY BAND */}
-      <section className="section dark-bg">
+      {/* BY THE NUMBERS */}
+      <section className="section">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow eyebrow--light">Your real advantage</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Works with your store, not against it</Reveal>
-            <Reveal><p className="lead mx-auto mt-s" style={{ textAlign: 'center' }}>
-              Add to cart opens the cart your store actually uses, shows the price the shopper
-              will actually pay, and never touches your theme code.
-            </p></Reveal>
+          <SectionHead
+            badge="What you get"
+            icon="📈"
+            title={<>The short version, in <span className="hl">numbers</span></>}
+            sub="No lock-in, no theme surgery, and nothing that costs you page speed."
+          />
+
+          <div className="grid grid-3 mt-l">
+            <Reveal><StatCard icon="📍" value="5" label="Placements" note="Feed, product reels, smart tags, floating, page galleries" /></Reveal>
+            <Reveal delay={80}><StatCard icon="⚡" value="~12 KB" label="Storefront bundle" note="Gzipped, deferred, with no layout shift" /></Reveal>
+            <Reveal delay={160}><StatCard icon="⏱️" value="3 steps" label="From video to live" note="Most stores are publishing in under five minutes" /></Reveal>
           </div>
-          <Reveal>
-            <div className="home__compat mt-l">
-              {compat.map((c) => <span key={c} className="home__chip">{c}</span>)}
+
+          <Reveal delay={200}>
+            <div className="statrow mt-m">
+              <span><i>🎁</i> Free plan available</span>
+              <span><i>🧩</i> No theme code edits</span>
+              <span><i>🌍</i> Works with Shopify Markets</span>
             </div>
           </Reveal>
-          <div className="center mt-l">
-            <Link to="/compatibility" className="btn btn--ghost-light">See full compatibility →</Link>
+        </div>
+      </section>
+
+      {/* SECONDARY FEATURES */}
+      <section className="section band">
+        <div className="container">
+          <SectionHead
+            badge="The details"
+            icon="🎛️"
+            title={<>The things that make it <span className="hl">fit your store</span></>}
+          />
+          <div className="grid grid-4 mt-l feats">
+            {features.map((f, i) => (
+              <Reveal key={f.t} delay={(i % 4) * 60}>
+                <div className="card feat">
+                  <span className="feat__icon">{f.icon}</span>
+                  <h3 className="h-sm">{f.t}</h3>
+                  <p>{f.d}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -250,15 +317,16 @@ export default function Home() {
       {/* HOW IT WORKS */}
       <section className="section">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow">Live in under five minutes</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Three steps to shoppable video</Reveal>
-          </div>
-          <div className="grid grid-3 mt-l">
+          <SectionHead
+            badge="Live in under five minutes"
+            icon="🚀"
+            title={<>Three steps to <span className="hl">shoppable video</span></>}
+          />
+          <div className="grid grid-3 mt-l steps">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 90}>
-                <div className="home__step home__step--light">
-                  <span className="home__step-n">{s.n}</span>
+                <div className="card step">
+                  <span className="step__n">{s.n}</span>
                   <h3 className="h-md">{s.t}</h3>
                   <p>{s.d}</p>
                 </div>
@@ -269,20 +337,23 @@ export default function Home() {
       </section>
 
       {/* PRICING PREVIEW */}
-      <section className="section" style={{ background: 'var(--paper-2)' }}>
+      <section className="section band">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow">Pricing</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Start free, upgrade when it pays off</Reveal>
-          </div>
+          <SectionHead
+            badge="Pricing"
+            icon="💳"
+            title={<>Start free, upgrade when it <span className="hl">pays off</span></>}
+            sub="Billed through Shopify. Cancel anytime, and removing the app leaves your theme untouched."
+          />
           <div className="grid grid-3 mt-l">
             {preview.map((p, i) => (
               <Reveal key={p.name} delay={i * 70}>
-                <div className={`card home__price ${p.featured ? 'home__price--on' : ''}`}>
-                  <span className="plan__name">{p.name}</span>
-                  <div className="plan__price">{p.price}<span>{p.unit}</span></div>
-                  <ul className="home__price-list">{p.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
-                  <a href={APP_STORE_URL} className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`} style={{ width: '100%', justifyContent: 'center' }}>Add to Shopify</a>
+                <div className={`card priceprev ${p.featured ? 'priceprev--on' : ''}`}>
+                  {p.featured && <span className="priceprev__badge">Most popular</span>}
+                  <span className="priceprev__name">{p.name}</span>
+                  <div className="priceprev__price">{p.price}<span>{p.unit}</span></div>
+                  <ul className="priceprev__list">{p.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
+                  <a href={APP_STORE_URL} className={`btn ${p.featured ? 'btn--primary' : 'btn--ghost'}`} style={{ width: '100%' }}>Add to Shopify</a>
                 </div>
               </Reveal>
             ))}
@@ -296,15 +367,41 @@ export default function Home() {
       {/* FAQ TEASER */}
       <section className="section">
         <div className="container">
-          <div className="center home__head">
-            <Reveal><span className="eyebrow">FAQ</span></Reveal>
-            <Reveal as="h2" className="h-lg mt-s">Questions, answered</Reveal>
-          </div>
+          <SectionHead badge="FAQ" icon="💬" title={<>Questions, <span className="hl">answered</span></>} />
           <div className="faq mt-l">
             {faqTeaser.map(([q, a]) => <Faq key={q} q={q} a={a} />)}
           </div>
           <div className="center mt-m">
             <Link to="/faq" className="btn btn--ghost">All FAQs →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BLOG PREVIEW */}
+      <section className="section band">
+        <div className="container">
+          <SectionHead
+            badge="From the blog"
+            icon="📝"
+            title={<>Guides on <span className="hl">video commerce</span></>}
+            sub="Practical walkthroughs for Shopify merchants adding video to the storefront."
+          />
+          <div className="grid grid-3 mt-l">
+            {latest.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 70}>
+                <Link to={`/blog/${p.slug}`} className="post card">
+                  <span className={`post__cover ${p.cover}`} aria-hidden="true" />
+                  <span className="post__cat">{p.cat}</span>
+                  <span className="post__meta">{p.date} · {p.read} read</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.excerpt}</p>
+                  <span className="post__link">Read more →</span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+          <div className="center mt-m">
+            <Link to="/blog" className="btn btn--ghost">Read all articles →</Link>
           </div>
         </div>
       </section>
