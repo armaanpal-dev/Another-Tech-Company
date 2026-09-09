@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import { APP_STORE_URL, SUPPORT_EMAIL } from '../config';
+import { APP_STORE_URL } from '../config';
 import './Footer.css';
 
 const cols = [
   {
-    title: 'Product',
+    title: 'Apps',
     links: [
-      ['Features', '/features'],
-      ['Pricing', '/pricing'],
-      ['How it works', '/how-it-works'],
+      ['Shoppable Video', '/shoppable-video'],
+      ['Search & Filters', '/search-and-filters'],
       ['Compatibility', '/compatibility'],
     ],
   },
@@ -63,7 +62,7 @@ export default function Footer() {
               <h4>Get started</h4>
               <ul>
                 <li><a href={APP_STORE_URL}>Add to Shopify</a></li>
-                <li><a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a></li>
+                <li><Link to="/support">Contact support</Link></li>
               </ul>
             </div>
           </div>

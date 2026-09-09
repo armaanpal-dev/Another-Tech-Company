@@ -19,6 +19,8 @@ const { posts } = await import(pathToFileURL(join(root, 'src', 'pages', 'blogPos
 
 const routes = [
   '/',
+  '/shoppable-video',
+  '/search-and-filters',
   '/features',
   '/how-it-works',
   '/pricing',

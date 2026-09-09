@@ -138,25 +138,15 @@ svg { display: block; }
 
   --shadow-lift: 0 1px 2px rgba(21,12,49,0.05), 0 22px 48px -22px rgba(21,12,49,0.22);
 
-  background: linear-gradient(
-    180deg,
-    rgba(250,247,255,0)    0px,
-    rgba(250,247,255,0.35) 70px,
-    rgba(250,247,255,0.78) 140px,
-    rgba(250,247,255,0.96) 190px,
-    rgba(250,247,255,1)    230px,
-    rgba(250,247,255,1)    calc(100% - 230px),
-    rgba(250,247,255,0.96) calc(100% - 190px),
-    rgba(250,247,255,0.78) calc(100% - 140px),
-    rgba(250,247,255,0.35) calc(100% - 70px),
-    rgba(250,247,255,0)    100%
-  );
+  /* Solid ground with a crisp, intentional edge against the dark stage,
+     rather than a long fade that reads as a murky blur between sections. */
+  background: var(--paper);
 }
-/* Clear the ramp so no heading lands in the fade. */
-.lightzone > .section:first-child { padding-top: 190px; }
-.lightzone > .section:last-child { padding-bottom: 190px; }
-.lightzone > .section:first-child.section--tight { padding-top: 175px; }
-.lightzone > .section:last-child.section--tight { padding-bottom: 175px; }
+/* A little extra breathing room at the crisp top/bottom edges. */
+.lightzone > .section:first-child { padding-top: 120px; }
+.lightzone > .section:last-child { padding-bottom: 120px; }
+.lightzone > .section:first-child.section--tight { padding-top: 84px; }
+.lightzone > .section:last-child.section--tight { padding-bottom: 84px; }
 
 /* A whisper of tint to separate neighbouring sections. Borderless
    on purpose, so nothing reads as a divider. */
@@ -362,10 +352,10 @@ svg { display: block; }
   .grid-3 { grid-template-columns: 1fr; }
   .section { padding: 74px 0; }
   .section--tight { padding: 54px 0; }
-  .lightzone > .section:first-child { padding-top: 140px; }
-  .lightzone > .section:last-child { padding-bottom: 140px; }
-  .lightzone > .section:first-child.section--tight { padding-top: 130px; }
-  .lightzone > .section:last-child.section--tight { padding-bottom: 130px; }
+  .lightzone > .section:first-child { padding-top: 88px; }
+  .lightzone > .section:last-child { padding-bottom: 88px; }
+  .lightzone > .section:first-child.section--tight { padding-top: 64px; }
+  .lightzone > .section:last-child.section--tight { padding-bottom: 64px; }
 }
 @media (max-width: 620px) {
   .grid-2, .grid-4 { grid-template-columns: 1fr; }

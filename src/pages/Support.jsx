@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import Seo from '../components/Seo';
 import Icon from '../components/Icon';
 import { Reveal } from '../components/Shared';
-import { APP_STORE_URL, SUPPORT_EMAIL } from '../config';
+import { APP_STORE_URL } from '../config';
 import './pages.css';
 
 // EmailJS config. The public key and service ID are safe to expose in the browser.
@@ -136,8 +136,7 @@ export default function Support() {
                   {status === 'sent' && <p className="form-note">Thanks! Your message is on its way, we’ll be in touch shortly.</p>}
                   {status === 'error' && (
                     <p className="form-note" style={{ color: 'var(--coral)' }}>
-                      Something went wrong sending your message. Please email us directly at{' '}
-                      <a href={`mailto:${SUPPORT_EMAIL}`} style={{ color: 'inherit' }}>{SUPPORT_EMAIL}</a>.
+                      Something went wrong sending your message. Please try again in a moment.
                     </p>
                   )}
                 </div>
@@ -145,11 +144,11 @@ export default function Support() {
 
               <Reveal delay={100}>
                 <aside className="contact-aside">
-                  <h3 className="h-md">Other ways to reach us</h3>
-                  <p>Prefer email? That’s the fastest way to reach us, we reply within a few hours.</p>
+                  <h3 className="h-md">How to reach us</h3>
+                  <p>Send the form and we’ll reply within a few hours on business days.</p>
                   <ul>
-                    <li><Icon name="mail" size={18} /><a href={`mailto:${SUPPORT_EMAIL}`} style={{ color: 'inherit' }}>{SUPPORT_EMAIL}</a></li>
-                    <li><Icon name="tag" size={18} />Custom plan enquiry: email us with the subject “Custom plan enquiry”</li>
+                    <li><Icon name="mail" size={18} />Use the form, it lands straight in our inbox</li>
+                    <li><Icon name="tag" size={18} />Custom plan enquiry: choose “Custom / Enterprise enquiry” as the topic</li>
                     <li><Icon name="globe" size={18} />AnotherDev: <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>anotherdev.in</a></li>
                   </ul>
                   <p style={{ marginTop: 18 }}>

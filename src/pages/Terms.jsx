@@ -56,7 +56,7 @@ export default function Terms() {
               <h2>12. Contact</h2>
               <p>
                 AnotherDev<br />
-                Email: <a href="mailto:armaanpal1996@gmail.com">armaanpal1996@gmail.com</a><br />
+                Contact us: <a href="https://anotherdev.in/support">anotherdev.in/support</a><br />
                 Website: <a href="https://anotherdev.in" target="_blank" rel="noreferrer">https://anotherdev.in</a>
               </p>
             </Reveal>

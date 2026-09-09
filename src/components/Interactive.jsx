@@ -250,3 +250,91 @@ export function PlayerShowcase() {
     </div>
   );
 }
+
+/* ---------------------------------------------------------------------------
+   Interactive search demo for the Search and Filters page. A working mock of
+   the instant-search panel: type to filter a small demo catalog, toggle a
+   facet, and see matches highlight live. Sample products only, no real data.
+--------------------------------------------------------------------------- */
+const CATALOG = [
+  { name: 'Everyday Hoodie', price: '$58', type: 'Apparel', hue: 'demo--a' },
+  { name: 'Linen Wrap Dress', price: '$48', type: 'Apparel', hue: 'demo--c' },
+  { name: 'Canvas Sneaker', price: '$88', type: 'Footwear', hue: 'demo--b' },
+  { name: 'Suede Chelsea Boot', price: '$129', type: 'Footwear', hue: 'demo--a' },
+  { name: 'Ceramic Mug', price: '$18', type: 'Home', hue: 'demo--c' },
+  { name: 'Wool Throw Blanket', price: '$96', type: 'Home', hue: 'demo--b' },
+  { name: 'Gold Hoop Earrings', price: '$36', type: 'Accessories', hue: 'demo--a' },
+  { name: 'Leather Card Wallet', price: '$42', type: 'Accessories', hue: 'demo--c' },
+];
+const FACETS = ['All', 'Apparel', 'Footwear', 'Home', 'Accessories'];
+
+function highlight(name, q) {
+  const query = q.trim();
+  if (!query) return name;
+  const i = name.toLowerCase().indexOf(query.toLowerCase());
+  if (i === -1) return name;
+  return (
+    <>
+      {name.slice(0, i)}<mark>{name.slice(i, i + query.length)}</mark>{name.slice(i + query.length)}
+    </>
+  );
+}
+
+export function SearchDemo() {
+  const [q, setQ] = useState('');
+  const [facet, setFacet] = useState('All');
+  const query = q.trim().toLowerCase();
+
+  const results = CATALOG.filter(
+    (p) => (facet === 'All' || p.type === facet) && p.name.toLowerCase().includes(query),
+  );
+
+  return (
+    <div className="sdemo">
+      <div className="sdemo__bar">
+        <Icon name="search" size={18} />
+        <input
+          className="sdemo__input"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Try: hoodie, mug, sneaker…"
+          aria-label="Search demo"
+        />
+      </div>
+
+      <div className="sdemo__facets" role="group" aria-label="Filter by type">
+        {FACETS.map((f) => (
+          <button
+            key={f}
+            className={`sdemo__chip ${facet === f ? 'is-on' : ''}`}
+            onClick={() => setFacet(f)}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      <div className="sdemo__count">
+        {results.length} {results.length === 1 ? 'result' : 'results'}
+        {query && <> for “{q.trim()}”</>}
+      </div>
+
+      <div className="sdemo__results">
+        {results.length === 0 && (
+          <p className="sdemo__empty">No matches. In the real app, typo tolerance and synonyms catch most of these.</p>
+        )}
+        {results.slice(0, 6).map((p) => (
+          <div className="sdemo__row" key={p.name}>
+            <span className={`sdemo__thumb ${p.hue}`} />
+            <span className="sdemo__meta">
+              <strong>{highlight(p.name, q)}</strong>
+              <em>{p.type}</em>
+            </span>
+            <span className="sdemo__price">{p.price}</span>
+          </div>
+        ))}
+      </div>
+      <p className="sdemo__hint">Live demo. Filtering runs in your browser; the real app indexes your whole catalog.</p>
+    </div>
+  );
+}

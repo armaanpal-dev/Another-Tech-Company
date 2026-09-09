@@ -238,3 +238,43 @@
   .demo__phone { width: 260px; }
   .player__item { padding: 14px 14px; gap: 12px; }
 }
+
+/* ---- Search demo (Search & Filters page) ---- */
+.sdemo {
+  max-width: 460px; width: 100%; margin: 0 auto;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; box-shadow: var(--shadow-lift); backdrop-filter: blur(8px);
+}
+.sdemo__bar {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--input-bg); border: 1px solid var(--line-2); border-radius: var(--radius-sm);
+  padding: 12px 14px; color: var(--text-2);
+}
+.sdemo__input {
+  flex: 1; background: none; border: 0; outline: none; color: var(--text);
+  font-family: var(--font-body); font-size: 1rem;
+}
+.sdemo__input::placeholder { color: var(--text-3); }
+.sdemo__facets { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.sdemo__chip {
+  border: 1px solid var(--line-2); background: transparent; color: var(--text-2);
+  font-family: var(--font-body); font-size: .82rem; font-weight: 600;
+  padding: 6px 12px; border-radius: 999px; cursor: pointer; transition: var(--t);
+}
+.sdemo__chip:hover { border-color: var(--coral); color: var(--text); }
+.sdemo__chip.is-on { background: var(--grad-cta); color: #fff; border-color: transparent; }
+.sdemo__count { font-size: .8rem; color: var(--text-3); margin-bottom: 8px; }
+.sdemo__results { display: grid; gap: 6px; min-height: 60px; }
+.sdemo__row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px; border-radius: var(--radius-sm); transition: background var(--t);
+}
+.sdemo__row:hover { background: var(--surface-2); }
+.sdemo__thumb { width: 38px; height: 38px; border-radius: 9px; flex: none; }
+.sdemo__meta { flex: 1; min-width: 0; display: grid; }
+.sdemo__meta strong { color: var(--text); font-size: .92rem; font-weight: 600; }
+.sdemo__meta strong mark { background: rgba(255,138,92,0.28); color: inherit; border-radius: 3px; padding: 0 1px; }
+.sdemo__meta em { color: var(--text-3); font-size: .78rem; font-style: normal; }
+.sdemo__price { color: var(--text); font-weight: 700; font-size: .9rem; }
+.sdemo__empty { color: var(--text-3); font-size: .88rem; padding: 10px 4px; }
+.sdemo__hint { color: var(--text-3); font-size: .8rem; margin-top: 12px; text-align: center; }

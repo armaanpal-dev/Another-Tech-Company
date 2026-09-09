@@ -168,3 +168,20 @@
   .statrow { flex-direction: column; align-items: center; gap: 14px; }
   .steps .step { padding: 28px 24px; }
 }
+
+/* ---- Home hub: app cards ---- */
+.apphub { align-items: stretch; }
+.appcard { display: flex; flex-direction: column; height: 100%; padding: 30px; }
+.appcard__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.appcard__icon {
+  width: 54px; height: 54px; border-radius: 15px; display: grid; place-items: center;
+  background: var(--grad-cta); color: #fff; box-shadow: var(--shadow-pop);
+}
+.appcard__n { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .12em; color: var(--text-3); text-transform: uppercase; }
+.appcard__tag { color: var(--text-2); margin: 6px 0 18px; }
+.appcard__list { display: grid; gap: 10px; margin-bottom: 26px; flex: 1; }
+.appcard__list li { display: flex; align-items: flex-start; gap: 9px; color: var(--text-2); font-size: .96rem; }
+.appcard__list .icon { color: var(--mint); flex: none; margin-top: 3px; }
+.appcard__btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.appcard__btns .btn { flex: 1; justify-content: center; min-width: 130px; }
+@media (max-width: 620px) { .appcard { padding: 24px; } }

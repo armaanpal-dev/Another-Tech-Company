@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { StickyCta } from './components/Shared';
 import Home from './pages/Home';
+import ShoppableVideo from './pages/ShoppableVideo';
+import SearchAndFilters from './pages/SearchAndFilters';
 import Features from './pages/Features';
 import HowItWorks from './pages/HowItWorks';
 import Pricing from './pages/Pricing';
@@ -35,6 +37,8 @@ export default function App() {
       <main id="main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/shoppable-video" element={<ShoppableVideo />} />
+          <Route path="/search-and-filters" element={<SearchAndFilters />} />
           <Route path="/features" element={<Features />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/pricing" element={<Pricing />} />

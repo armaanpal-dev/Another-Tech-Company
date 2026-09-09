@@ -65,3 +65,45 @@
   .nav__mlink { padding: 14px 4px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--line); }
   .nav__mcta { margin-top: 18px; }
 }
+
+/* ---- Products dropdown ---- */
+.nav__drop { position: relative; display: inline-flex; align-items: center; }
+/* Transparent bridge so the pointer can cross the gap to the menu. */
+.nav__drop::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 12px; }
+.nav__droptoggle {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: none; border: 0; cursor: pointer; font-family: inherit;
+}
+.nav__caret { transition: transform var(--t); opacity: .8; }
+.nav__drop.is-open .nav__caret { transform: rotate(180deg); }
+
+.nav__menu {
+  position: absolute; top: calc(100% + 12px); left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 360px; display: grid; gap: 4px; padding: 8px;
+  background: rgba(18, 11, 41, 0.98); backdrop-filter: blur(18px);
+  border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lift);
+  opacity: 0; visibility: hidden; transition: opacity var(--t), transform var(--t), visibility var(--t);
+}
+.nav__drop.is-open .nav__menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+.nav__prod {
+  display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 13px;
+  transition: background var(--t);
+}
+.nav__prod:hover { background: var(--surface-2); }
+.nav__prodicon {
+  width: 42px; height: 42px; border-radius: 11px; flex: none; display: grid; place-items: center;
+  background: var(--grad-cta); color: #fff;
+}
+.nav__prodtext { flex: 1; display: grid; }
+.nav__prodtext strong { color: var(--text); font-size: .98rem; font-weight: 600; }
+.nav__prodtext em { color: var(--text-3); font-size: .84rem; font-style: normal; }
+.nav__prodarrow { color: var(--text-3); flex: none; opacity: 0; transform: translateX(-4px); transition: var(--t); }
+.nav__prod:hover .nav__prodarrow { opacity: 1; transform: translateX(0); }
+
+/* Small section labels in the mobile menu */
+.nav__mlabel {
+  display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--text-3); padding: 14px 4px 6px;
+}

@@ -79,7 +79,7 @@ export default function SearchPolicyBody() {
       </ul>
 
       <h2>8. Your rights</h2>
-      <p>Depending on your location (e.g., GDPR, UK GDPR, CCPA/CPRA), you may have the right to access, correct, delete, or restrict processing of your personal data, and to data portability. Merchants can exercise most of these by uninstalling the App (which triggers deletion) or by contacting us. To make a request, email <a href="mailto:armaanpal1996@gmail.com">armaanpal1996@gmail.com</a>.</p>
+      <p>Depending on your location (e.g., GDPR, UK GDPR, CCPA/CPRA), you may have the right to access, correct, delete, or restrict processing of your personal data, and to data portability. Merchants can exercise most of these by uninstalling the App (which triggers deletion) or by contacting us. To make a request, use the contact form at <a href="https://anotherdev.in/support">anotherdev.in/support</a>.</p>
       <p>Store visitors who wish to inquire about data should contact the merchant whose store they visited; the merchant can relay the request to us.</p>
 
       <h2>9. International transfers</h2>
@@ -94,7 +94,7 @@ export default function SearchPolicyBody() {
       <h2>12. Contact us</h2>
       <p>
         AnotherDev<br />
-        Email: <a href="mailto:armaanpal1996@gmail.com">armaanpal1996@gmail.com</a><br />
+        Contact us: <a href="https://anotherdev.in/support">anotherdev.in/support</a><br />
         Website: <a href="https://anotherdev.in" target="_blank" rel="noreferrer">https://anotherdev.in</a>
       </p>
     </>

@@ -37,6 +37,9 @@ const P = {
   shield: <><path d="M12 2.8 19.2 6v5.6c0 4.4-3 7.6-7.2 9.2-4.2-1.6-7.2-4.8-7.2-9.2V6z" /><path d="m9 11.8 2.2 2.2L15.2 10" /></>,
   mail: <><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" /><path d="m3.5 7 7.3 5.2a2 2 0 0 0 2.4 0L20.5 7" /></>,
   arrow: <><path d="M7.5 16.5 16.5 7.5" /><path d="M9.2 7.5h7.3v7.3" /></>,
+  search: <><circle cx="11" cy="11" r="7" /><path d="m20 20-3.8-3.8" /></>,
+  chevron: <><path d="m6 9.5 6 6 6-6" /></>,
+  filter: <><path d="M3 5.5h18l-7.2 8.2v5.1l-3.6 1.9v-7z" /></>,
 };
 
 export default function Icon({ name, size = 20, className = '', strokeWidth = 1.6 }) {
