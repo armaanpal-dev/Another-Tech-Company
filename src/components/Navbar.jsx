@@ -9,6 +9,8 @@ const PRODUCTS = [
   { to: '/search-and-filters', icon: 'search', name: 'Search & Filters', desc: 'Instant search and faceted filters' },
 ];
 const LINKS = [
+  { to: '/web-development', label: 'Website' },
+  { to: '/about', label: 'About' },
   { to: '/blog', label: 'Blog' },
   { to: '/support', label: 'Support' },
 ];

@@ -17,13 +17,11 @@
   filter: blur(26px);
 }
 .hero__grid-lines {
-  position: absolute; inset: 0; pointer-events: none; opacity: .5;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: 68px 68px;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000, transparent 78%);
-  mask-image: radial-gradient(70% 60% at 50% 40%, #000, transparent 78%);
+  position: absolute; inset: 0; pointer-events: none; opacity: .7;
+  background-image: radial-gradient(rgba(184,169,255,0.14) 1.4px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(68% 58% at 50% 38%, #000, transparent 76%);
+  mask-image: radial-gradient(68% 58% at 50% 38%, #000, transparent 76%);
 }
 .hero__inner { position: relative; display: flex; flex-direction: column; align-items: center; }
 

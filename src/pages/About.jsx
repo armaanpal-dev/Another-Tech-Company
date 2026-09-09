@@ -1,37 +1,81 @@
+import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal, CtaBand } from '../components/Shared';
+import { Reveal, CtaBand, SectionHead } from '../components/Shared';
+import Icon from '../components/Icon';
 import './pages.css';
 
 const values = [
-  { n: '01', t: 'Merchant-obsessed', d: 'Every feature earns its place by helping merchants sell, from in-video add to cart to the analytics that show what’s working. If it doesn’t help, it ships later.' },
-  { n: '02', t: 'Fast by default', d: 'Speed is a feature. Videos lazy-load only when in view and the storefront bundle stays tiny (~12 KB gzipped) with no layout shift, so video never costs you a sale.' },
-  { n: '03', t: 'No-code, no lock-in', d: 'You shouldn’t need a developer to add video, and you shouldn’t fear leaving. Setup is a click in the theme editor; uninstalling removes your data.' },
+  { n: '01', t: 'Focused, not bloated', d: 'Each app does one job well. We would rather ship a small thing that works than a big one that gets in the way, and every feature has to earn its place.' },
+  { n: '02', t: 'Fast by default', d: 'Speed is a feature. Our storefront code is lightweight and deferred, so nothing we add costs you a sale or a search ranking.' },
+  { n: '03', t: 'Honest, and no lock-in', d: 'We describe only what the apps actually do, never invented numbers. You install in the theme editor, and removing an app leaves your store exactly as it was.' },
+];
+
+const work = [
+  { icon: 'video', t: 'Shoppable Video', d: 'Turn product videos into a shoppable storefront, with add to cart inside the video.', to: '/shoppable-video' },
+  { icon: 'search', t: 'Search and Filters', d: 'Instant search and faceted filters shoppers can actually use.', to: '/search-and-filters' },
+  { icon: 'globe', t: 'Web development', d: 'Custom Shopify storefronts, apps, and websites, built by the same team.', to: '/web-development' },
 ];
 
 export default function About() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'AnotherDev',
+    url: 'https://anotherdev.in',
+    logo: 'https://anotherdev.in/logo.svg',
+    description: 'AnotherDev is a small studio that builds focused Shopify apps and websites, including Shoppable Video and Search and Filters.',
+  };
+
   return (
     <>
       <Seo
         title="About"
-        description="AnotherDev - Shoppable Video is the Shopify app from AnotherDev that makes every store shoppable through video, the fastest, simplest way to turn product videos into add-to-cart moments."
+        description="AnotherDev is a small studio that builds focused Shopify apps and websites. Two apps in production, Shoppable Video and Search and Filters, plus web development for merchants."
         path="/about"
+        schema={schema}
       />
 
-      <section className="phero dark-bg">
+      <section className="phero">
         <div className="container phero__inner">
-          <Reveal><span className="eyebrow eyebrow--light">About</span></Reveal>
-          <Reveal as="h1" className="h-xl mt-s">We make commerce worth watching</Reveal>
-          <Reveal><p className="lead">AnotherDev - Shoppable Video is built by <a href="https://anotherdev.in" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>AnotherDev</a>. It started with a simple frustration: brands pour effort into product video, but static storefronts can’t show how a product looks, moves, or fits. We built the bridge, shoppable reels, with add-to-cart built in, right where shoppers decide.</p></Reveal>
+          <Reveal><span className="eyebrow">About</span></Reveal>
+          <Reveal as="h1" className="h-xl mt-s">A small studio building for <span className="hl">Shopify</span></Reveal>
+          <Reveal><p className="lead">AnotherDev builds focused Shopify apps and websites. We run our own apps in production, Shoppable Video and Search and Filters, and we take on web development for merchants who want the same care applied to their store.</p></Reveal>
         </div>
       </section>
 
+      {/* WHAT WE DO */}
       <div className="lightzone">
         <section className="section">
           <div className="container">
-            <div className="shead">
-              <Reveal><span className="eyebrow">What we believe</span></Reveal>
-              <Reveal as="h2" className="h-lg mt-s">The principles behind the product</Reveal>
+            <SectionHead
+              badge="What we do"
+              icon="sparkle"
+              title={<>Two apps, and the <span className="hl">team behind them</span></>}
+              sub="Everything we make is built to help a store sell, without touching theme code or slowing the page down."
+            />
+            <div className="grid grid-3 mt-l">
+              {work.map((w, i) => (
+                <Reveal key={w.t} delay={i * 80}>
+                  <Link to={w.to} className="card feat feat--link">
+                    <span className="feat__icon"><Icon name={w.icon} size={22} /></span>
+                    <h3 className="h-sm">{w.t}</h3>
+                    <p>{w.d}</p>
+                    <span className="feat__more">Learn more <Icon name="arrow" size={16} /></span>
+                  </Link>
+                </Reveal>
+              ))}
             </div>
+          </div>
+        </section>
+
+        {/* PRINCIPLES */}
+        <section className="section band">
+          <div className="container">
+            <SectionHead
+              badge="What we believe"
+              icon="shield"
+              title={<>The principles behind <span className="hl">the work</span></>}
+            />
             <div className="values mt-l">
               {values.map((v, i) => (
                 <Reveal key={v.n} delay={i * 80}>
@@ -46,7 +90,11 @@ export default function About() {
           </div>
         </section>
       </div>
-      <CtaBand title="Build with us" sub="Add AnotherDev to your store free, or reach out, we love hearing from merchants." />
+
+      <CtaBand
+        title="Work with AnotherDev"
+        sub="Add an app to your store free, or reach out about a web development project. We reply within a few hours."
+      />
     </>
   );
 }

@@ -21,6 +21,7 @@ const routes = [
   '/',
   '/shoppable-video',
   '/search-and-filters',
+  '/web-development',
   '/features',
   '/how-it-works',
   '/pricing',

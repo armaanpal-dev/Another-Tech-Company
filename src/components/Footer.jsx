@@ -8,6 +8,7 @@ const cols = [
     links: [
       ['Shoppable Video', '/shoppable-video'],
       ['Search & Filters', '/search-and-filters'],
+      ['Web development', '/web-development'],
       ['Compatibility', '/compatibility'],
     ],
   },
@@ -25,6 +26,7 @@ const cols = [
     links: [
       ['Privacy policy', '/privacy'],
       ['Shoppable Video privacy', '/privacy/shoppable-video'],
+      ['Search & Filters privacy', '/privacy/search'],
       ['Terms of service', '/terms'],
       ['Affiliate terms', '/affiliate-terms'],
     ],
