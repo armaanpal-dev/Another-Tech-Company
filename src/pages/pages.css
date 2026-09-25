@@ -275,3 +275,5 @@
 .feat--link:hover .feat__more { gap: 10px; }
 
 .hl-link { color: var(--coral); text-decoration: underline; text-underline-offset: 2px; }
+
+.post__link-inline { color: var(--coral); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }

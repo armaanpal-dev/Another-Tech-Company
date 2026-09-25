@@ -5,10 +5,20 @@ import { getPost } from './blogPosts';
 import NotFound from './NotFound';
 import './pages.css';
 
+// Turn https URLs into external links and internal /paths into router links.
+function rich(text) {
+  const parts = String(text).split(/(https?:\/\/[^\s)]+|\/[a-z][a-z0-9-]*(?:\/[a-z0-9-]+)*)/g);
+  return parts.map((p, i) => {
+    if (/^https?:\/\//.test(p)) return <a key={i} href={p} target="_blank" rel="noreferrer" className="post__link-inline">{p}</a>;
+    if (/^\/[a-z]/.test(p)) return <Link key={i} to={p} className="post__link-inline">{p}</Link>;
+    return <span key={i}>{p}</span>;
+  });
+}
+
 function Block({ block }) {
   if (block.type === 'h2') return <h2>{block.text}</h2>;
-  if (block.type === 'ul') return <ul>{block.items.map((it) => <li key={it}>{it}</li>)}</ul>;
-  return <p>{block.text}</p>;
+  if (block.type === 'ul') return <ul>{block.items.map((it) => <li key={it}>{rich(it)}</li>)}</ul>;
+  return <p>{rich(block.text)}</p>;
 }
 
 export default function BlogPost() {

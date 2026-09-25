@@ -4,6 +4,38 @@
 
 export const posts = [
   {
+    slug: 'another-shoppable-video-on-pickyourapp',
+    cat: 'News',
+    date: 'Sep 25, 2026',
+    read: '3 min',
+    cover: 'post__cover--2',
+    title: 'AnotherDev Shoppable Video is now on PickYourApp',
+    excerpt: 'Our shoppable video app for Shopify is now listed on PickYourApp, a curated Shopify app directory. Here is what that means and where to find it.',
+    content: [
+      { type: 'p', text: 'AnotherDev Shoppable Video is now listed on PickYourApp, a directory where Shopify merchants discover and compare apps. You can view the listing here: https://pickyourapp.com/products/another-shoppable-video-app' },
+      { type: 'h2', text: 'What is PickYourApp?' },
+      { type: 'p', text: 'PickYourApp is a curated directory of Shopify apps, where merchants browse, compare, and install apps to improve their store. Being listed there gives merchants another place to find the app alongside the Shopify App Store.' },
+      { type: 'h2', text: 'What the app does' },
+      { type: 'p', text: 'AnotherDev Shoppable Video turns your product videos into a shoppable storefront. Shoppers watch a reel, tap the product card, and add to cart without leaving the page.' },
+      { type: 'ul', items: [
+        'Add to cart inside the video, using your theme’s own native cart.',
+        'Smart tag matching that shows the right videos on the right products automatically.',
+        'Video feeds and carousels for your home page, collections, and product pages, plus a floating reel.',
+        'Real-time analytics: impressions, plays, clicks, and conversions.',
+        'Import videos from your Shopify Files library or paste a video URL.',
+      ] },
+      { type: 'h2', text: 'Pricing' },
+      { type: 'ul', items: [
+        'Free: up to 4 videos with basic analytics.',
+        'Growth: $21/mo for up to 21 videos with customization.',
+        'Pro: $49/mo for up to 49 videos with advanced features.',
+      ] },
+      { type: 'p', text: 'The Free plan lets you start at no cost, and paid plans are billed through Shopify.' },
+      { type: 'h2', text: 'Where to get it' },
+      { type: 'p', text: 'Install it from the Shopify App Store at https://apps.shopify.com/another-shoppable-video-app , see the listing on PickYourApp at https://pickyourapp.com/products/another-shoppable-video-app , or read more on our own page at /shoppable-video' },
+    ],
+  },
+  {
     slug: 'how-to-add-shoppable-video-to-shopify',
     cat: 'Guides',
     date: 'Jun 2, 2026',
