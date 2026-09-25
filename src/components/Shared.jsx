@@ -72,12 +72,16 @@ export function SectionHead({ badge, icon, title, sub, align = 'center', classNa
 /* Endless scrolling chip row. The list is rendered twice so the
    translate(-50%) loop is seamless. */
 export function Marquee({ items, reverse = false }) {
+  // Repeat the list so a single half is wider than any viewport, then render
+  // two identical halves. The CSS animates to translateX(-50%), which lands
+  // exactly on the second half, so the loop is continuous with no blank space.
+  const half = [...items, ...items, ...items];
   return (
     <div className={`marquee ${reverse ? 'marquee--rev' : ''}`} aria-label={items.join(', ')}>
       <div className="marquee__track">
-        {[0, 1].map((pass) => (
-          items.map((t) => (
-            <span className="marquee__item" key={`${pass}-${t}`} aria-hidden={pass === 1}>
+        {[0, 1].map((copy) => (
+          half.map((t, i) => (
+            <span className="marquee__item" key={`${copy}-${i}-${t}`} aria-hidden="true">
               <Icon name="check" size={15} strokeWidth={2.2} />{t}
             </span>
           ))
