@@ -4,6 +4,29 @@
 
 export const posts = [
   {
+    slug: 'how-to-install-anotherdev-shoppable-video',
+    cat: 'Guides',
+    date: 'Sep 25, 2026',
+    read: '4 min',
+    cover: '',
+    title: 'How to install AnotherDev Shoppable Video on your Shopify store',
+    excerpt: 'A quick, no-code walkthrough: add the app, enable it in your theme, and publish your first shoppable video in minutes.',
+    content: [
+      { type: 'p', text: 'Adding shoppable video to your Shopify store takes a few minutes and no theme code. Here is the full walkthrough, from install to your first live reel.' },
+      { type: 'h2', text: 'Step 1: Add the app from the Shopify App Store' },
+      { type: 'p', text: 'Open the listing at https://apps.shopify.com/another-shoppable-video-app , click Add app, choose your store, and approve. The Free plan needs no credit card, so you can start at no cost.' },
+      { type: 'h2', text: 'Step 2: Enable it in your theme' },
+      { type: 'p', text: 'In your Shopify admin, go to Online Store, then Themes, then Customize, and turn on the AnotherDev app embed. No theme code is required, and removing the app later leaves your theme exactly as it was.' },
+      { type: 'h2', text: 'Step 3: Add your first video' },
+      { type: 'p', text: 'Upload a product video or import one from your Shopify Files library, then link it to the product and the exact variant it shows. The card then displays that product with its live price and an Add to Cart button.' },
+      { type: 'h2', text: 'Step 4: Place it on your store' },
+      { type: 'p', text: 'In the theme editor, drop a block where you want it: a shoppable feed on the home page or a collection, a carousel on a product page, or a floating reel that follows shoppers. Most stores are live in under five minutes. See /how-it-works for the full guide.' },
+      { type: 'h2', text: 'Prefer some help installing?' },
+      { type: 'p', text: 'The app is also featured on services and directories that help merchants set up Shopify apps. Hura Apps has an installation guide and offers install help at https://www.huratips.com/shopify-services/shopify-app-installation.php?app=another-shoppable-video-app , and it is listed on PickYourApp at https://pickyourapp.com/products/another-shoppable-video-app . Either way, the app is free to start on the Shopify App Store.' },
+      { type: 'p', text: 'Learn more about what the app does on /shoppable-video.' },
+    ],
+  },
+  {
     slug: 'another-shoppable-video-on-pickyourapp',
     cat: 'News',
     date: 'Sep 25, 2026',
