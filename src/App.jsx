@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ChatBot from './components/ChatBot';
 import { StickyCta } from './components/Shared';
 import Home from './pages/Home';
 import ShoppableVideo from './pages/ShoppableVideo';
@@ -61,6 +62,7 @@ export default function App() {
       </main>
       <Footer />
       <StickyCta />
+      <ChatBot />
     </>
   );
 }
