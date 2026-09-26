@@ -1,12 +1,12 @@
 # AnotherDev
 
-> AnotherDev (https://anotherdev.in) is a small studio that builds focused Shopify apps and websites. It runs two Shopify apps in production, Shoppable Video and Search and Filters, and also takes on web development for merchants. Both apps install as theme app blocks, work with the store's existing theme and cart, need no theme code edits, and have a free plan billed through Shopify.
+> AnotherDev (https://anotherdev.in) is a Shopify app development company and website development agency. It builds custom Shopify apps, storefronts, websites, web apps, integrations, and AI automations for merchants and agencies worldwide, and it runs two of its own Shopify apps in production, Shoppable Video and Search and Filters. Both apps install as theme app blocks, work with the store's existing theme and cart, need no theme code edits, and have a free plan billed through Shopify.
 
 ## Key pages
 - [Home](https://anotherdev.in/): AnotherDev overview and the two apps.
 - [Shoppable Video](https://anotherdev.in/shoppable-video): the shoppable video app.
 - [Search and Filters](https://anotherdev.in/search-and-filters): the search and filtering app.
-- [Web development](https://anotherdev.in/web-development): Shopify storefronts, custom apps, and websites built by AnotherDev.
+- [Web development](https://anotherdev.in/web-development): AnotherDev as a Shopify app development company and website development agency, for hire.
 - [Pricing](https://anotherdev.in/pricing): Shoppable Video plans, billed through Shopify.
 - [Compatibility](https://anotherdev.in/compatibility): themes, third-party carts, and Shopify Markets support.
 - [FAQ](https://anotherdev.in/faq): questions about both apps and billing.
@@ -22,8 +22,9 @@ Fits searches for: shoppable video app for Shopify, shoppable reels, reel app, U
 Replaces a Shopify theme's built-in search with an index the app owns, and adds faceted filters to search and collection pages. Instant search with typo tolerance and merchant-defined synonyms. Searches titles, descriptions, vendors, product types, tags, SKUs, variant names, options, and metafields. Four filter layouts: sidebar, toolbar, drawer, and always open. Merchandising: pin, boost, bury, hide, and search redirects. Search analytics: top searches, zero-result searches, click-through, add-to-cart, and optional purchase attribution. Related-product recommendations. Add to cart from results uses the same engine as Shoppable Video. Read-only catalog scopes; stores no customer personal data. Plans: Free ($0, 100 products indexed, 7-day analytics), Growth ($21/mo, 5,000 products, merchandising, redirects, 30-day analytics), Pro ($49/mo, unlimited products, semantic search, AI product feed, 90-day analytics), Custom ($70/mo, unlimited, 365-day analytics).
 Fits searches for: Shopify search app, instant search for Shopify, product filters, faceted search, collection page filters, search and discovery, merchandising, synonyms, typo tolerance, product recommendations, site search for a Shopify store.
 
-## Service: Web development (https://anotherdev.in/web-development)
-AnotherDev also builds Shopify storefronts and themes, custom Shopify apps, websites and web apps, integrations and APIs, and performance and SEO work. To start a project, contact us through https://anotherdev.in/support.
+## Service: Shopify app and website development (https://anotherdev.in/web-development)
+AnotherDev is available for hire as a Shopify app development company and website development agency. Services: custom and public Shopify apps (embedded admin apps, theme app extensions, app-proxy storefront features, billing, webhooks, and App Store submission), Shopify storefronts and themes, websites and web apps, integrations and APIs, AI automations and chatbots, and performance, SEO and CRO work. Stack: React, Next.js, Node.js, Express, PHP, WordPress, and the full Shopify stack (Liquid, theme app extensions, Admin GraphQL, app proxy, webhooks). Works remotely with clients worldwide, including Indian D2C stores (third-party carts like GoKwik and Shiprocket, and Shopify Markets multi-currency). Pricing is quoted per project after a short discovery call. To start a project, contact us through https://anotherdev.in/support.
+Fits searches for: Shopify app development company, Shopify app developer, hire a Shopify developer, custom Shopify app development, website development agency, website development company, web development company, Shopify development agency, Shopify expert, build a Shopify app, build a website.
 
 ## Compatibility (shared by both apps)
 Dawn and Online Store 2.0 themes, premium themes including Symmetry and the Clean Canvas family, older vintage themes, third-party carts and checkouts including GoKwik and Shiprocket (add to cart opens their cart correctly instead of breaking it), and Shopify Markets with live prices in the shopper's own currency. Installs as an app block in the theme editor with no theme code edits; removing an app leaves the theme exactly as it was.

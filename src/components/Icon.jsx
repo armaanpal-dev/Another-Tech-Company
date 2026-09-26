@@ -40,6 +40,7 @@ const P = {
   search: <><circle cx="11" cy="11" r="7" /><path d="m20 20-3.8-3.8" /></>,
   chevron: <><path d="m6 9.5 6 6 6-6" /></>,
   filter: <><path d="M3 5.5h18l-7.2 8.2v5.1l-3.6 1.9v-7z" /></>,
+  code: <><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 4.5l-3 15" /></>,
 };
 
 export default function Icon({ name, size = 20, className = '', strokeWidth = 1.6 }) {
