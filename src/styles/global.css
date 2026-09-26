@@ -387,3 +387,13 @@ svg { display: block; }
   .btn--lg { padding: 12px 18px; font-size: .92rem; }
   .btn .icon { width: 16px; height: 16px; }
 }
+
+/* On touch devices a fixed background under a masked element (the marquee
+   fade) renders blank on iOS/Chrome mobile, so the marquee vanished. A
+   scrolling background avoids that bug and is smoother on mobile too. */
+@media (max-width: 940px) {
+  body { background-attachment: scroll; }
+}
+
+/* Lock the page behind the open mobile menu so it cannot scroll through. */
+body.nav-lock { overflow: hidden; }

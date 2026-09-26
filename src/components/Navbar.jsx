@@ -37,6 +37,12 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  // Lock the page behind the open mobile menu so it cannot scroll through.
+  useEffect(() => {
+    document.body.classList.toggle('nav-lock', open);
+    return () => document.body.classList.remove('nav-lock');
+  }, [open]);
+
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''} ${open ? 'nav--open' : ''}`}>
       <div className="container nav__inner">

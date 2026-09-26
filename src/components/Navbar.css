@@ -55,15 +55,27 @@
   .nav__inner { grid-template-columns: 1fr auto; }
   .nav__links, .nav__cta { display: none; }
   .nav__burger { display: flex; }
+  /* Full-height overlay anchored below the header bar. Using dvh (with a vh
+     fallback) means it tracks Safari's disappearing toolbar, so it always
+     reaches the true bottom of the screen instead of leaving a gap that
+     shows the page behind. Opaque background so nothing bleeds through. */
   .nav__mobile {
     display: flex; flex-direction: column; gap: 2px;
-    background: rgba(12, 7, 32, 0.97);
-    backdrop-filter: blur(18px);
-    padding: 12px 24px 26px;
+    position: fixed; left: 0; right: 0; top: 78px; z-index: 99;
+    height: calc(100vh - 78px);
+    height: calc(100dvh - 78px);
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+    background: #0C0720;
+    padding: 16px 24px calc(40px + env(safe-area-inset-bottom, 0px));
     border-top: 1px solid var(--line);
   }
   .nav__mlink { padding: 14px 4px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--line); }
   .nav__mcta { margin-top: 18px; }
+
+  /* While the menu is open, keep the floating widgets from covering it. */
+  body.nav-lock .stickycta,
+  body.nav-lock .cbot__launch,
+  body.nav-lock .cbot { display: none !important; }
 }
 
 /* ---- Products dropdown ---- */

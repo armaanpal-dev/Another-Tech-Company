@@ -80,10 +80,12 @@
    so it never sits under the sticky header (which would crop its top) and
    never collides with the launcher or the sticky CTA bar. */
 @media (max-width: 780px) {
-  .cbot__launch { bottom: 84px; right: 16px; }
+  /* The sticky CTA bar grows by the safe-area inset, so the launcher and
+     panel are offset by the same inset to stay clear of it on every device. */
+  .cbot__launch { right: 16px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   .cbot {
     left: 16px; right: 16px; width: auto;
     top: calc(72px + env(safe-area-inset-top, 0px));
-    bottom: 150px; height: auto;
+    bottom: calc(154px + env(safe-area-inset-bottom, 0px)); height: auto;
   }
 }
