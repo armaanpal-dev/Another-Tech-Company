@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
+import GsapFx from './components/GsapFx';
 import { StickyCta } from './components/Shared';
 import Home from './pages/Home';
 import ShoppableVideo from './pages/ShoppableVideo';
@@ -35,6 +36,7 @@ export default function App() {
     <>
       <a href="#main" className="skip-link">Skip to content</a>
       <ScrollToTop />
+      <GsapFx />
       <Navbar />
       <main id="main">
         <Routes>

@@ -90,7 +90,10 @@
    it, so the set stacks one on top of another as the page scrolls. */
 @media (max-width: 780px) {
   .stack-cards { display: block; }
-  .stack-cards > .reveal { position: sticky; top: 84px; margin-bottom: 18px; }
+  /* Stick below the 78px header with a gap, and stay beneath it in the
+     stacking order (the header sits at z-index 100) so the logo bar stays
+     visible above the cards as they stack. */
+  .stack-cards > .reveal { position: sticky; top: 92px; margin-bottom: 18px; z-index: 5; }
   .stack-cards > .reveal:last-child { margin-bottom: 0; }
   .stack-cards .feat {
     background: var(--surface); border: 1px solid var(--line);
