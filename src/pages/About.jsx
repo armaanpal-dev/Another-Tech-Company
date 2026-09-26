@@ -5,7 +5,7 @@ import Icon from '../components/Icon';
 import './pages.css';
 
 const values = [
-  { n: '01', t: 'Focused, not bloated', d: 'Each app does one job well. We would rather ship a small thing that works than a big one that gets in the way, and every feature has to earn its place.' },
+  { n: '01', t: 'Focused, not bloated', d: 'Each app does one job well. We would rather ship a focused tool that works than a bloated one that gets in the way, and every feature has to earn its place.' },
   { n: '02', t: 'Fast by default', d: 'Speed is a feature. Our storefront code is lightweight and deferred, so nothing we add costs you a sale or a search ranking.' },
   { n: '03', t: 'Honest, and no lock-in', d: 'We describe only what the apps actually do, never invented numbers. You install in the theme editor, and removing an app leaves your store exactly as it was.' },
 ];
@@ -23,14 +23,14 @@ export default function About() {
     name: 'AnotherDev',
     url: 'https://anotherdev.in',
     logo: 'https://anotherdev.in/logo.svg',
-    description: 'AnotherDev is a small studio that builds focused Shopify apps and websites, including Shoppable Video and Search and Filters.',
+    description: 'AnotherDev is a studio that builds focused Shopify apps and websites, including Shoppable Video and Search and Filters.',
   };
 
   return (
     <>
       <Seo
         title="About"
-        description="AnotherDev is a small studio that builds focused Shopify apps and websites. Two apps in production, Shoppable Video and Search and Filters, plus web development for merchants."
+        description="AnotherDev is a studio that builds focused Shopify apps and websites. Two apps in production, Shoppable Video and Search and Filters, plus web development for merchants."
         path="/about"
         schema={schema}
       />
@@ -38,7 +38,7 @@ export default function About() {
       <section className="phero">
         <div className="container phero__inner">
           <Reveal><span className="eyebrow">About</span></Reveal>
-          <Reveal as="h1" className="h-xl mt-s">A small studio building for <span className="hl">Shopify</span></Reveal>
+          <Reveal as="h1" className="h-xl mt-s">A studio building for <span className="hl">Shopify</span></Reveal>
           <Reveal><p className="lead">AnotherDev builds focused Shopify apps and websites. We run our own apps in production, Shoppable Video and Search and Filters, and we take on web development for merchants who want the same care applied to their store.</p></Reveal>
         </div>
       </section>

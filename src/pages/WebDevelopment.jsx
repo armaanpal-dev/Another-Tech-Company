@@ -84,7 +84,7 @@ export default function WebDevelopment() {
           <div className="container">
             <Reveal>
               <p className="lead intro">
-                AnotherDev is a small studio that builds Shopify apps and ships them to the App Store.
+                AnotherDev is a studio that builds Shopify apps and ships them to the App Store.
                 We take on client work too: storefronts, custom apps, and websites, built with the same
                 care for speed, clean code, and honest scope. <strong>If you want a website or a custom
                 app, <Link to="/support" className="hl-link">contact us</Link>.</strong>

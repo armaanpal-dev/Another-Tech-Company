@@ -349,6 +349,28 @@ svg { display: block; }
 }
 .marquee__item .icon { color: var(--mint); }
 
+/* ---- Scrollbar, themed to the brand gradient ---- */
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--coral) rgba(255,255,255,0.06);
+}
+/* WebKit / Chromium / Edge / Safari */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--coral) 0%, var(--coral-2) 45%, var(--violet) 100%);
+  /* Border in the track colour gives the thumb a slim, inset look. */
+  border: 3px solid var(--ink);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--coral-2) 0%, var(--coral) 50%, var(--violet) 100%);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner { background: var(--ink); }
+
 /* ---- Accessibility ---- */
 :focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--coral); color:#fff; padding: 10px 16px; border-radius: 8px; z-index: 999; }

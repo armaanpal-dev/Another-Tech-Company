@@ -173,7 +173,7 @@ export const posts = [
       { type: 'p', text: 'Speed is part of the shopping experience and part of how search engines rank pages. The good news is that shoppable video can be added without hurting Core Web Vitals, as long as it is built the right way.' },
       { type: 'h2', text: 'Load video only when it is needed' },
       { type: 'p', text: 'Videos should lazy-load, meaning they only start loading when they scroll into view. A reel near the bottom of a page should not compete for bandwidth with the content at the top. AnotherDev defers its scripts and lazy-loads video for this reason.' },
-      { type: 'h2', text: 'Keep the footprint small' },
+      { type: 'h2', text: 'Keep the footprint light' },
       { type: 'p', text: 'A heavy storefront widget is a hidden tax on every page load. The storefront bundle here is tiny, around 12 KB gzipped, and it is designed to avoid layout shift so content does not jump around as the page loads. That protects the Cumulative Layout Shift metric.' },
       { type: 'h2', text: 'Optimize the video files themselves' },
       { type: 'ul', items: [
@@ -224,7 +224,7 @@ export const posts = [
       { type: 'h2', text: 'Flexible placements' },
       { type: 'p', text: 'You want more than one place to show video. A home page feed introduces the brand, a product page carousel drives conversion, and automatic tag matching helps you scale across a large catalog without linking every product by hand.' },
       { type: 'h2', text: 'Speed and no code setup' },
-      { type: 'p', text: 'Check that video lazy-loads, scripts are deferred, and the storefront footprint is small with no layout shift. Setup should happen through the Shopify theme editor with drag and drop blocks, so you are not editing theme files or waiting on a developer.' },
+      { type: 'p', text: 'Check that video lazy-loads, scripts are deferred, and the storefront footprint is light with no layout shift. Setup should happen through the Shopify theme editor with drag and drop blocks, so you are not editing theme files or waiting on a developer.' },
       { type: 'h2', text: 'Analytics you can act on' },
       { type: 'p', text: 'Impressions and plays are a start, but you also want clicks, add-to-cart events, and derived rates like play rate, click-through rate, and conversion, so you can tell which reels are actually earning their place.' },
       { type: 'h2', text: 'Privacy and billing' },
