@@ -35,6 +35,15 @@ export default function GsapFx() {
           if (glow) gsap.to(glow, { yPercent: 26, ease: 'none', scrollTrigger: scrub });
           if (grid) gsap.to(grid, { yPercent: 12, opacity: 0.35, ease: 'none', scrollTrigger: scrub });
         });
+
+        // Gentle depth parallax on media and mockups as they pass through view.
+        // Works on every device since it is driven by scroll, not the pointer.
+        gsap.utils.toArray('.split__media, .vmock, .feeddemo, .statcard').forEach((el) => {
+          gsap.fromTo(el, { y: 26 }, {
+            y: -26, ease: 'none',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+          });
+        });
       });
 
       // Pointer-driven 3D tilt on the big cards (hover-capable devices only).
@@ -55,6 +64,25 @@ export default function GsapFx() {
             card.removeEventListener('mousemove', onMove);
             card.removeEventListener('mouseleave', onLeave);
             gsap.set(card, { clearProps: 'transform' });
+          });
+        });
+
+        // Magnetic pull on the primary buttons.
+        gsap.utils.toArray('.btn--primary').forEach((btn) => {
+          const mx = gsap.quickTo(btn, 'x', { duration: 0.4, ease: 'power3' });
+          const my = gsap.quickTo(btn, 'y', { duration: 0.4, ease: 'power3' });
+          const onMove = (e) => {
+            const r = btn.getBoundingClientRect();
+            mx((e.clientX - (r.left + r.width / 2)) * 0.25);
+            my((e.clientY - (r.top + r.height / 2)) * 0.35);
+          };
+          const onLeave = () => { mx(0); my(0); };
+          btn.addEventListener('mousemove', onMove);
+          btn.addEventListener('mouseleave', onLeave);
+          cleanups.push(() => {
+            btn.removeEventListener('mousemove', onMove);
+            btn.removeEventListener('mouseleave', onLeave);
+            gsap.set(btn, { clearProps: 'transform' });
           });
         });
       }
