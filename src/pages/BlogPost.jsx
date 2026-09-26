@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import Icon from '../components/Icon';
 import { Reveal, CtaBand } from '../components/Shared';
-import { getPost } from './blogPosts';
+import { posts, getPost } from './blogPosts';
 import NotFound from './NotFound';
 import './pages.css';
 
@@ -21,28 +22,57 @@ function Block({ block }) {
   return <p>{rich(block.text)}</p>;
 }
 
+// "Sep 25, 2026" -> "2026-09-25" for schema. Uses local calendar parts so the
+// date never shifts a day across time zones. Falls back to the raw string.
+function toISO(dateStr) {
+  const d = new Date(dateStr);
+  if (Number.isNaN(d.getTime())) return dateStr;
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${m}-${day}`;
+}
+
 export default function BlogPost() {
   const { slug } = useParams();
   const post = getPost(slug);
 
   if (!post) return <NotFound />;
 
+  const url = `https://anotherdev.in/blog/${post.slug}`;
+  const iso = toISO(post.date);
+  const wordCount = post.content.reduce((n, b) => {
+    const t = b.type === 'ul' ? b.items.join(' ') : (b.text || '');
+    return n + t.split(/\s+/).filter(Boolean).length;
+  }, 0);
+
+  const related = (() => {
+    const others = posts.filter((p) => p.slug !== post.slug);
+    const same = others.filter((p) => p.cat === post.cat);
+    const rest = others.filter((p) => p.cat !== post.cat);
+    return [...same, ...rest].slice(0, 3);
+  })();
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
-    url: `https://anotherdev.in/blog/${post.slug}`,
-    datePublished: post.date,
+    url,
+    inLanguage: 'en',
+    datePublished: iso,
+    dateModified: iso,
     articleSection: post.cat,
-    image: 'https://anotherdev.in/logo.svg',
+    wordCount,
+    keywords: `${post.cat}, Shopify, AnotherDev, shoppable video, Shopify apps`,
+    image: 'https://anotherdev.in/og-image.svg',
     author: { '@type': 'Organization', name: 'AnotherDev', url: 'https://anotherdev.in' },
     publisher: {
       '@type': 'Organization',
       name: 'AnotherDev',
       logo: { '@type': 'ImageObject', url: 'https://anotherdev.in/logo.svg' },
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://anotherdev.in/blog/${post.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    isPartOf: { '@type': 'Blog', name: 'AnotherDev Blog', url: 'https://anotherdev.in/blog' },
   };
 
   return (
@@ -66,6 +96,26 @@ export default function BlogPost() {
             </Reveal>
           </div>
         </section>
+
+        {related.length > 0 && (
+          <section className="section--tight" style={{ paddingTop: 0 }}>
+            <div className="container">
+              <h2 className="h-md" style={{ marginBottom: 24 }}>Related articles</h2>
+              <div className="blog-grid">
+                {related.map((p) => (
+                  <Link key={p.slug} to={`/blog/${p.slug}`} className="post">
+                    <span className={`post__cover ${p.cover}`} aria-hidden="true" />
+                    <span className="post__cat">{p.cat}</span>
+                    <span className="post__meta">{p.date} · {p.read} read</span>
+                    <h3>{p.title}</h3>
+                    <p>{p.excerpt}</p>
+                    <span className="post__link">Read more <Icon name="arrow" size={16} /></span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </div>
       <CtaBand title="Ready to make your store shoppable?" sub="Install AnotherDev free and add your first shoppable reel in minutes." />
     </>

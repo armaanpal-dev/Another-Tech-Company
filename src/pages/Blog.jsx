@@ -5,19 +5,30 @@ import { Reveal, CtaBand } from '../components/Shared';
 import { posts } from './blogPosts';
 import './pages.css';
 
+const toISO = (s) => {
+  const d = new Date(s);
+  if (Number.isNaN(d.getTime())) return s;
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${m}-${day}`;
+};
+
 export default function Blog() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: 'AnotherDev Blog',
-    description: 'Guides on shoppable video, UGC, and conversion for Shopify merchants.',
+    description: 'Guides on shoppable video, Shopify search and filters, merchandising, and conversion for Shopify merchants.',
     url: 'https://anotherdev.in/blog',
+    inLanguage: 'en',
+    publisher: { '@type': 'Organization', name: 'AnotherDev', url: 'https://anotherdev.in' },
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',
       headline: p.title,
       description: p.excerpt,
       url: `https://anotherdev.in/blog/${p.slug}`,
-      datePublished: p.date,
+      datePublished: toISO(p.date),
+      articleSection: p.cat,
       author: { '@type': 'Organization', name: 'AnotherDev' },
     })),
   };
@@ -26,7 +37,7 @@ export default function Blog() {
     <>
       <Seo
         title="Blog"
-        description="Guides and playbooks on shoppable video, UGC, and conversion optimization for Shopify merchants, from the team behind AnotherDev."
+        description="Guides on shoppable video, Shopify search and filters, merchandising, and conversion optimization for Shopify merchants, from the team behind AnotherDev."
         path="/blog"
         schema={schema}
       />

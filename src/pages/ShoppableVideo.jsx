@@ -83,8 +83,8 @@ export default function ShoppableVideo() {
   return (
     <>
       <Seo
-        title="Shoppable Video for Shopify"
-        description="Turn your reels into a shoppable storefront. Add video galleries, product carousels and a floating player to any page of your Shopify store. Add to cart inside the video."
+        title="Shoppable & UGC Video App for Shopify"
+        description="AnotherDev is a Shopify app for shoppable video and UGC video. Turn reels, creator clips and product videos into a shoppable storefront with add to cart inside the video, on any page of your store."
         path="/shoppable-video"
         schema={schema}
       />
@@ -148,10 +148,11 @@ export default function ShoppableVideo() {
           <div className="container">
             <Reveal>
               <p className="lead intro">
-                AnotherDev turns short-form video, the kind you already make for social, into a
-                shoppable storefront experience. Upload a video, link it to a product, and place it
-                anywhere on your store. Each video shows the product with its live price and an Add
-                to Cart button, so a shopper can buy in the moment they are interested.
+                AnotherDev is the Shopify app for shoppable video and UGC video. It turns the
+                short-form clips you already make for social, product reels, creator content and
+                customer UGC, into a shoppable storefront. Upload a video, link it to a product, and
+                place it anywhere on your store. Each video shows the product with its live price and
+                an Add to Cart button, so a shopper can buy in the moment they are interested.
               </p>
             </Reveal>
           </div>
@@ -182,6 +183,26 @@ export default function ShoppableVideo() {
             <div className="center mt-l">
               <Link to="/features" className="btn btn--ghost">Explore all features <Icon name="arrow" size={17} /></Link>
             </div>
+          </div>
+        </section>
+
+        <section className="section--tight">
+          <div className="container">
+            <SectionHead
+              badge="UGC video"
+              icon="video"
+              title={<>Make your <span className="hl">UGC video</span> shoppable</>}
+              sub="Creator clips, customer reviews and social reels build trust. AnotherDev turns that UGC video into a buying moment instead of just a scroll."
+            />
+            <Reveal>
+              <p className="lead intro mt-m">
+                Collect UGC from creators and customers, upload the clip to your Shopify Files, and
+                link it to the product it features. The same video that earns trust on social now
+                sits on your product and collection pages with a live price and an Add to Cart
+                button, so shoppers can act on it right away. It is the simplest way to run
+                shoppable UGC video on Shopify without touching theme code.
+              </p>
+            </Reveal>
           </div>
         </section>
       </div>

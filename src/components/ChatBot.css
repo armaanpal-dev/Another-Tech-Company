@@ -4,7 +4,7 @@
 ============================================================ */
 
 .cbot__launch {
-  position: fixed; right: 22px; bottom: 22px; z-index: 90;
+  position: fixed; right: 22px; bottom: 22px; z-index: 200;
   width: 58px; height: 58px; border-radius: 50%; border: 0; cursor: pointer;
   display: grid; place-items: center; color: #fff;
   background: var(--grad-cta); box-shadow: 0 18px 40px -14px rgba(255,92,122,0.7);
@@ -14,7 +14,7 @@
 .cbot__launch.is-open { background: var(--ink-3); box-shadow: var(--shadow-lift); }
 
 .cbot {
-  position: fixed; right: 22px; bottom: 92px; z-index: 90;
+  position: fixed; right: 22px; bottom: 92px; z-index: 200;
   width: min(380px, calc(100vw - 32px)); height: min(560px, calc(100vh - 130px));
   display: flex; flex-direction: column; overflow: hidden;
   background: rgba(18, 11, 41, 0.98); backdrop-filter: blur(18px);
@@ -76,8 +76,14 @@
 .cbot__send:disabled { opacity: .5; cursor: default; }
 .cbot__foot { text-align: center; color: var(--text-3); font-size: .72rem; padding: 0 12px 12px; }
 
-/* Keep clear of the sticky mobile CTA bar. */
+/* On mobile the panel is anchored between the header and the bottom bars,
+   so it never sits under the sticky header (which would crop its top) and
+   never collides with the launcher or the sticky CTA bar. */
 @media (max-width: 780px) {
   .cbot__launch { bottom: 84px; right: 16px; }
-  .cbot { bottom: 150px; right: 16px; height: min(70vh, calc(100vh - 200px)); }
+  .cbot {
+    left: 16px; right: 16px; width: auto;
+    top: calc(72px + env(safe-area-inset-top, 0px));
+    bottom: 150px; height: auto;
+  }
 }
