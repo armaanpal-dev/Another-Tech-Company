@@ -38,9 +38,19 @@ export default function Navbar() {
   }, []);
 
   // Lock the page behind the open mobile menu so it cannot scroll through.
+  // Pinning the body with position:fixed at the current offset is what iOS
+  // actually respects; the offset is restored when the menu closes.
   useEffect(() => {
-    document.body.classList.toggle('nav-lock', open);
-    return () => document.body.classList.remove('nav-lock');
+    if (!open) return;
+    const y = window.scrollY;
+    const { body } = document;
+    body.classList.add('nav-lock');
+    body.style.top = `-${y}px`;
+    return () => {
+      body.classList.remove('nav-lock');
+      body.style.top = '';
+      window.scrollTo(0, y);
+    };
   }, [open]);
 
   return (

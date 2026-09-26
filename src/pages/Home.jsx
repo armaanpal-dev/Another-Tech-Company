@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal, CtaBand, SectionHead, Marquee, StatCard } from '../components/Shared';
+import { Reveal, CtaBand, SectionHead, Marquee, StatCard, PillRow } from '../components/Shared';
 import Icon from '../components/Icon';
 import { posts } from './blogPosts';
 import { APP_STORE_URL, SEARCH_APP_STORE_URL } from '../config';
@@ -107,8 +107,8 @@ export default function Home() {
           </Reveal>
         </div>
         <div className="worksw mt-m">
-          <Reveal><Marquee items={worksWithA} /></Reveal>
-          <Reveal delay={80}><Marquee items={worksWithB} reverse /></Reveal>
+          <Marquee items={worksWithA} />
+          <Marquee items={worksWithB} reverse />
         </div>
       </section>
 
@@ -159,11 +159,7 @@ export default function Home() {
             sub="Both apps install as theme app blocks, work with the cart your store already uses, and come out cleanly if you ever remove them."
           />
           <Reveal>
-            <div className="chips mt-l">
-              {why.map((c) => (
-                <span key={c} className="chip"><Icon name="check" size={15} strokeWidth={2.2} />{c}</span>
-              ))}
-            </div>
+            <PillRow items={why} className="mt-l" />
           </Reveal>
 
           <div className="grid grid-3 mt-l">

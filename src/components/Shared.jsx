@@ -91,6 +91,39 @@ export function Marquee({ items, reverse = false }) {
   );
 }
 
+/* Row of pills (chips).
+   With more than four pills it becomes an auto-sliding row on mobile (the
+   same seamless marquee mechanism used elsewhere), and stays a wrapped grid
+   on desktop. Four or fewer stay a grid on every screen. */
+export function PillRow({ items, className = '' }) {
+  const chip = (t, key) => (
+    <span className="chip" key={key}><Icon name="check" size={15} strokeWidth={2.2} />{t}</span>
+  );
+
+  if (items.length <= 4) {
+    return <div className={`chips ${className}`}>{items.map((t) => chip(t, t))}</div>;
+  }
+
+  // Repeat so a single half is wider than the viewport; two halves loop seamlessly.
+  const loop = [...items, ...items, ...items];
+  return (
+    <div className={`pillrow ${className}`}>
+      <div className="chips pillrow__grid">{items.map((t) => chip(t, t))}</div>
+      <div className="marquee pillrow__slide" aria-label={items.join(', ')}>
+        <div className="marquee__track">
+          {[0, 1].map((copy) => (
+            loop.map((t, i) => (
+              <span className="marquee__item" key={`${copy}-${i}-${t}`} aria-hidden="true">
+                <Icon name="check" size={15} strokeWidth={2.2} />{t}
+              </span>
+            ))
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* Phone-style shoppable video mockup (pure CSS/SVG, no assets) */
 export function VideoMock({ label = 'Now playing', price = '$48', product = 'Linen Wrap Dress' }) {
   return (

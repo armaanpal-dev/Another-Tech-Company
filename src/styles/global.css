@@ -349,6 +349,14 @@ svg { display: block; }
 }
 .marquee__item .icon { color: var(--mint); }
 
+/* Pill row: a wrapped grid on desktop; an auto-sliding row on mobile (used
+   when a pill group has more than four items). */
+.pillrow__slide { display: none; }
+@media (max-width: 780px) {
+  .pillrow__grid { display: none; }
+  .pillrow__slide { display: block; }
+}
+
 /* ---- Scrollbar, themed to the brand gradient ---- */
 /* Firefox */
 html {
@@ -417,5 +425,7 @@ html {
   body { background-attachment: scroll; }
 }
 
-/* Lock the page behind the open mobile menu so it cannot scroll through. */
-body.nav-lock { overflow: hidden; }
+/* Lock the page behind the open mobile menu so it cannot scroll through.
+   position:fixed (with the scroll offset applied inline as `top`) is the only
+   thing iOS Safari reliably honours; overflow:hidden alone still scrolls. */
+body.nav-lock { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }

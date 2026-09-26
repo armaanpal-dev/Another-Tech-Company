@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal, CtaBand, Faq, SectionHead, Marquee } from '../components/Shared';
+import { Reveal, CtaBand, Faq, SectionHead, Marquee, PillRow } from '../components/Shared';
 import { ReelCarousel, FunnelViz, PlayerShowcase, MockFeed, MockCart, MockTags, MockChart } from '../components/Interactive';
 import Icon from '../components/Icon';
 import { APP_STORE_URL } from '../config';
@@ -137,8 +137,8 @@ export default function ShoppableVideo() {
           </Reveal>
         </div>
         <div className="worksw mt-m">
-          <Reveal><Marquee items={worksWithA} /></Reveal>
-          <Reveal delay={80}><Marquee items={worksWithB} reverse /></Reveal>
+          <Marquee items={worksWithA} />
+          <Marquee items={worksWithB} reverse />
         </div>
       </section>
 
@@ -311,11 +311,7 @@ export default function ShoppableVideo() {
             sub="Add to cart opens the cart your store actually uses, shows the price the shopper will actually pay, and never touches your theme code."
           />
           <Reveal>
-            <div className="chips mt-l">
-              {compat.map((c) => (
-                <span key={c} className="chip"><Icon name="check" size={15} strokeWidth={2.2} />{c}</span>
-              ))}
-            </div>
+            <PillRow items={compat} className="mt-l" />
           </Reveal>
           <div className="center mt-l">
             <Link to="/compatibility" className="btn btn--ghost-light">See full compatibility <Icon name="arrow" size={17} /></Link>

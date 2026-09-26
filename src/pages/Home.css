@@ -85,6 +85,24 @@
 .feats { gap: 46px 34px; }
 .placements-grid { gap: 46px 34px; }
 
+/* ---- Stacking cards on scroll (mobile only) ----
+   Each card sticks just below the header and the next card scrolls up over
+   it, so the set stacks one on top of another as the page scrolls. */
+@media (max-width: 780px) {
+  .stack-cards { display: block; }
+  .stack-cards > .reveal { position: sticky; top: 84px; margin-bottom: 18px; }
+  .stack-cards > .reveal:last-child { margin-bottom: 0; }
+  .stack-cards .feat {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px 22px;
+    box-shadow: var(--shadow-lift);
+  }
+  /* The stacking on scroll is the effect here, so skip the entrance fade
+     (a transform animation would fight the sticky positioning). */
+  .stack-cards > .reveal.is-armed { opacity: 1; }
+  .stack-cards > .reveal.in { animation: none; }
+}
+
 /* ---- Compatibility chips ---- */
 .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .chip {

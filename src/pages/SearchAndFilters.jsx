@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal, Faq, SectionHead, Marquee } from '../components/Shared';
+import { Reveal, Faq, SectionHead, Marquee, PillRow } from '../components/Shared';
 import { SearchDemo } from '../components/Interactive';
 import Icon from '../components/Icon';
 import { SEARCH_APP_STORE_URL } from '../config';
@@ -127,8 +127,8 @@ export default function SearchAndFilters() {
           </Reveal>
         </div>
         <div className="worksw mt-m">
-          <Reveal><Marquee items={worksWithA} /></Reveal>
-          <Reveal delay={80}><Marquee items={worksWithB} reverse /></Reveal>
+          <Marquee items={worksWithA} />
+          <Marquee items={worksWithB} reverse />
         </div>
       </section>
 
@@ -229,11 +229,7 @@ export default function SearchAndFilters() {
             sub="Add to cart from results uses the same engine as Shoppable Video, so it opens the cart your store actually uses. Read-only scopes mean the app never writes to your store."
           />
           <Reveal>
-            <div className="chips mt-l">
-              {compat.map((c) => (
-                <span key={c} className="chip"><Icon name="check" size={15} strokeWidth={2.2} />{c}</span>
-              ))}
-            </div>
+            <PillRow items={compat} className="mt-l" />
           </Reveal>
         </div>
       </section>

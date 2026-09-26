@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { Reveal, SectionHead, Faq } from '../components/Shared';
+import { Reveal, SectionHead, Faq, PillRow } from '../components/Shared';
 import Icon from '../components/Icon';
 import './Home.css';
 
@@ -170,7 +170,7 @@ export default function WebDevelopment() {
               title={<>From a custom app to a <span className="hl">full website</span></>}
               sub="A focused set of services, all in one team, so the people who scope the work are the people who build it."
             />
-            <div className="grid grid-3 mt-l feats">
+            <div className="grid grid-3 mt-l feats stack-cards">
               {services.map((s, i) => (
                 <Reveal key={s.t} delay={(i % 3) * 60}>
                   <div className="feat">
@@ -234,11 +234,7 @@ export default function WebDevelopment() {
               sub="Modern, well-supported technology across Shopify and the wider web, chosen to fit the job rather than a fixed template."
             />
             <Reveal>
-              <div className="chips mt-l" style={{ justifyContent: 'center' }}>
-                {stack.map((c) => (
-                  <span key={c} className="chip"><Icon name="check" size={15} strokeWidth={2.2} />{c}</span>
-                ))}
-              </div>
+              <PillRow items={stack} className="mt-l" />
             </Reveal>
           </div>
         </section>
@@ -276,11 +272,7 @@ export default function WebDevelopment() {
             sub="We do not just build for clients. We run our own Shopify apps in production, so we bring that same discipline to your project."
           />
           <Reveal>
-            <div className="chips mt-l">
-              {why.map((c) => (
-                <span key={c} className="chip"><Icon name="check" size={15} strokeWidth={2.2} />{c}</span>
-              ))}
-            </div>
+            <PillRow items={why} className="mt-l" />
           </Reveal>
         </div>
       </section>
