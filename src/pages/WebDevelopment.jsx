@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { Reveal, SectionHead, Faq, PillRow } from '../components/Shared';
+import ScrollStory from '../components/ScrollStory';
 import Icon from '../components/Icon';
 import './Home.css';
+
+const storySteps = [
+  { icon: 'puzzle', t: 'Shopify apps, shipped', d: 'We build custom and public Shopify apps end to end, from the first scope through development, testing, and App Store submission, on the same stack as our own apps.' },
+  { icon: 'box', t: 'Storefronts that fit', d: 'Fast Online Store 2.0 themes and storefronts, on-brand and easy for your team to run, with none of the bloat that slows pages down.' },
+  { icon: 'globe', t: 'Websites and web apps', d: 'Marketing sites and full web apps on React, Next.js and Node, built to load fast and convert from the very first line of code.' },
+  { icon: 'chat', t: 'Integrations and AI', d: 'Carts, ERPs, analytics and third-party APIs connected, plus custom AI automations and chatbots wired into the tools your team already runs on.' },
+];
 
 const services = [
   { icon: 'puzzle', t: 'Custom Shopify apps', d: 'Embedded admin apps, theme app extensions, and app-proxy storefront features, built on the same stack behind our own published Shopify apps.' },
@@ -239,6 +247,13 @@ export default function WebDevelopment() {
           </div>
         </section>
       </div>
+
+      {/* SCROLL STORY (dark): pinned panel that changes as you scroll */}
+      <ScrollStory
+        eyebrow="A closer look"
+        title={<>What building with us <span className="hl">looks like</span></>}
+        steps={storySteps}
+      />
 
       {/* HOW WE WORK (dark) */}
       <section className="section band">

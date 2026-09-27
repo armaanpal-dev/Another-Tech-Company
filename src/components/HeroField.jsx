@@ -46,12 +46,12 @@ function setupField(hero) {
   const R = 112;          // pointer influence radius (css px)
   const R2 = R * R;
   const PUSH = 0.08;      // scatter strength per unit of energy (gentle)
-  const SPRING = 0.018;   // return speed (small = slow)
-  const FRICTION = 0.9;
+  const FRICTION = 0.8;   // the scatter kick fades quickly...
+  const RETURN = 0.03;    // ...then a steady pull eases each dot home in ~2s
   const MOVE_GAIN = 0.32; // energy added per px the pointer travels
   const MAX_ENERGY = 16;
   const TAP_BURST = 9;    // energy from a tap / click
-  const ENERGY_DECAY = 0.9;
+  const ENERGY_DECAY = 0.86;
 
   const gap = () => (window.matchMedia('(max-width: 780px)').matches ? 28 : 32);
 
@@ -96,15 +96,17 @@ function setupField(hero) {
         }
       }
 
-      d.vx += (d.hx - d.x) * SPRING;
-      d.vy += (d.hy - d.y) * SPRING;
-      d.vx *= FRICTION;
-      d.vy *= FRICTION;
+      // The scatter kick (velocity) fades fast, then a steady lerp eases the
+      // dot back to its home over roughly two seconds.
       d.x += d.vx;
       d.y += d.vy;
+      d.vx *= FRICTION;
+      d.vy *= FRICTION;
+      d.x += (d.hx - d.x) * RETURN;
+      d.y += (d.hy - d.y) * RETURN;
 
       const disp = Math.hypot(d.x - d.hx, d.y - d.hy);
-      if (disp > 0.05 || Math.abs(d.vx) > 0.05 || Math.abs(d.vy) > 0.05) moving = true;
+      if (disp > 0.15 || Math.abs(d.vx) > 0.05 || Math.abs(d.vy) > 0.05) moving = true;
 
       const alpha = Math.min(0.18 + disp * 0.03, 0.85);
       let fill;

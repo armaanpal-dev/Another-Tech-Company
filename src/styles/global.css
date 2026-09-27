@@ -211,6 +211,16 @@ svg { display: block; }
 /* No grey/black tap-highlight box on touch devices. */
 a, button, .btn, [role="button"], input, textarea, select { -webkit-tap-highlight-color: transparent; }
 
+/* On a long press, mobile browsers otherwise draw a dark box around the label
+   (the link callout plus the default focus ring). Suppress both on buttons and
+   links, while keeping the coral focus ring for keyboard users via
+   :focus-visible below. */
+a, button, .btn, [role="button"] { -webkit-touch-callout: none; }
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.btn:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) { outline: none; }
+
 /* Tap and click ripple, driven by GSAP. Works on both touch and mouse. */
 .btn__ripple {
   position: absolute; border-radius: 50%; pointer-events: none;
@@ -399,10 +409,10 @@ html {
    Resting state is visible. Only elements that start below the fold
    are armed, so the page's first frame is complete rather than a
    set of empty boxes waiting on an observer. */
-@keyframes floatUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes floatUp { from { opacity: 0; transform: translateY(48px); } to { opacity: 1; transform: none; } }
 .reveal { opacity: 1; }
 .reveal.is-armed { opacity: 0; }
-.reveal.in { animation: floatUp .68s cubic-bezier(.2,.8,.2,1) both; }
+.reveal.in { animation: floatUp .8s cubic-bezier(.16,.8,.24,1) both; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
