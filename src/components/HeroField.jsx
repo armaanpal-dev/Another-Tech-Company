@@ -32,19 +32,26 @@ function setupField(hero) {
   hero.classList.add('is-dots');
 
   const ctx = canvas.getContext('2d');
-  const pointer = { x: -9999, y: -9999, active: false };
+  const pointer = { x: -9999, y: -9999, active: false, energy: 0 };
   let dots = [];
   let W = 0;
   let H = 0;
   let raf = 0;
   let running = false;
 
-  // Physics. A soft push away from the pointer, a slow spring home.
-  const R = 96;          // pointer influence radius (css px)
+  // Physics. The pointer injects "energy" only while it MOVES (or on a tap),
+  // and that energy decays every frame. So a still pointer stops pushing and
+  // the dots drift home again, even directly under the cursor. Everything is
+  // gentle, so the scatter and the return both read as slow.
+  const R = 112;          // pointer influence radius (css px)
   const R2 = R * R;
-  const PUSH = 5.2;      // scatter strength
-  const SPRING = 0.032;  // return speed (small = slow)
+  const PUSH = 0.08;      // scatter strength per unit of energy (gentle)
+  const SPRING = 0.018;   // return speed (small = slow)
   const FRICTION = 0.9;
+  const MOVE_GAIN = 0.32; // energy added per px the pointer travels
+  const MAX_ENERGY = 16;
+  const TAP_BURST = 9;    // energy from a tap / click
+  const ENERGY_DECAY = 0.9;
 
   const gap = () => (window.matchMedia('(max-width: 780px)').matches ? 28 : 32);
 
@@ -71,17 +78,19 @@ function setupField(hero) {
   function frame() {
     ctx.clearRect(0, 0, W, H);
     let moving = false;
+    pointer.energy *= ENERGY_DECAY; // fades when the pointer stops moving
+    const pushing = pointer.active && pointer.energy > 0.05;
 
     for (let i = 0; i < dots.length; i++) {
       const d = dots[i];
 
-      if (pointer.active) {
+      if (pushing) {
         const dx = d.x - pointer.x;
         const dy = d.y - pointer.y;
         const dist2 = dx * dx + dy * dy;
         if (dist2 < R2) {
           const dist = Math.sqrt(dist2) || 0.001;
-          const f = (1 - dist / R) * PUSH;
+          const f = (1 - dist / R) * pointer.energy * PUSH;
           d.vx += (dx / dist) * f;
           d.vy += (dy / dist) * f;
         }
@@ -118,10 +127,10 @@ function setupField(hero) {
       ctx.fill();
     }
 
-    if (moving || pointer.active) {
+    if (moving || pointer.energy > 0.05) {
       raf = requestAnimationFrame(frame);
     } else {
-      running = false; // settled: stop until the pointer returns
+      running = false; // settled: stop until the pointer moves again
     }
   }
 
@@ -134,9 +143,25 @@ function setupField(hero) {
 
   function onMove(e) {
     const rect = hero.getBoundingClientRect();
+    const nx = e.clientX - rect.left;
+    const ny = e.clientY - rect.top;
+    // Energy comes from how far the pointer travelled, so faster moves scatter
+    // more and a still pointer injects nothing.
+    if (pointer.active) {
+      pointer.energy = Math.min(pointer.energy + Math.hypot(nx - pointer.x, ny - pointer.y) * MOVE_GAIN, MAX_ENERGY);
+    }
+    pointer.x = nx;
+    pointer.y = ny;
+    pointer.active = true;
+    start();
+  }
+
+  function onDown(e) {
+    const rect = hero.getBoundingClientRect();
     pointer.x = e.clientX - rect.left;
     pointer.y = e.clientY - rect.top;
     pointer.active = true;
+    pointer.energy = Math.min(pointer.energy + TAP_BURST, MAX_ENERGY);
     start();
   }
 
@@ -161,7 +186,7 @@ function setupField(hero) {
   frame(); // one static frame so the grid shows before any interaction
 
   hero.addEventListener('pointermove', onMove);
-  hero.addEventListener('pointerdown', onMove);
+  hero.addEventListener('pointerdown', onDown);
   hero.addEventListener('pointerleave', onLeave);
   hero.addEventListener('pointercancel', onLeave);
   hero.addEventListener('pointerup', onUp);
@@ -171,7 +196,7 @@ function setupField(hero) {
     cancelAnimationFrame(raf);
     clearTimeout(resizeT);
     hero.removeEventListener('pointermove', onMove);
-    hero.removeEventListener('pointerdown', onMove);
+    hero.removeEventListener('pointerdown', onDown);
     hero.removeEventListener('pointerleave', onLeave);
     hero.removeEventListener('pointercancel', onLeave);
     hero.removeEventListener('pointerup', onUp);

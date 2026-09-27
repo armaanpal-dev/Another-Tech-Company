@@ -208,8 +208,19 @@ svg { display: block; }
 }
 
 /* ---- Buttons ---- */
+/* No grey/black tap-highlight box on touch devices. */
+a, button, .btn, [role="button"], input, textarea, select { -webkit-tap-highlight-color: transparent; }
+
+/* Tap and click ripple, driven by GSAP. Works on both touch and mouse. */
+.btn__ripple {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: currentColor; opacity: 0.35; transform: scale(0);
+  will-change: transform, opacity;
+}
+
 .btn {
   position: relative; overflow: hidden;
+  -webkit-user-select: none; user-select: none;
   display: inline-flex; align-items: center; justify-content: center; gap: 9px;
   font-family: var(--font-display); font-weight: 600; font-size: .96rem;
   letter-spacing: -0.01em;

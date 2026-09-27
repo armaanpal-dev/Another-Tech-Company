@@ -46,6 +46,28 @@ export default function GsapFx() {
         });
       });
 
+      // Tap / click ripple on every button. pointerdown fires for both mouse
+      // and touch, so this is the button effect that works on mobile too.
+      gsap.utils.toArray('.btn').forEach((btn) => {
+        const onDown = (e) => {
+          const r = btn.getBoundingClientRect();
+          const size = Math.max(r.width, r.height) * 1.5;
+          const span = document.createElement('span');
+          span.className = 'btn__ripple';
+          span.style.width = `${size}px`;
+          span.style.height = `${size}px`;
+          span.style.left = `${e.clientX - r.left - size / 2}px`;
+          span.style.top = `${e.clientY - r.top - size / 2}px`;
+          btn.appendChild(span);
+          gsap.fromTo(span, { scale: 0, opacity: 0.4 }, {
+            scale: 1, opacity: 0, duration: 0.6, ease: 'power2.out',
+            onComplete: () => span.remove(),
+          });
+        };
+        btn.addEventListener('pointerdown', onDown);
+        cleanups.push(() => btn.removeEventListener('pointerdown', onDown));
+      });
+
       // Pointer-driven 3D tilt on the big cards (hover-capable devices only).
       if (hoverable) {
         gsap.utils.toArray('.appcard, .showcase__card').forEach((card) => {
