@@ -8,9 +8,11 @@
   align-items: start;
 }
 
-/* ---- Pinned panel ---- */
+/* ---- Pinned panel ----
+   Sticky lives on the grid column (.story__aside), not the box inside it, so
+   it has the full height of the steps column to travel within. */
+.story__aside { position: sticky; top: 100px; align-self: start; }
 .story__panel {
-  position: sticky; top: 100px;
   min-height: 60vh;
   display: flex; flex-direction: column; justify-content: center;
   padding: 42px 38px; overflow: hidden;
@@ -82,8 +84,9 @@
 /* ---- Mobile: pin the panel to the top instead of the side ---- */
 @media (max-width: 820px) {
   .story__grid { grid-template-columns: 1fr; gap: 12px; }
+  .story__aside { top: 86px; z-index: 2; }
   .story__panel {
-    top: 86px; min-height: auto; padding: 22px 22px 20px;
+    min-height: auto; padding: 22px 22px 20px;
     flex-direction: column;
   }
   .story__icon { width: 52px; height: 52px; border-radius: 14px; margin-bottom: 12px; }
