@@ -57,8 +57,7 @@ const worksWithA = ['Dawn', 'Online Store 2.0', 'Symmetry', 'Clean Canvas', 'Vin
 const worksWithB = ['GoKwik carts', 'Shiprocket carts', 'Shopify Markets', 'Multi-currency pricing', 'Theme app blocks', 'No code edits'];
 
 export default function ShoppableVideo() {
-  const schema = {
-    '@context': 'https://schema.org',
+  const appSchema = {
     '@type': 'SoftwareApplication',
     name: 'AnotherDev - Shoppable Video',
     alternateName: ['AnotherDev Shoppable Video', 'Shoppable Video for Shopify'],
@@ -78,6 +77,20 @@ export default function ShoppableVideo() {
       { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
     ],
     publisher: { '@type': 'Organization', name: 'AnotherDev', url: 'https://anotherdev.in' },
+  };
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      appSchema,
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqTeaser.map(([q, a]) => ({
+          '@type': 'Question', name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      },
+    ],
   };
 
   return (

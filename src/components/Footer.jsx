@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { APP_STORE_URL } from '../config';
+import { APP_STORE_URL, SEARCH_APP_STORE_URL } from '../config';
 import './Footer.css';
 
 const cols = [
@@ -44,9 +44,10 @@ export default function Footer() {
               <img className="footer__mark" src="/logo.svg" alt="" width="32" height="32" /> AnotherDev
             </Link>
             <p className="footer__tag">
-              Shoppable video for Shopify. Add to cart inside the video, on any page of your store.
+              Two focused Shopify apps: Shoppable Video, and Search and Filters. Plus custom Shopify
+              and web development.
             </p>
-            <a href={APP_STORE_URL} className="btn btn--primary footer__cta">Add to Shopify, free plan available</a>
+            <Link to="/#apps" className="btn btn--primary footer__cta">Explore our apps</Link>
           </div>
 
           <div className="footer__cols">
@@ -63,7 +64,8 @@ export default function Footer() {
             <div className="footer__col">
               <h4>Get started</h4>
               <ul>
-                <li><a href={APP_STORE_URL}>Add to Shopify</a></li>
+                <li><a href={APP_STORE_URL}>Get Shoppable Video</a></li>
+                <li><a href={SEARCH_APP_STORE_URL}>Get Search &amp; Filters</a></li>
                 <li><Link to="/support">Contact support</Link></li>
               </ul>
             </div>

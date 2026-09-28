@@ -45,8 +45,8 @@ export default function Home() {
     '@type': 'ItemList',
     name: 'AnotherDev Shopify apps',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, item: { '@type': 'SoftwareApplication', name: 'AnotherDev - Shoppable Video', applicationCategory: 'BusinessApplication', operatingSystem: 'Shopify', url: 'https://anotherdev.in/shoppable-video' } },
-      { '@type': 'ListItem', position: 2, item: { '@type': 'SoftwareApplication', name: 'AnotherDev - Search and Filters', applicationCategory: 'BusinessApplication', operatingSystem: 'Shopify', url: 'https://anotherdev.in/search-and-filters' } },
+      { '@type': 'ListItem', position: 1, item: { '@type': 'SoftwareApplication', name: 'AnotherDev - Shoppable Video', applicationCategory: 'BusinessApplication', operatingSystem: 'Shopify', url: 'https://anotherdev.in/shoppable-video', installUrl: APP_STORE_URL, sameAs: [APP_STORE_URL] } },
+      { '@type': 'ListItem', position: 2, item: { '@type': 'SoftwareApplication', name: 'AnotherDev - Search and Filters', applicationCategory: 'BusinessApplication', operatingSystem: 'Shopify', url: 'https://anotherdev.in/search-and-filters', installUrl: SEARCH_APP_STORE_URL, sameAs: [SEARCH_APP_STORE_URL] } },
     ],
   };
 
@@ -207,6 +207,8 @@ export default function Home() {
       <CtaBand
         title="Two apps, one free way to start"
         sub="Add either app to your Shopify store free, and upgrade only when it pays off."
+        cta="Explore our apps"
+        href="/#apps"
       />
     </>
   );

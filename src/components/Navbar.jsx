@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Icon from './Icon';
-import { APP_STORE_URL } from '../config';
 import './Navbar.css';
 
 const PRODUCTS = [
@@ -92,7 +91,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__cta">
-          <a href={APP_STORE_URL} className="btn btn--primary">Add to Shopify</a>
+          <Link to="/#apps" className="btn btn--primary">Explore apps</Link>
         </div>
 
         <button className="nav__burger" aria-label="Toggle menu" aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -110,7 +109,7 @@ export default function Navbar() {
           {LINKS.map((l) => (
             <NavLink key={l.to} to={l.to} className="nav__mlink">{l.label}</NavLink>
           ))}
-          <a href={APP_STORE_URL} className="btn btn--primary nav__mcta">Add to Shopify</a>
+          <Link to="/#apps" className="btn btn--primary nav__mcta">Explore apps</Link>
         </div>
       )}
     </header>

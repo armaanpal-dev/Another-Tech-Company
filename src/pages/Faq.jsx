@@ -95,7 +95,12 @@ export default function FaqPage() {
         </section>
       </div>
 
-      <CtaBand />
+      <CtaBand
+        title="Two apps, one free way to start"
+        sub="Add either app to your Shopify store free, and upgrade only when it pays off."
+        cta="Explore our apps"
+        href="/#apps"
+      />
     </>
   );
 }

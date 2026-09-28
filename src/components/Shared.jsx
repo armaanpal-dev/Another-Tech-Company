@@ -147,11 +147,18 @@ export function VideoMock({ label = 'Now playing', price = '$48', product = 'Lin
   );
 }
 
-/* Reusable closing CTA, as an inset panel rather than a full-bleed band. */
+/* Reusable closing CTA, as an inset panel rather than a full-bleed band.
+   `href` may be an external App Store link or an internal path (e.g. /#apps),
+   so neutral pages can point at both apps instead of a single one. */
 export function CtaBand({
   title = 'Ready to make your store shoppable?',
   sub = 'Install free in two minutes. No code, no theme edits, no developer required.',
+  cta = 'Add to Shopify, free plan available',
+  href = APP_STORE_URL,
 }) {
+  const primary = href.startsWith('/')
+    ? <Link to={href} className="btn btn--primary btn--lg">{cta} <Icon name="arrow" size={18} /></Link>
+    : <a href={href} className="btn btn--primary btn--lg">{cta} <Icon name="arrow" size={18} /></a>;
   return (
     <section className="ctaband">
       <div className="container">
@@ -162,9 +169,7 @@ export function CtaBand({
               <h2 className="h-lg">{title}</h2>
               <p className="lead mx-auto">{sub}</p>
               <div className="ctaband__btns">
-                <a href={APP_STORE_URL} className="btn btn--primary btn--lg">
-                  Add to Shopify, free plan available <Icon name="arrow" size={18} />
-                </a>
+                {primary}
                 <Link to="/support" className="btn btn--ghost-light btn--lg">Talk to us</Link>
               </div>
             </div>
@@ -175,15 +180,16 @@ export function CtaBand({
   );
 }
 
-/* Sticky mobile call to action. Hidden on desktop, where the nav CTA is always visible. */
+/* Sticky mobile call to action. Hidden on desktop, where the nav CTA is always visible.
+   Points at both apps rather than a single one. */
 export function StickyCta() {
   return (
-    <div className="stickycta" role="complementary" aria-label="Install call to action">
+    <div className="stickycta" role="complementary" aria-label="Explore our apps">
       <div className="stickycta__text">
-        <strong>Free plan</strong>
+        <strong>Two free apps</strong>
         <span>No code needed</span>
       </div>
-      <a href={APP_STORE_URL} className="btn btn--primary">Add to Shopify</a>
+      <Link to="/#apps" className="btn btn--primary">Explore apps</Link>
     </div>
   );
 }

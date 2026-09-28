@@ -27,8 +27,19 @@ import AffiliateTerms from './pages/AffiliateTerms';
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    // Honour an in-page anchor (e.g. /#apps) when navigating between routes,
+    // otherwise start each route at the top.
+    if (hash) {
+      const el = document.getElementById(hash.slice(1));
+      if (el) {
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+        return;
+      }
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return null;
 }
 

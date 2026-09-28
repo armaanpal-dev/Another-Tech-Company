@@ -25,11 +25,11 @@
   <text x="184" y="124" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#FFFFFF">AnotherDev</text>
 
   <!-- headline -->
-  <text x="80" y="290" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">Turn your videos</text>
-  <text x="80" y="380" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">into a <tspan fill="url(#ogHl)">storefront.</tspan></text>
+  <text x="80" y="290" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">Two Shopify apps.</text>
+  <text x="80" y="380" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">Browse to <tspan fill="url(#ogHl)">buy, faster.</tspan></text>
 
   <!-- sub -->
-  <text x="80" y="452" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#C9C0E8">Shoppable video for Shopify. Add to cart inside the video.</text>
+  <text x="80" y="452" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#C9C0E8">Shoppable video, and search and filters. No code.</text>
 
   <!-- trust chips -->
   <rect x="80" y="500" width="230" height="56" rx="28" fill="#FFFFFF" opacity="0.08"/>

@@ -51,23 +51,37 @@ const worksWithB = ['Typo tolerance', 'Synonyms', 'Metafield search', 'Merchandi
 export default function SearchAndFilters() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'AnotherDev - Search and Filters',
-    alternateName: ['AnotherDev Search', 'Search and Filters for Shopify'],
-    applicationCategory: 'BusinessApplication',
-    applicationSubCategory: 'Shopify App',
-    operatingSystem: 'Shopify',
-    url: 'https://anotherdev.in/search-and-filters',
-    image: 'https://anotherdev.in/og-image.svg',
-    description: 'AnotherDev - Search and Filters replaces a Shopify theme’s built-in search with an index the app owns, adding instant search with typo tolerance and synonyms, faceted filters in four layouts, merchandising, search analytics and recommendations.',
-    keywords: 'Shopify search app, instant search Shopify, product filters Shopify, faceted search, collection filters, search and discovery, merchandising, synonyms, typo tolerance, product recommendations',
-    offers: [
-      { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Growth', price: '21', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Custom', price: '70', priceCurrency: 'USD' },
+    '@graph': [
+      {
+        '@type': 'SoftwareApplication',
+        name: 'AnotherDev Search and Filters',
+        alternateName: ['AnotherDev Search And Filter', 'Search and Filters for Shopify'],
+        applicationCategory: 'BusinessApplication',
+        applicationSubCategory: 'Shopify App',
+        operatingSystem: 'Shopify',
+        url: 'https://anotherdev.in/search-and-filters',
+        installUrl: SEARCH_APP_STORE_URL,
+        downloadUrl: SEARCH_APP_STORE_URL,
+        sameAs: [SEARCH_APP_STORE_URL],
+        image: 'https://anotherdev.in/og-image.svg',
+        description: 'AnotherDev Search and Filters replaces a Shopify theme’s built-in search with an index the app owns, adding instant search with typo tolerance and synonyms, faceted filters in four layouts, merchandising, search analytics and recommendations.',
+        keywords: 'Shopify search app, instant search Shopify, product filters Shopify, faceted search, collection filters, search and discovery, merchandising, synonyms, typo tolerance, product recommendations, Shopify filter app',
+        offers: [
+          { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'Growth', price: '21', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'Pro', price: '49', priceCurrency: 'USD' },
+          { '@type': 'Offer', name: 'Custom', price: '70', priceCurrency: 'USD' },
+        ],
+        publisher: { '@type': 'Organization', name: 'AnotherDev', url: 'https://anotherdev.in' },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(([q, a]) => ({
+          '@type': 'Question', name: q,
+          acceptedAnswer: { '@type': 'Answer', text: a },
+        })),
+      },
     ],
-    publisher: { '@type': 'Organization', name: 'AnotherDev', url: 'https://anotherdev.in' },
   };
 
   return (

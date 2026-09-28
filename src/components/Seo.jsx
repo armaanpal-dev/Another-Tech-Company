@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE = 'AnotherDev';
-const FULL = 'AnotherDev - Shoppable Video';
+const FULL = 'AnotherDev';
 const BASE = 'https://anotherdev.in';
 
 // Human labels for path segments, used to build the BreadcrumbList.
@@ -49,7 +49,7 @@ export default function Seo({
   schema,
   noindex = false,
 }) {
-  const fullTitle = title ? `${title} | ${SITE}` : `${FULL} for Shopify: Watch, tap, buy`;
+  const fullTitle = title ? `${title} | ${SITE}` : `${FULL}: Shopify apps for shoppable video, search and filters`;
   const url = `${BASE}${path}`;
   // Unlisted pages (noindex) do not need breadcrumb structured data.
   const breadcrumb = noindex ? null : buildBreadcrumb(path, title);

@@ -4,6 +4,40 @@
 
 export const posts = [
   {
+    slug: 'anotherdev-shoppable-video-on-product-hunt',
+    cat: 'News',
+    date: 'Sep 28, 2026',
+    read: '3 min',
+    cover: 'post__cover--3',
+    title: 'AnotherDev Shoppable Video is on Product Hunt',
+    excerpt: 'Our shoppable video app for Shopify is live on Product Hunt. Here is where to find it and what it does.',
+    content: [
+      { type: 'p', text: 'AnotherDev Shoppable Video is now on Product Hunt, where makers and merchants discover new products. You can see the page and check it out here: https://www.producthunt.com/products/anotherdev-shoppable-video' },
+      { type: 'h2', text: 'What is Product Hunt?' },
+      { type: 'p', text: 'Product Hunt is a community where people share and discover new products, from apps to tools for running a business. Having the app on Product Hunt gives merchants another place to find it, read about it, and follow along as it grows, alongside the Shopify App Store.' },
+      { type: 'h2', text: 'What the app does' },
+      { type: 'p', text: 'AnotherDev Shoppable Video turns your product videos, reels and UGC into a shoppable storefront. Shoppers watch, tap, and buy without leaving the page.' },
+      { type: 'ul', items: [
+        'Add to cart inside the video, using your theme’s own native cart.',
+        'Placements everywhere: a shoppable feed, product page reels, a floating player, and page galleries.',
+        'Smart tag matching that shows the right videos on the right products automatically.',
+        'Live prices in each shopper’s currency, with sold-out variants detected.',
+        'Real-time analytics: impressions, plays, clicks, and add-to-carts per video.',
+        'Installs as a theme app block with no code, and works with third-party carts like GoKwik and Shiprocket.',
+      ] },
+      { type: 'h2', text: 'Pricing' },
+      { type: 'ul', items: [
+        'Free: up to 4 videos with basic analytics.',
+        'Growth: $21/mo for up to 21 videos with customization.',
+        'Pro: $49/mo for up to 49 videos with advanced features.',
+      ] },
+      { type: 'p', text: 'The Free plan lets you start at no cost, and paid plans are billed through Shopify.' },
+      { type: 'h2', text: 'Where to get it' },
+      { type: 'p', text: 'See the app on Product Hunt at https://www.producthunt.com/products/anotherdev-shoppable-video , install it from the Shopify App Store at https://apps.shopify.com/another-shoppable-video-app , or read more on our own page at /shoppable-video' },
+      { type: 'p', text: 'If a shopper-facing search is what you need instead, our second app is on the App Store too. Read about it at /search-and-filters' },
+    ],
+  },
+  {
     slug: 'how-to-install-anotherdev-shoppable-video',
     cat: 'Guides',
     date: 'Sep 25, 2026',
